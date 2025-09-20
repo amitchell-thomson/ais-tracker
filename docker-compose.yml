@@ -1,7 +1,7 @@
 services:
   db:
     image: timescale/timescaledb-ha:pg15.14-ts2.21.3-oss
-    container_name: ais-db
+    container_name: ais-tracker-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ais

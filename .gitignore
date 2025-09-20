@@ -1,0 +1,54 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ==========================
+# VS Code
+# ==========================
+.vscode/
+*.code-workspace
+
+# ==========================
+# OS junk
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Database (Docker volumes)
+# ==========================
+pgdata/
+db-data/
+*.sql~
+*.sql.swp
+
+# ==========================
+# Docker
+# ==========================
+*.pid
+*.seed
+*.bak
+*.tmp
+*.swp
