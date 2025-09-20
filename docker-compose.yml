@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  db:
+    image: timescale/timescaledb-postgis:latest-pg15
+    container_name: ais_db
+    environment:
+      POSTGRES_USER: ais
+      POSTGRES_PASSWORD: aispass
+      POSTGRES_DB: ais
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d  # optional: auto-run .sql on first start
