@@ -1,8 +1,8 @@
-version: '3.9'
 services:
   db:
-    image: timescale/timescaledb-postgis:latest-pg15
-    container_name: ais_db
+    image: timescale/timescaledb-ha:pg15.14-ts2.21.3-oss
+    container_name: ais-db
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ais
       POSTGRES_PASSWORD: aispass
@@ -10,5 +10,10 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
-      - ./db:/docker-entrypoint-initdb.d  # optional: auto-run .sql on first start
+      - ./db-data:/home/postgres/pgdata
+      - ./db/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
