@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIS Area Polygon Builder — Preloaded Exact Shapes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23111827'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='white' font-family='Arial'%3EAIS%3C/text%3E%3C/svg%3E"/>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, Ubuntu, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+    #app { display: grid; grid-template-columns: 360px 1fr; grid-template-rows: auto 1fr; height: 100vh; }
+    header { grid-column: 1 / -1; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; display:flex; gap:12px; align-items:center; }
+    header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+    #sidebar { border-right: 1px solid #e5e7eb; overflow-y: auto; padding: 12px; }
+    #map { height: 100%; width: 100%; min-height: 400px; }
+    .block { margin-bottom: 14px; }
+    .label { font-size: 12px; font-weight: 600; color: #374151; margin-bottom: 6px; display:block; }
+    input[type="text"], select, textarea { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 13px; }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:8px 10px; border-radius: 10px; border: 1px solid #d1d5db; background:#fff; cursor:pointer; font-size: 13px; }
+    .btn.primary { background:#111827; color:#fff; border-color:#111827; }
+    .btn.warn { background:#fef2f2; color:#991b1b; border-color:#fecaca; }
+    .btn.green { background:#ecfdf5; color:#065f46; border-color:#a7f3d0; }
+    .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius:999px; border:1px solid #d1d5db; background:#f9fafb; margin-left: 6px; }
+    .list { border:1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+    .list-item { padding:10px; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .list-item:first-child { border-top: 0; }
+    .list-title { font-size: 13px; font-weight: 600; }
+    .list-sub { font-size: 11px; color:#6b7280; }
+    .row { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+    .small { font-size: 11px; color:#6b7280; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; background:#f3f4f6; border:1px solid #e5e7eb; border-bottom-width:2px; padding:1px 6px; border-radius:6px; font-size:11px; }
+    .leaflet-container { min-height: 400px; }
+  </style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>AIS Area Polygon Builder</h1>
+    <span class="pill">Preloaded ▸ Edit ▸ Validate ▸ Export</span>
+    <div class="row" style="margin-left:auto; max-width: 740px;">
+      <button class="btn" id="btn-zoom-world">🌍 World</button>
+      <select id="quickJump">
+        <option value="">Jump…</option>
+        <optgroup label="US Gulf (WTI)">
+          <option value="27.8,-97.2,10">Corpus Christi</option>
+          <option value="29.72,-95.05,10">Houston / Galveston</option>
+          <option value="28.92,-90.02,10">LOOP</option>
+        </optgroup>
+        <optgroup label="NW Europe (Brent)">
+          <option value="51.96,4.0,10">Rotterdam</option>
+        </optgroup>
+        <optgroup label="Middle East">
+          <option value="26.64,50.06,10">Ras Tanura</option>
+          <option value="25.15,56.38,10">Fujairah</option>
+        </optgroup>
+        <optgroup label="Chokepoints">
+          <option value="30.4,32.4,8">Suez Canal</option>
+          <option value="26.4,56.3,9">Strait of Hormuz</option>
+          <option value="36.05,-5.5,10">Strait of Gibraltar</option>
+          <option value="-34.5,15.0,6">Cape of Good Hope</option>
+          <option value="39.0,-45.0,4">Mid-Atlantic lane</option>
+        </optgroup>
+      </select>
+      <button class="btn" id="btn-export">⬇️ Export</button>
+      <label class="btn">
+        ⬆️ Import
+        <input type="file" id="file-import" accept="application/geo+json,application/json,.geojson,.json" style="display:none" />
+      </label>
+      <button class="btn warn" id="btn-clear-all">🗑️ Clear</button>
+    </div>
+  </header>
+
+  <aside id="sidebar">
+    <div class="block">
+      <label class="label">Feature info</label>
+      <div class="row">
+        <input id="f-name" type="text" placeholder="Name (e.g., Corpus Christi — core)" />
+      </div>
+      <div class="row">
+        <select id="f-kind">
+          <option value="port">port</option>
+          <option value="lane">lane</option>
+          <option value="chokepoint">chokepoint</option>
+          <option value="sts">sts</option>
+          <option value="gate">gate</option>
+        </select>
+        <select id="f-subtype">
+          <option value="core">core</option>
+          <option value="approach">approach</option>
+          <option value="corridor">corridor</option>
+          <option value="gate_west">gate_west</option>
+          <option value="gate_east">gate_east</option>
+          <option value="gate_north">gate_north</option>
+          <option value="gate_south">gate_south</option>
+          <option value="zone">zone</option>
+        </select>
+      </div>
+      <div class="row"><input id="f-group" type="text" placeholder="Group (e.g., Corpus Christi, Rotterdam)" /></div>
+      <div class="row"><input id="f-notes" type="text" placeholder="Notes (e.g., 3 nm core; 30–50 nm approach)" /></div>
+      <div class="row">
+        <button class="btn primary" id="btn-apply">💾 Save / Update Selected</button>
+        <button class="btn" id="btn-cancel-select">✖️ Deselect</button>
+      </div>
+      <div class="small">Use the draw tools (left) for new shapes. Click any polygon to select & edit its properties.</div>
+    </div>
+
+    <div class="block">
+      <label class="label">Base layer</label>
+      <div class="row">
+        <button class="btn" id="btn-osm">🗺️ OSM</button>
+        <button class="btn" id="btn-sat">🛰️ Satellite</button>
+      </div>
+      <div class="small">Satellite uses Esri World Imagery.</div>
+    </div>
+
+    <div class="block">
+      <label class="label">Current features (<span id="count">0</span>)</label>
+      <div id="feature-list" class="list"></div>
+      <div class="small" style="margin-top:8px;">Click to zoom/select. Use <span class="kbd">Del</span> to delete selected.</div>
+    </div>
+
+    <div class="block">
+      <label class="label">Validation</label>
+      <div id="validation-log" class="small">Approach polygons must fully contain their core (same Group). Checked on save.</div>
+    </div>
+
+    <div class="block">
+      <label class="label">Resample / Smooth selected polygon</label>
+      <div class="row">
+        <input id="resample-sides" type="number" min="3" max="200" value="48" style="width:110px;" />
+        <button class="btn" id="btn-resample">🔺 Resample to N sides</button>
+      </div>
+      <div class="small">Turns current polygon into an N‑gon around its centroid (avg radius preserved). Then fine‑tune by dragging vertices (✏️ Edit).</div>
+    </div>
+
+    <div class="block">
+      <span class="small">Local autosave: <span id="autosave-status">idle</span></span>
+      <button class="btn green" id="btn-reload">↻ Reload</button>
+    </div>
+  </aside>
+
+  <main id="map"></main>
+</div>
+
+<script>
+(function(){
+  // --- Base map ---
+  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' });
+  const sat = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: 'Tiles &copy; Esri'
+  });
+  const map = L.map('map', { center: [20, 0], zoom: 2, layers: [osm] });
+  L.control.layers({ 'OpenStreetMap': osm, 'Satellite (Esri)': sat }, null, { position: 'topright' }).addTo(map);
+  setTimeout(()=>map.invalidateSize(), 100);
+
+  // --- Draw layer ---
+  const drawnItems = new L.FeatureGroup();
+  map.addLayer(drawnItems);
+  const drawControl = new L.Control.Draw({
+    position: 'topleft',
+    draw: {
+      marker:false, circle:false, circlemarker:false, polyline:false,
+      polygon: { allowIntersection:false, showArea:true, shapeOptions:{ color:'#111827' } },
+      rectangle: { shapeOptions:{ color:'#111827' } }
+    },
+    edit: { featureGroup: drawnItems, edit:true, remove:true }
+  });
+  map.addControl(drawControl);
+
+  // --- UI elements ---
+  const els = {
+    name: document.getElementById('f-name'),
+    kind: document.getElementById('f-kind'),
+    subtype: document.getElementById('f-subtype'),
+    group: document.getElementById('f-group'),
+    notes: document.getElementById('f-notes'),
+    apply: document.getElementById('btn-apply'),
+    cancel: document.getElementById('btn-cancel-select'),
+    count: document.getElementById('count'),
+    list: document.getElementById('feature-list'),
+    vLog: document.getElementById('validation-log'),
+    btnExport: document.getElementById('btn-export'),
+    btnClear: document.getElementById('btn-clear-all'),
+    btnReload: document.getElementById('btn-reload'),
+    btnOSM: document.getElementById('btn-osm'),
+    btnSAT: document.getElementById('btn-sat'),
+    quickJump: document.getElementById('quickJump'),
+    fileImport: document.getElementById('file-import'),
+    zoomWorld: document.getElementById('btn-zoom-world'),
+    autosave: document.getElementById('autosave-status'),
+    resBtn: document.getElementById('btn-resample'),
+    resSides: document.getElementById('resample-sides'),
+  };
+
+  // --- Helpers & state ---
+  let selectedLayer = null;
+  function featureToGeoJSON(layer){ return layer.toGeoJSON(); }
+  function layerFromGeoJSON(gj){ return L.geoJSON(gj, { style: styleForProps(gj.properties) }).getLayers()[0]; }
+  function styleForProps(p){
+    const colorBySubtype = { core:'#10b981', approach:'#ef4444', corridor:'#3b82f6', gate_west:'#f59e0b', gate_east:'#f59e0b', gate_north:'#f59e0b', gate_south:'#f59e0b', zone:'#8b5cf6' };
+    return { color: colorBySubtype[p?.subtype] || '#111827', weight:2, fillOpacity:0.15 };
+  }
+  function setLayerProps(layer, props){ layer.feature = layer.feature || { type:'Feature', properties:{} }; layer.feature.properties = { ...(layer.feature.properties||{}), ...props }; layer.setStyle?.(styleForProps(layer.feature.properties)); }
+  function getLayerProps(layer){ return (layer.feature && layer.feature.properties) || {}; }
+  function bindLayerEvents(layer){ layer.on('click', ()=>selectLayer(layer)); layer.on('edit', ()=>{ saveAllToLocal(); updateList(); }); }
+  function selectLayer(layer){ selectedLayer = layer; const p=getLayerProps(layer); els.name.value=p.name||''; els.kind.value=p.kind||'port'; els.subtype.value=p.subtype||'core'; els.group.value=p.group||''; els.notes.value=p.notes||''; }
+  function deselectLayer(){ selectedLayer=null; els.name.value=''; els.group.value=''; els.notes.value=''; }
+
+  function updateList(){
+    const items=[]; drawnItems.eachLayer(l=>items.push(l));
+    els.count.textContent = items.length; els.list.innerHTML='';
+    items.forEach(l=>{ const p=getLayerProps(l); const id=L.Util.stamp(l); const div=document.createElement('div'); div.className='list-item';
+      div.innerHTML = `<div><div class="list-title">${p.name||'Untitled'} <span class="pill">${p.kind||'?'} / ${p.subtype||'?'}</span></div><div class="list-sub">Group: ${p.group||'—'} · ${coordsSummary(l)}</div></div><div class="row" style="width:auto;"><button class="btn" data-act="zoom" data-id="${id}">🔍</button><button class="btn warn" data-act="delete" data-id="${id}">🗑️</button></div>`;
+      els.list.appendChild(div);
+    });
+  }
+  function coordsSummary(layer){ const gj=featureToGeoJSON(layer); const coords=(gj.geometry.type==='Polygon')?gj.geometry.coordinates[0]:(gj.geometry.type==='MultiPolygon'?gj.geometry.coordinates[0][0]:[]); return `${coords.length} pts`; }
+
+  function saveAllToLocal(){ const coll=[]; drawnItems.eachLayer(l=>coll.push(featureToGeoJSON(l))); localStorage.setItem('ais_polygons', JSON.stringify(coll)); els.autosave.textContent=`saved ${new Date().toLocaleTimeString()}`; }
+  function loadAllFromLocal(){ drawnItems.clearLayers(); const raw=localStorage.getItem('ais_polygons'); if(!raw){ updateList(); return; } try{ JSON.parse(raw).forEach(gj=>{ const lyr=layerFromGeoJSON(gj); drawnItems.addLayer(lyr); bindLayerEvents(lyr); }); updateList(); } catch(e){ console.error(e); alert('Failed to load saved polygons.'); } }
+
+  // Validation: approaches must contain cores within same group
+  function validateContainment(changedLayer){ const grp=getLayerProps(changedLayer).group; if(!grp) return true; const cores=[], apps=[]; drawnItems.eachLayer(l=>{ const p=getLayerProps(l); if(p.group===grp){ if(p.subtype==='core') cores.push(l); if(p.subtype==='approach') apps.push(l); }}); let ok=true; const messages=[]; if(cores.length&&apps.length){ cores.forEach(core=>{ const cp=core.toGeoJSON(); const contained=apps.some(app=>{ try{ return turf.booleanContains(app.toGeoJSON(), cp); }catch{return false;} }); if(!contained){ ok=false; messages.push(`❌ Approach does not contain core: ${getLayerProps(core).name||'core'}`); } }); }
+    els.vLog.innerHTML = messages.length? messages.join('<br>') : `✅ Containment OK for group ${grp}`; return ok; }
+
+  // Geometry utils
+  const NM_TO_KM = 1.852;
+  function circlePoly(lat, lon, radiusNm, steps, props){ const c=turf.circle([lon,lat], radiusNm*NM_TO_KM, {steps:steps||48, units:'kilometers'}); const lyr=layerFromGeoJSON(c); setLayerProps(lyr, props); return lyr; }
+  function rectFromBounds(south, west, north, east, props){ const poly=turf.polygon([[[west,south],[east,south],[east,north],[west,north],[west,south]]]); const lyr=layerFromGeoJSON(poly); setLayerProps(lyr, props); return lyr; }
+  function thinSlabAtLon(lon, south, north, widthDeg, props){ const w=lon-widthDeg/2, e=lon+widthDeg/2; return rectFromBounds(south,w,north,e,props); }
+  function thinSlabAtLat(lat, west, east, heightDeg, props){ const s=lat-heightDeg/2, n=lat+heightDeg/2; return rectFromBounds(s,west,n,east,props); }
+
+  // Preload exact shapes per your spec
+  function preloadExact(){
+    drawnItems.clearLayers();
+    // Ports (cores ~3 nm, approaches 40 nm — to be refined visually)
+    [
+      { g:'Corpus Christi', lat:27.8, lon:-97.2 },
+      { g:'Houston',        lat:29.72, lon:-95.05 },
+      { g:'LOOP',           lat:28.92, lon:-90.02 },
+      { g:'Rotterdam',      lat:51.96, lon:4.00 },
+      { g:'Ras Tanura',     lat:26.64, lon:50.06 },
+      { g:'Fujairah',       lat:25.15, lon:56.38 },
+    ].forEach(p=>{
+      const core = circlePoly(p.lat, p.lon, 3, 48, {name:`${p.g} — core`, kind:'port', subtype:'core', group:p.g, notes:'seed ~3 nm'});
+      const app  = circlePoly(p.lat, p.lon, 40, 96, {name:`${p.g} — approach`, kind:'port', subtype:'approach', group:p.g, notes:'seed ~40 nm'});
+      drawnItems.addLayer(app); bindLayerEvents(app);
+      drawnItems.addLayer(core); bindLayerEvents(core);
+    });
+
+    // Mid-Atlantic lane corridor + gates
+    drawnItems.addLayer(rectFromBounds(36, -50, 43, -40, {name:'Mid-Atlantic — corridor', kind:'lane', subtype:'corridor', group:'Mid-Atlantic'}));
+    drawnItems.addLayer(thinSlabAtLon(-50, 36, 43, 0.25, {name:'Mid-Atlantic — gate_west', kind:'lane', subtype:'gate_west', group:'Mid-Atlantic'}));
+    drawnItems.addLayer(thinSlabAtLon(-40, 36, 43, 0.25, {name:'Mid-Atlantic — gate_east', kind:'lane', subtype:'gate_east', group:'Mid-Atlantic'}));
+
+    // Cape of Good Hope corridor + gates
+    drawnItems.addLayer(rectFromBounds(-38, 10, -30, 20, {name:'Cape of Good Hope — corridor', kind:'lane', subtype:'corridor', group:'Cape of Good Hope'}));
+    drawnItems.addLayer(thinSlabAtLon(10, -38, -30, 0.25, {name:'Cape — gate_west', kind:'lane', subtype:'gate_west', group:'Cape of Good Hope'}));
+    drawnItems.addLayer(thinSlabAtLon(20, -38, -30, 0.25, {name:'Cape — gate_east', kind:'lane', subtype:'gate_east', group:'Cape of Good Hope'}));
+
+    // Suez corridor + gates
+    drawnItems.addLayer(rectFromBounds(29.8, 32.2, 31.3, 32.6, {name:'Suez — corridor', kind:'chokepoint', subtype:'corridor', group:'Suez Canal'}));
+    drawnItems.addLayer(thinSlabAtLat(29.8, 32.2, 32.6, 0.2, {name:'Suez — gate_south', kind:'chokepoint', subtype:'gate_south', group:'Suez Canal'}));
+    drawnItems.addLayer(thinSlabAtLat(31.3, 32.2, 32.6, 0.2, {name:'Suez — gate_north', kind:'chokepoint', subtype:'gate_north', group:'Suez Canal'}));
+
+    // Hormuz corridor + gates
+    drawnItems.addLayer(rectFromBounds(26.0, 56.0, 26.7, 57.5, {name:'Hormuz — corridor', kind:'chokepoint', subtype:'corridor', group:'Strait of Hormuz'}));
+    drawnItems.addLayer(thinSlabAtLon(56.0, 26.0, 26.7, 0.25, {name:'Hormuz — gate_west', kind:'chokepoint', subtype:'gate_west', group:'Strait of Hormuz'}));
+    drawnItems.addLayer(thinSlabAtLon(57.5, 26.0, 26.7, 0.25, {name:'Hormuz — gate_east', kind:'chokepoint', subtype:'gate_east', group:'Strait of Hormuz'}));
+
+    // Gibraltar corridor + gates (optional but included as seed)
+    drawnItems.addLayer(rectFromBounds(35.9, -5.8, 36.2, -5.2, {name:'Gibraltar — corridor', kind:'chokepoint', subtype:'corridor', group:'Strait of Gibraltar'}));
+    drawnItems.addLayer(thinSlabAtLon(-5.8, 35.9, 36.2, 0.2, {name:'Gibraltar — gate_west', kind:'chokepoint', subtype:'gate_west', group:'Strait of Gibraltar'}));
+    drawnItems.addLayer(thinSlabAtLon(-5.2, 35.9, 36.2, 0.2, {name:'Gibraltar — gate_east', kind:'chokepoint', subtype:'gate_east', group:'Strait of Gibraltar'}));
+
+    // STS zones (seed discs ~7 nm)
+    [
+      { name:'Fujairah offshore — STS',   lat:25.20, lon:56.50, group:'Fujairah offshore' },
+      { name:'Lome — STS',                lat:6.10,  lon:1.25,  group:'Lome' },
+      { name:'Malta (Hurd Bank) — STS',   lat:35.97, lon:14.67, group:'Hurd Bank' },
+      { name:'Ceuta/Algeciras — STS',     lat:35.92, lon:-5.43, group:'Gibraltar STS' },
+    ].forEach(s=>{ const z=circlePoly(s.lat, s.lon, 7, 64, {name:s.name, kind:'sts', subtype:'zone', group:s.group, notes:'seed ~7 nm'}); drawnItems.addLayer(z); bindLayerEvents(z); });
+
+    updateList();
+    saveAllToLocal();
+  }
+
+  // Events
+  map.on(L.Draw.Event.CREATED, (e)=>{ const l=e.layer; setLayerProps(l,{ kind:'port', subtype:'core', name:'', group:'', notes:''}); drawnItems.addLayer(l); bindLayerEvents(l); selectLayer(l); updateList(); saveAllToLocal(); });
+  map.on(L.Draw.Event.EDITED, ()=>{ saveAllToLocal(); updateList(); if(selectedLayer) validateContainment(selectedLayer); });
+  map.on(L.Draw.Event.DELETED, ()=>{ saveAllToLocal(); updateList(); els.vLog.textContent='Deleted. Re‑validate by selecting any feature.'; });
+
+  // Sidebar actions
+  els.apply.addEventListener('click', ()=>{ if(!selectedLayer){ alert('Select a polygon first.'); return; } const props={ name:els.name.value.trim(), kind:els.kind.value, subtype:els.subtype.value, group:els.group.value.trim(), notes:els.notes.value.trim() }; setLayerProps(selectedLayer, props); const ok=validateContainment(selectedLayer); if(!ok && props.subtype==='approach'){ if(!confirm('Approach does not contain its core. Keep anyway?')) return; } saveAllToLocal(); updateList(); });
+  els.cancel.addEventListener('click', ()=>deselectLayer());
+  els.list.addEventListener('click', (ev)=>{ const btn=ev.target.closest('button'); if(!btn) return; const id=+btn.dataset.id; let t=null; drawnItems.eachLayer(l=>{ if(L.Util.stamp(l)===id) t=l; }); if(!t) return; const act=btn.dataset.act; if(act==='zoom'){ map.fitBounds(t.getBounds(), { maxZoom: 14 }); selectLayer(t);} if(act==='delete'){ drawnItems.removeLayer(t); saveAllToLocal(); updateList(); }});
+
+  els.btnExport.addEventListener('click', ()=>{ const arr=[]; drawnItems.eachLayer(l=>arr.push(featureToGeoJSON(l))); const blob=new Blob([JSON.stringify(arr,null,2)],{type:'application/geo+json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='ais_areas.geojson'; a.click(); URL.revokeObjectURL(url); });
+  els.fileImport.addEventListener('change', (e)=>{ const f=e.target.files?.[0]; if(!f) return; const reader=new FileReader(); reader.onload=ev=>{ try{ const arr=JSON.parse(ev.target.result); if(!Array.isArray(arr)) throw new Error('Expected GeoJSON Feature[]'); arr.forEach(gj=>{ const lyr=layerFromGeoJSON(gj); drawnItems.addLayer(lyr); bindLayerEvents(lyr); }); updateList(); saveAllToLocal(); }catch(err){ alert('Import failed: '+err.message); } }; reader.readAsText(f); e.target.value=''; });
+  els.btnClear.addEventListener('click', ()=>{ if(confirm('Delete ALL features and clear localStorage?')){ localStorage.removeItem('ais_polygons'); drawnItems.clearLayers(); updateList(); }});
+  els.btnReload.addEventListener('click', loadAllFromLocal);
+
+  els.btnOSM.addEventListener('click', ()=>{ if(!map.hasLayer(osm)) map.addLayer(osm); if(map.hasLayer(sat)) map.removeLayer(sat); });
+  els.btnSAT.addEventListener('click', ()=>{ if(!map.hasLayer(sat)) map.addLayer(sat); if(map.hasLayer(osm)) map.removeLayer(osm); });
+  els.quickJump.addEventListener('change', ()=>{ const val=els.quickJump.value; if(!val) return; const [lat,lng,z]=val.split(',').map(Number); map.setView([lat,lng], z||10); els.quickJump.value=''; });
+  els.zoomWorld.addEventListener('click', ()=>map.setView([20,0],2));
+
+  // Resample selected polygon
+  els.resBtn.addEventListener('click', ()=>{
+    if(!selectedLayer){ alert('Click a polygon to select it first.'); return; }
+    const n=Math.max(3, Math.min(200, parseInt(els.resSides.value||'48',10)));
+    const gj=selectedLayer.toGeoJSON(); if(gj.geometry.type!=='Polygon'){ alert('Only Polygon supported.'); return; }
+    const centroid=turf.centroid(gj).geometry.coordinates; const ring=gj.geometry.coordinates[0]; let sum=0,cnt=0; for(let i=0;i<ring.length-1;i++){ sum+=turf.distance(centroid, ring[i], {units:'kilometers'}); cnt++; } const avgKm=cnt? sum/cnt : 5;
+    const props=getLayerProps(selectedLayer); const newPoly=turf.circle(centroid, avgKm, { steps:n, units:'kilometers'});
+    drawnItems.removeLayer(selectedLayer); const lyr=layerFromGeoJSON(newPoly); setLayerProps(lyr, props); drawnItems.addLayer(lyr); bindLayerEvents(lyr); selectLayer(lyr); saveAllToLocal(); updateList();
+  });
+
+  // Keyboard delete
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Delete' && selectedLayer){ if(confirm('Delete selected feature?')){ drawnItems.removeLayer(selectedLayer); deselectLayer(); saveAllToLocal(); updateList(); } } });
+
+  // Initial load: if nothing saved, preload exact shapes
+  const hadSaved = !!localStorage.getItem('ais_polygons');
+  if(hadSaved){ loadAllFromLocal(); } else { preloadExact(); }
+})();
+</script>
+</body>
+</html>

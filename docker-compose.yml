@@ -1,19 +1,37 @@
 services:
   db:
-    image: timescale/timescaledb-ha:pg15.14-ts2.21.3-oss
-    container_name: ais-tracker-db
-    restart: unless-stopped
+    image: timescale/timescaledb-ha:pg15-all   # or: timescale/timescaledb-ha:pg15-ts2.21-all
+    container_name: ais-db
     environment:
+      POSTGRES_DB: ais
       POSTGRES_USER: ais
       POSTGRES_PASSWORD: aispass
-      POSTGRES_DB: ais
+      TZ: Europe/London
     ports:
       - "5432:5432"
     volumes:
-      - ./db-data:/home/postgres/pgdata
-      - ./db/init:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d-readonly
+    command:
+      -c shared_preload_libraries=timescaledb
+      -c timescaledb.license=timescale
+      -c timescaledb.telemetry_level=off
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
+
+  adminer:
+    image: adminer:latest
+    container_name: ais-adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  db_data:

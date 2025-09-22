@@ -1,0 +1,912 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mid-Atlantic - corridor",
+        "kind": "lane",
+        "subtype": "corridor",
+        "group": "Mid-Atlantic",
+        "notes": "USGC↔NWE transatlantic band; traffic here leads NWE intake and informs Brent-WTI arb strength."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-48.339996, 24.562473],
+            [-44.647829, 24.602751],
+            [-45.48335, 47.428094],
+            [-49.262608, 47.384709],
+            [-48.339996, 24.562473]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mid-Atlantic - gate_west",
+        "kind": "lane",
+        "subtype": "gate_west",
+        "group": "Mid-Atlantic",
+        "notes": "West checkpoint (~50°W); use with east gate to confirm true USGC→NWE transits and assess speed/freight."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-48.339997, 24.562471],
+            [-48.493646, 24.559613],
+            [-49.380802, 47.381616],
+            [-49.262609, 47.384709],
+            [-48.339997, 24.562471]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mid-Atlantic - gate_east",
+        "kind": "lane",
+        "subtype": "gate_east",
+        "group": "Mid-Atlantic",
+        "notes": "East checkpoint (~40°W); paired with west gate provides ~6-7 day lead into NWE arrivals."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-44.647831, 24.602748],
+            [-44.505604, 24.597076],
+            [-45.399452, 47.429358],
+            [-45.483347, 47.428095],
+            [-44.647831, 24.602748]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cape of Good Hope - corridor",
+        "kind": "lane",
+        "subtype": "corridor",
+        "group": "Cape of Good Hope",
+        "notes": "Captures Suez-avoidance reroutes; higher Cape traffic raises time/freight to Atlantic, tightening Brent vs WTI."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [22.477929, -34.542572],
+            [20.19292, -35.101958],
+            [18.830507, -34.741501],
+            [17.336719, -37.125171],
+            [21.829834, -37.378984],
+            [25.971701, -37.094606],
+            [25.784915, -34.279807],
+            [22.477929, -34.542572]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cape - gate_west",
+        "kind": "lane",
+        "subtype": "gate_west",
+        "group": "Cape of Good Hope",
+        "notes": "Atlantic-side gate; with east gate confirms Cape rounding and direction for routing-cost impact."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [16.402941, -36.800221],
+            [17.336719, -37.125163],
+            [18.819523, -34.750533],
+            [17.907712, -34.37947],
+            [16.402941, -36.800221]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cape - gate_east",
+        "kind": "lane",
+        "subtype": "gate_east",
+        "group": "Cape of Good Hope",
+        "notes": "Indian-side gate; crossings quantify Suez-avoidance intensity and consequent freight/time pressure."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [25.972941, -37.093181],
+            [26.971427, -36.870767],
+            [26.784673, -33.897565],
+            [25.784915, -34.270724],
+            [25.972941, -37.093181]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suez - corridor",
+        "kind": "chokepoint",
+        "subtype": "corridor",
+        "group": "Suez Canal",
+        "notes": "Measures ME→Med/Europe canal transits; constraints/spikes shift Atlantic supply and affect Brent-WTI."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [32.420654, 29.940672],
+            [32.64451, 29.928767],
+            [32.574469, 31.088129],
+            [32.2, 31.3],
+            [32.420654, 29.940672]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suez - gate_south",
+        "kind": "chokepoint",
+        "subtype": "gate_south",
+        "group": "Suez Canal",
+        "notes": "Gulf of Suez entry; with north gate/SUMED logic, classifies Europe-bound barrels via Suez."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [32.327298, 29.586502],
+            [32.754345, 29.591282],
+            [32.64451, 29.928767],
+            [32.420654, 29.940672],
+            [32.327298, 29.586502]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Suez - gate_north",
+        "kind": "chokepoint",
+        "subtype": "gate_north",
+        "group": "Suez Canal",
+        "notes": "Port Said exit; confirms completed canal transits into Med/Europe for Europe-share attribution."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [32.200928, 31.299718],
+            [32.574463, 31.0894],
+            [32.632133, 31.224468],
+            [32.23937, 31.419296],
+            [32.200928, 31.299718]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hormuz - corridor",
+        "kind": "chokepoint",
+        "subtype": "corridor",
+        "group": "Strait of Hormuz",
+        "notes": "Gulf egress for ME crude; total laden exits set Asia vs Europe allocation baseline."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [56.137356, 26.064213],
+            [56.4093, 26.10361],
+            [57.008179, 27.000539],
+            [56.217114, 27.22063],
+            [55.527766, 26.882961],
+            [56.137356, 26.064213]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hormuz - gate_west",
+        "kind": "chokepoint",
+        "subtype": "gate_west",
+        "group": "Strait of Hormuz",
+        "notes": "Persian Gulf-side gate; detects laden departures starting long-haul routes."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [56.030235, 25.913547],
+            [56.140133, 26.066681],
+            [55.527796, 26.885412],
+            [55.365726, 26.797149],
+            [56.030235, 25.913547]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hormuz - gate_east",
+        "kind": "chokepoint",
+        "subtype": "gate_east",
+        "group": "Strait of Hormuz",
+        "notes": "Arabian Sea-side gate; with west gate classifies outbound direction (Asia vs Europe path)."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [56.409552, 26.106086],
+            [56.483437, 25.92845],
+            [57.073979, 26.78976],
+            [57.008148, 27.00058],
+            [56.409552, 26.106086]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibraltar - corridor",
+        "kind": "chokepoint",
+        "subtype": "corridor",
+        "group": "Strait of Gibraltar",
+        "notes": "Med-Atlantic throat; transits reflect inflow/outflow to Europe affecting NWE supply."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-5.910639, 35.828404],
+            [-5.666197, 35.860696],
+            [-5.447158, 35.919092],
+            [-5.469813, 36.042983],
+            [-5.603033, 35.996874],
+            [-5.782906, 36.039073],
+            [-5.914419, 36.169467],
+            [-5.985832, 36.17086],
+            [-5.910639, 35.828404]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibraltar - gate_west",
+        "kind": "chokepoint",
+        "subtype": "gate_west",
+        "group": "Strait of Gibraltar",
+        "notes": "Atlantic-side gate; with east gate confirms Med↔Atlantic crossings into/out of Europe."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-5.933989, 35.82338],
+            [-5.910643, 35.828403],
+            [-5.985832, 36.171137],
+            [-6.010894, 36.173356],
+            [-5.933989, 35.82338]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibraltar - gate_east",
+        "kind": "chokepoint",
+        "subtype": "gate_east",
+        "group": "Strait of Gibraltar",
+        "notes": "Med-side gate; separates strait through-transit from local anchorage/port calls."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-5.446815, 35.91937],
+            [-5.431367, 35.920196],
+            [-5.454713, 36.044102],
+            [-5.469819, 36.042985],
+            [-5.446815, 35.91937]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Corpus Christi - core",
+        "group": "Corpus Christi",
+        "notes": "USGC crude berth occupancy at Corpus; primary WTI export cadence signal."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-97.148693, 27.919813],
+            [-97.477647, 27.881857],
+            [-97.512588, 27.881578],
+            [-97.54142, 27.846062],
+            [-97.491637, 27.812656],
+            [-97.402135, 27.806538],
+            [-97.374676, 27.731166],
+            [-97.189196, 27.668319],
+            [-97.060787, 27.82756],
+            [-97.020271, 27.890691],
+            [-97.148693, 27.919813]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Corpus Christi - approach",
+        "group": "Corpus Christi",
+        "notes": "Corpus anchorage/pilot staging; leads core and shows pressure on WTI export pipeline."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-97.426076, 27.920412],
+            [-97.545381, 27.89745],
+            [-97.575763, 27.813578],
+            [-97.310028, 27.654331],
+            [-96.907653, 27.554585],
+            [-96.502535, 27.550876],
+            [-96.204532, 27.664034],
+            [-96.210048, 27.974998],
+            [-96.492912, 28.135004],
+            [-96.869202, 28.084104],
+            [-97.177508, 27.944654],
+            [-97.426076, 27.920412]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Houston - approach",
+        "kind": "port",
+        "subtype": "approach",
+        "group": "Houston",
+        "notes": "Galveston Bay anchorage/fairway; early read on Houston export activity and congestion."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-94.962045, 29.822466],
+            [-95.34208, 29.781011],
+            [-95.056469, 29.430057],
+            [-94.952083, 29.144978],
+            [-94.902629, 28.707399],
+            [-94.573088, 28.430017],
+            [-94.048467, 28.555565],
+            [-94.029329, 29.080161],
+            [-94.391732, 29.499436],
+            [-94.962045, 29.822466]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Houston - core",
+        "kind": "port",
+        "subtype": "core",
+        "group": "Houston",
+        "notes": "Houston Ship Channel/Texas City crude berths; direct USGC export throughput."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-94.887535, 29.714278],
+            [-95.045472, 29.770338],
+            [-95.295755, 29.75186],
+            [-95.277384, 29.709079],
+            [-95.175763, 29.7228],
+            [-95.078441, 29.677324],
+            [-95.068813, 29.587738],
+            [-95.002885, 29.419258],
+            [-94.816481, 29.279821],
+            [-94.766657, 29.330668],
+            [-94.772143, 29.378556],
+            [-94.733722, 29.542389],
+            [-94.887535, 29.714278]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LOOP - core",
+        "kind": "port",
+        "subtype": "core",
+        "group": "LOOP",
+        "notes": "Offshore SBMs; VLCC loadings at LOOP are a direct WTI globalization signal."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-90.02, 28.96996],
+            [-90.074299, 28.935424],
+            [-90.053541, 28.879566],
+            [-89.986459, 28.879566],
+            [-89.965701, 28.935424],
+            [-90.02, 28.96996]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LOOP - approach",
+        "kind": "port",
+        "subtype": "approach",
+        "group": "LOOP",
+        "notes": "Staging/holding around LOOP SBMs; anticipates upcoming VLCC loadings."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-90.032956, 29.144771],
+            [-90.21288, 28.994907],
+            [-90.483411, 28.729135],
+            [-90.219744, 28.483177],
+            [-89.590755, 28.507372],
+            [-89.697813, 28.786905],
+            [-89.722489, 29.027313],
+            [-90.032956, 29.144771]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Arthur - core",
+        "group": "Group: Arthur",
+        "notes": "Sabine/Neches crude berths (Nederland/Port Arthur); key USGC export capacity."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-94.138377, 30.080407],
+            [-93.937223, 29.931729],
+            [-93.983831, 29.757277],
+            [-93.946762, 29.690462],
+            [-93.780635, 29.729244],
+            [-93.73876, 29.991968],
+            [-94.063539, 30.148129],
+            [-94.138377, 30.080407]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Arthur - approach",
+        "group": "Arthur",
+        "notes": "Sea approaches/pilot areas to Sabine/Neches; staging signal ahead of loadings."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-94.189185, 30.088721],
+            [-94.015505, 29.876969],
+            [-94.020815, 29.708428],
+            [-93.795173, 28.993516],
+            [-93.443697, 28.935818],
+            [-93.152632, 29.228783],
+            [-93.624109, 29.795348],
+            [-93.64748, 30.022762],
+            [-94.053898, 30.206307],
+            [-94.189185, 30.088721]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rotterdam - approach",
+        "kind": "port",
+        "subtype": "approach",
+        "group": "Rotterdam",
+        "notes": "Maas/Eurogeul anchorage and approach; leading indicator for NWE crude intake and Brent pricing."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [4.18577, 52.035577],
+            [4.353351, 52.150322],
+            [3.98253, 52.256373],
+            [3.677647, 52.22443],
+            [3.422237, 52.074407],
+            [3.441451, 51.912062],
+            [3.76555, 51.733832],
+            [3.972923, 51.864625],
+            [4.08417, 51.881587],
+            [4.249648, 51.868436],
+            [4.255152, 51.958648],
+            [4.18577, 52.035577]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rotterdam - core",
+        "kind": "port",
+        "subtype": "core",
+        "group": "Rotterdam",
+        "notes": "MOT/VPR/TEAM crude jetties; direct NWE crude intake measurement."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [4.129483, 51.984462],
+            [4.008634, 52.004326],
+            [3.937908, 51.973037],
+            [3.968807, 51.905301],
+            [4.033355, 51.908697],
+            [4.098598, 51.907],
+            [4.165879, 51.896412],
+            [4.235914, 51.881154],
+            [4.233817, 51.935146],
+            [4.129483, 51.984462]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Amsterdam - core",
+        "group": "",
+        "notes": "Westpoort liquids (Vopak/Oiltanking); supplementary NWE intake and product-led substitution context."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [4.636853, 52.480533],
+            [4.625183, 52.446632],
+            [4.737024, 52.400794],
+            [4.85853, 52.380671],
+            [4.85416, 52.442467],
+            [4.636853, 52.480533]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Amsterdam - approach",
+        "group": "Amsterdam",
+        "notes": "North Sea Canal/IJmuiden approaches; staging into Amsterdam liquids-secondary NWE signal."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [4.733044, 52.390263],
+            [4.866109, 52.376064],
+            [4.870914, 52.449392],
+            [4.59778, 52.502001],
+            [4.616937, 52.558814],
+            [4.269585, 52.601366],
+            [3.898807, 52.583832],
+            [3.869948, 52.435873],
+            [4.210511, 52.411626],
+            [4.53456, 52.364686],
+            [4.574446, 52.427566],
+            [4.733044, 52.390263]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Antwerp - core",
+        "group": "Antwerp",
+        "notes": "Scheldt oil berths (Kallo/Doel/Lillo); NWE crude intake proxy complementing Rotterdam."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [4.428499, 51.263837],
+            [4.357435, 51.358494],
+            [4.283223, 51.40474],
+            [4.18708, 51.369175],
+            [4.189642, 51.237863],
+            [4.411007, 51.230539],
+            [4.428499, 51.263837]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Antwerp - approach",
+        "group": "Antwerp",
+        "notes": "Westerschelde pilot/approaches; staging signal for Antwerp inbound crude flows."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [3.946832, 51.210283],
+            [4.41925, 51.220645],
+            [4.450643, 51.292029],
+            [4.336108, 51.428573],
+            [3.537583, 51.544624],
+            [3.703749, 51.694689],
+            [3.452431, 51.82558],
+            [2.903109, 51.645266],
+            [2.381274, 51.337456],
+            [2.60934, 51.103451],
+            [3.421166, 51.382309],
+            [3.946832, 51.210283]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Wilhelmshaven - core",
+        "group": "Wilhelmshaven",
+        "notes": "Niedersachsenbrücke/NWO crude berths; VLCC-capable NWE intake."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [8.031692, 53.641381],
+            [8.063218, 53.606176],
+            [8.141548, 53.545192],
+            [8.187559, 53.546428],
+            [8.17108, 53.587411],
+            [8.151167, 53.627743],
+            [8.115462, 53.659696],
+            [8.031692, 53.641381]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Wilhelmshaven - approach",
+        "group": "Wilhelmshaven",
+        "notes": "Jade Bay fairway/anchorage; staging ahead of German crude imports."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [8.204036, 53.547245],
+            [8.135295, 53.543232],
+            [8.064654, 53.587612],
+            [8.016535, 53.641493],
+            [8.006287, 53.774686],
+            [7.852481, 53.793348],
+            [7.822975, 53.882913],
+            [8.052271, 53.896661],
+            [8.071509, 53.843622],
+            [8.104972, 53.79366],
+            [8.204036, 53.547245]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Tanura - approach",
+        "kind": "port",
+        "subtype": "approach",
+        "group": "Ras Tanura",
+        "notes": "Gulf anchorage/pilot areas for RT; near-term pipeline of ME loadings; pair with Hormuz for destination split."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [50.490466, 27.244861],
+            [50.199301, 27.40834],
+            [49.872435, 27.252221],
+            [49.833944, 26.833937],
+            [49.987703, 26.542046],
+            [50.232304, 26.559252],
+            [50.454738, 26.824073],
+            [50.490466, 27.244861]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ras Tanura - core",
+        "kind": "port",
+        "subtype": "core",
+        "group": "Ras Tanura",
+        "notes": "Ras Tanura berths + SBMs; major VLCC loadings that shape ME allocations (Asia vs Europe)."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [50.188948, 26.78121],
+            [50.079119, 26.783631],
+            [49.982992, 26.742583],
+            [49.9775, 26.662797],
+            [50.027154, 26.599567],
+            [50.217788, 26.597122],
+            [50.292619, 26.723564],
+            [50.188948, 26.78121]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fujairah - core",
+        "kind": "port",
+        "subtype": "core",
+        "group": "Fujairah",
+        "notes": "Fujairah oil jetties; operational hub for Gulf flows and reconfiguration relevant to Atlantic supply."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [56.383895, 25.196397],
+            [56.358139, 25.200141],
+            [56.356771, 25.169084],
+            [56.38253, 25.168928],
+            [56.387684, 25.181804],
+            [56.383895, 25.196397]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fujairah - approach",
+        "kind": "port",
+        "subtype": "approach",
+        "group": "Fujairah",
+        "notes": "Anchorage/pilot belt incl. STS activity; congestion here signals Gulf flow shifts impacting Atlantic balance."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [56.347504, 25.41101],
+            [56.344755, 25.248422],
+            [56.349906, 25.102678],
+            [56.736144, 25.09926],
+            [56.769104, 25.262079],
+            [56.744386, 25.420937],
+            [56.347504, 25.41101]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "core",
+        "name": "Basrah",
+        "group": "Basrah",
+        "notes": "Basrah offshore SBM field (ABOT/KAAOT area); Iraqi VLCC loadings affecting Atlantic availability via Hormuz."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [48.482701, 29.692982],
+            [49.125351, 29.166597],
+            [49.361608, 29.358488],
+            [48.713479, 29.83599],
+            [48.482701, 29.692982]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "port",
+        "subtype": "approach",
+        "name": "Basrah",
+        "group": "Basrah",
+        "notes": "Northern Gulf anchorage/holding feeding Basrah SBMs; leads load cadence; pair with Hormuz to classify destination."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [48.718869, 29.897819],
+            [49.84507, 29.173831],
+            [49.240971, 28.784424],
+            [48.411259, 29.695204],
+            [48.718869, 29.897819]
+          ]
+        ]
+      }
+    }
+  ]
+}
