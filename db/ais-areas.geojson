@@ -507,7 +507,7 @@
         "kind": "port",
         "subtype": "core",
         "name": "Arthur - core",
-        "group": "Group: Arthur",
+        "group": "Arthur",
         "notes": "Sabine/Neches crude berths (Nederland/Port Arthur); key USGC export capacity."
       },
       "geometry": {
@@ -615,7 +615,7 @@
         "kind": "port",
         "subtype": "core",
         "name": "Amsterdam - core",
-        "group": "",
+        "group": "Amsterdam",
         "notes": "Westpoort liquids (Vopak/Oiltanking); supplementary NWE intake and product-led substitution context."
       },
       "geometry": {
