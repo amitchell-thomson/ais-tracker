@@ -402,32 +402,44 @@ def tanker_predicate(row: Dict[str, Any]) -> bool:
 def make_vessel_uid(row: Dict[str, Any]) -> str:
     """
     Construct a stable vessel UID:
-      MMSI > IMO > Marine Traffic SHIP_ID (provider-stable) > hashed surrogate.
-    For SAT rows where identifiers are missing/opaque, we hash (name, flag, length, width, type).
+      MMSI > IMO > MarineTraffic SHIP_ID (digits) > SAT opaque SHIP_ID (hashed) > hashed surrogate.
+    For SAT rows with opaque SHIP_ID, we hash it so each SAT track becomes a distinct vessel_uid.
     """
     mmsi = row.get("MMSI") or row.get("mmsi")
     imo  = row.get("IMO")  or row.get("imo")
     if mmsi:
-        try: return f"mmsi:{int(mmsi)}"
-        except Exception: pass
+        try:
+            return f"mmsi:{int(mmsi)}"
+        except Exception:
+            pass
     if imo:
-        try: return f"imo:{int(imo)}"
-        except Exception: pass
+        try:
+            return f"imo:{int(imo)}"
+        except Exception:
+            pass
 
     ship_id = str(row.get("SHIP_ID") or "").strip()
-    if ship_id.isdigit():
-        return f"mtid:{ship_id}"
+    if ship_id:
+        if ship_id.isdigit():
+            # MT numeric id seen on terrestrial feeds: reasonably stable
+            return f"mtid:{ship_id}"
+        else:
+            # SAT-style opaque token (often base64-ish) → hash to compact, but keep uniqueness
+            h = hashlib.sha1(ship_id.encode("utf-8")).hexdigest()[:20]
+            return f"sat:{h}"
 
-    name  = _norm(row.get("SHIPNAME"))
+    # Fallback surrogate (for very sparse SAT rows without SHIP_ID)
+    name   = _norm(row.get("SHIPNAME"))
     if name in {"[SAT-AIS]", "UNKNOWN"}:
         name = ""
-    flag  = _norm(row.get("FLAG"))
-    length= _norm(row.get("LENGTH"))
-    width = _norm(row.get("WIDTH"))
-    stype = _norm(row.get("SHIPTYPE") or row.get("TYPE_NAME"))
-    parts = [name, flag, length, width, stype]
+    flag   = _norm(row.get("FLAG"))
+    length = _norm(row.get("LENGTH"))
+    width  = _norm(row.get("WIDTH"))
+    stype  = _norm(row.get("SHIPTYPE") or row.get("TYPE_NAME"))
+    parts  = [name, flag, length, width, stype]
     h = hashlib.sha1("||".join(parts).encode("utf-8")).hexdigest()
     return f"h:{h[:16]}"
+
 
 
 # SAT continuity + idempotency caches
@@ -774,7 +786,7 @@ def _run_loop(driver, tile_iter, total_tiles):
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         summary = (f"[LATEST] {now_str} | received={received_total} | kept={kept_total} | "
-                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{total_tiles})")
+                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE})")
         ui_set_latest(summary)
         logger.info("cycle summary: received=%s kept=%s inserted=%s tiles=%s/%s",
                     received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, total_tiles)
