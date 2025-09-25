@@ -13,7 +13,7 @@ seed-areas:
 	$(psql) -f db/seed-areas-from-geojson.sql
 
 seed-flow-roles:
-	$(psql) -f db/seed-flow-roles.sql
+	$(psql) -f db/seed-flow-role.sql
 
 caggs:
 	$(psql) -f db/caggs.sql

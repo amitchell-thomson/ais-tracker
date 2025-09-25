@@ -173,7 +173,7 @@ EXECUTE FUNCTION f_ensure_geom();
 -- ============================================================================
 CREATE OR REPLACE FUNCTION f_label_fix_membership() RETURNS trigger AS $$
 BEGIN
-  -- Core port membership (pick smallest containing polygon to break overlaps)
+  -- Core port membership
   SELECT a.area_id
     INTO NEW.area_id_core
   FROM public.area a
@@ -193,7 +193,7 @@ BEGIN
   LIMIT 1;
   NEW.in_approach := NEW.area_id_approach IS NOT NULL;
 
-  -- Lane/chokepoint (corridor) membership
+  -- Lane/chokepoint membership
   SELECT a.area_id
     INTO NEW.lane_id
   FROM public.area a
@@ -203,9 +203,17 @@ BEGIN
   LIMIT 1;
   NEW.in_lane := NEW.lane_id IS NOT NULL;
 
-  -- Gate hit (thin polygons)
-  SELECT ag.gate_id, ag.subtype
-    INTO NEW.gate_id, NEW.gate_end
+  -- Gate hit: map 'gate_west' -> 'west', etc.
+  SELECT
+    ag.gate_id,
+    CASE ag.subtype
+      WHEN 'gate_west'  THEN 'west'
+      WHEN 'gate_east'  THEN 'east'
+      WHEN 'gate_north' THEN 'north'
+      WHEN 'gate_south' THEN 'south'
+      ELSE NULL
+    END
+  INTO NEW.gate_id, NEW.gate_end
   FROM public.area_gate ag
   WHERE ST_Covers(ag.geom, NEW.geom)
   ORDER BY ST_Area(ag.geom) ASC
@@ -245,10 +253,10 @@ DECLARE
   areas_same BOOLEAN;
   gates_same BOOLEAN;
 
-  -- Tolerances (tune here)
-  m_pos_meters CONSTANT DOUBLE PRECISION := 5.0;   -- ≤ 5 m considered same position
-  m_sog_kn     CONSTANT DOUBLE PRECISION := 0.1;   -- ≤ 0.1 kn same speed
-  m_ang_deg    CONSTANT DOUBLE PRECISION := 1.0;   -- ≤ 1° same angle
+  -- Tolerances
+  m_pos_meters CONSTANT DOUBLE PRECISION := 50;   -- ≤ 5 m considered same position
+  m_sog_kn     CONSTANT DOUBLE PRECISION := 0.5;   -- ≤ 0.1 kn same speed
+  m_ang_deg    CONSTANT DOUBLE PRECISION := 2.0;   -- ≤ 1° same angle
 BEGIN
   -- If we cannot key by vessel, do not dedup (SAT ghost without UID)
   IF NEW.vessel_uid IS NULL THEN

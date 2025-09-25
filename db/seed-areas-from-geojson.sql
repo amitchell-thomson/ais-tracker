@@ -5,12 +5,7 @@
 BEGIN;
 
 -- 0) Adjust this path if your file lives elsewhere (use forward slashes on Windows too)
---    Example absolute path if you prefer:
---    \set _feature_path 'C:/Users/alecm/OneDrive/Desktop/ais-tracker/db/ais-areas.geojson'
---    Then change the \copy line below to use :'_feature_path'
--- For simplicity we use a literal relative path here:
--- File: db/ais-areas.geojson
--- ------------------------------------------------------------
+-- \set _feature_path 'C:/Users/alecm/OneDrive/Desktop/ais-tracker/db/ais-areas.geojson'
 
 -- 1) Load the file line-by-line (works for multi-line JSON)
 DROP TABLE IF EXISTS _raw;
@@ -43,27 +38,30 @@ SELECT
   (trim(feat->'properties'->>'subtype') LIKE 'gate_%') AS is_gate
 FROM f;
 
--- 4) Deterministic text IDs for idempotent reseeding
+-- 4) Use human-readable & unique area_id composed of name/kind/subtype
 DROP TABLE IF EXISTS _area_rows;
 CREATE TEMP TABLE _area_rows AS
 SELECT
-  'a_' || substr(md5(lower(coalesce(name,'')||'|'||coalesce(kind,'')||'|'||coalesce(subtype,'')||'|'||coalesce("group",''))),1,16) AS area_id,
+  (trim(name) || ' // ' || trim(kind)) AS area_id,
   name, kind, subtype, "group", notes, geom
 FROM _features
 WHERE NOT is_gate;
 
+-- (Gate IDs: human-readable, same composition)
 DROP TABLE IF EXISTS _gate_rows;
 CREATE TEMP TABLE _gate_rows AS
 SELECT
-  'g_' || substr(md5(lower(coalesce(name,'')||'|'||coalesce(kind,'')||'|'||coalesce(subtype,'')||'|'||coalesce("group",''))),1,16) AS gate_id,
+  (trim(name) || ' // ' || trim(kind)) AS gate_id,
   name, kind, subtype, "group", notes, geom
 FROM _features
 WHERE is_gate;
 
--- 5) Upsert AREAS
+-- 5) Upsert AREAS (dedupe by area_id within this INSERT)
 INSERT INTO public.area (area_id, name, kind, subtype, "group", notes, geom)
-SELECT area_id, name, kind, subtype, "group", notes, geom
+SELECT DISTINCT ON (area_id)
+       area_id, name, kind, subtype, "group", notes, geom
 FROM _area_rows
+ORDER BY area_id
 ON CONFLICT (area_id) DO UPDATE
 SET name    = EXCLUDED.name,
     kind    = EXCLUDED.kind,
@@ -72,7 +70,7 @@ SET name    = EXCLUDED.name,
     notes   = EXCLUDED.notes,
     geom    = EXCLUDED.geom;
 
--- 6) Link GATES to parent corridor/chokepoint by (kind, group, subtype='corridor')
+-- 6) Link GATES to parent corridor/chokepoint (parent_area_id = area.area_id)
 DROP TABLE IF EXISTS _gate_join;
 CREATE TEMP TABLE _gate_join AS
 SELECT
@@ -85,9 +83,11 @@ LEFT JOIN public.area a
  AND a."group" IS NOT DISTINCT FROM g."group";
 
 INSERT INTO public.area_gate (gate_id, area_id, name, kind, subtype, "group", notes, geom)
-SELECT gate_id, parent_area_id, name, kind, subtype, "group", notes, geom
+SELECT DISTINCT ON (gate_id)
+       gate_id, parent_area_id, name, kind, subtype, "group", notes, geom
 FROM _gate_join
 WHERE parent_area_id IS NOT NULL
+ORDER BY gate_id
 ON CONFLICT (gate_id) DO UPDATE
 SET area_id = EXCLUDED.area_id,
     name    = EXCLUDED.name,
