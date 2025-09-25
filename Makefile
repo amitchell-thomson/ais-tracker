@@ -15,11 +15,8 @@ seed-areas:
 seed-flow-roles:
 	$(psql) -f db/seed-flow-role.sql
 
-caggs:
-	$(psql) -f db/caggs.sql
-
-ewm:
-	$(psql) -f db/ewm_views.sql
+caggs-ewms:
+	$(psql) -f features/caggs_and_ewms.sql
 
 features:
-	$(psql) -f db/features.sql
+	$(psql) -f features/ml_features.sql

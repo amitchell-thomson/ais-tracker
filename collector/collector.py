@@ -156,9 +156,9 @@ def ui_set_bottom(text: str):
 
 PG_DSN              = "postgresql://ais:aispass@localhost:5432/ais"
 
-CYCLES_PER_DRIVER   = 60
-INTERVAL_SECONDS    = 100
-TILES_PER_CYCLE     = 11
+CYCLES_PER_DRIVER   = 30
+INTERVAL_SECONDS    = 150
+TILES_PER_CYCLE     = 8
 TILE_MODE           = "static"
 
 # static tiles seed (z/x/y;z/x/y;...)
@@ -169,7 +169,7 @@ STATIC_TILES = (
 )
 
 # Fetch / backoff
-JITTER_SECONDS      = 8.0
+JITTER_SECONDS      = 20
 MAX_RETRIES         = 0
 BACKOFF_BASE_SECS   = 5.0
 TILE_PAUSE_MS       = 2000
