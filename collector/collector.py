@@ -812,6 +812,7 @@ def _run_loop(driver, tile_iter, total_tiles):
                     time.sleep(COOLDOWN_TIME)
                 driver = open_driver(minimized=True, size=(400, 300))
                 logger.info("session_recycle_complete")
+                continue
 
             logger.warning("cooldown: fail_ratio=%.2f (failed=%d of %d) → sleeping %ds",
                            fail_ratio, failed_tiles, TILES_PER_CYCLE, COOLDOWN_TIME)
