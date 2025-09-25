@@ -230,8 +230,10 @@ FOR EACH ROW
 EXECUTE FUNCTION f_label_fix_membership();
 
 -- ============================================================================
--- BEFORE: de-duplication trigger — skip insert when nothing useful changed
+-- BEFORE: de-duplication & outlier trigger — drop no-op, out-of-order, and
+--         impossible “teleport” fixes before they hit storage/eventization.
 -- ============================================================================
+
 -- Angular difference helper (0..180)
 CREATE OR REPLACE FUNCTION f_ang_diff(a1 DOUBLE PRECISION, a2 DOUBLE PRECISION)
 RETURNS DOUBLE PRECISION
@@ -245,36 +247,60 @@ $$;
 
 CREATE OR REPLACE FUNCTION f_dedup_fix() RETURNS trigger AS $$
 DECLARE
-  prev RECORD;
-  pos_same BOOLEAN;
-  sog_same BOOLEAN;
-  cog_same BOOLEAN;
-  hdg_same BOOLEAN;
-  areas_same BOOLEAN;
-  gates_same BOOLEAN;
+  prev   RECORD;     -- most recent fix at or before NEW.ts (same vessel)
+  prev2  RECORD;     -- previous-previous fix (for snap-back detection)
+  nxt    RECORD;     -- nearest later fix after NEW.ts (forward-teleport guard)
 
-  dt_s     DOUBLE PRECISION;
-  dist_m   DOUBLE PRECISION;
-  v_kn     DOUBLE PRECISION;
-  prev2 RECORD;
+  pos_same    BOOLEAN;
+  sog_same    BOOLEAN;
+  cog_same    BOOLEAN;
+  hdg_same    BOOLEAN;
+  areas_same  BOOLEAN;
+  gates_same  BOOLEAN;
 
-  -- Tolerances
-  m_pos_meters CONSTANT DOUBLE PRECISION := 50;   -- ≤ 5 m considered same position
-  m_sog_kn     CONSTANT DOUBLE PRECISION := 0.5;   -- ≤ 0.1 kn same speed
-  m_ang_deg    CONSTANT DOUBLE PRECISION := 2.0;   -- ≤ 1° same angle
+  dt_s   DOUBLE PRECISION;
+  dist_m DOUBLE PRECISION;
+  v_kn   DOUBLE PRECISION;
 
-  m_min_dt_s   CONSTANT DOUBLE PRECISION := 30.0;  -- need ≥30s gap to judge speed
-  m_vmax_kn    CONSTANT DOUBLE PRECISION := 45.0;  -- reject if implied speed > 45 kn
-  m_near_prev2_m CONSTANT DOUBLE PRECISION := 300.0; -- "near" snap-back distance to prev_prev
-  m_far_prev_m   CONSTANT DOUBLE PRECISION := 2000.0;-- "far" from prev to trigger snap-back
+  dt2_s  DOUBLE PRECISION;
+  v2_kn  DOUBLE PRECISION;
 
+  latest_ts timestamptz;  -- newest stored ts for this vessel (retrograde guard)
+
+  -- Tolerances (tune as needed for your feed)
+  m_pos_meters   CONSTANT DOUBLE PRECISION := 25.0;  -- position equality radius
+  m_sog_kn       CONSTANT DOUBLE PRECISION := 0.3;   -- speed equality tol.
+  m_ang_deg      CONSTANT DOUBLE PRECISION := 1.0;   -- angle equality tol.
+
+  -- Always evaluate speed (catch <30s teleports)
+  m_min_dt_s     CONSTANT DOUBLE PRECISION := 0.0;
+  m_vmax_kn      CONSTANT DOUBLE PRECISION := 30.0;  -- tankers rarely > 25 kn
+
+  -- Snap-back heuristic (NEW ≈ prev2 but far from prev)
+  m_near_prev2_m CONSTANT DOUBLE PRECISION := 300.0;
+  m_far_prev_m   CONSTANT DOUBLE PRECISION := 2000.0;
+
+  -- Retrograde slack: allow tiny jitter but block older-than-latest inserts
+  m_retro_slack_s CONSTANT DOUBLE PRECISION := 2.0;
 BEGIN
-  -- If we cannot key by vessel, do not dedup (SAT ghost without UID)
+  -- If we cannot key by vessel, do not dedup (e.g., SAT ghost without UID)
   IF NEW.vessel_uid IS NULL THEN
     RETURN NEW;
   END IF;
 
-  -- Fetch the most recent prior fix for this vessel at or before NEW.ts
+  -- Retrograde-time guard: if a newer fix already exists, drop older NEW
+  -- (prevents out-of-order inserts from creating teleports)
+  SELECT max(ts) INTO latest_ts
+  FROM public.ais_fix
+  WHERE vessel_uid = NEW.vessel_uid;
+
+  IF latest_ts IS NOT NULL THEN
+    IF EXTRACT(EPOCH FROM (latest_ts - NEW.ts)) > m_retro_slack_s THEN
+      RETURN NULL;
+    END IF;
+  END IF;
+
+  -- Fetch most recent prior fix (<= NEW.ts)
   SELECT *
   INTO prev
   FROM public.ais_fix
@@ -287,18 +313,23 @@ BEGIN
     RETURN NEW;  -- no prior state -> allow insert
   END IF;
 
-  -- Compare with tolerances
+  -- Cheap early exit: exact duplicate position
+  IF prev.geom IS NOT NULL AND NEW.geom IS NOT NULL AND ST_Equals(NEW.geom, prev.geom) THEN
+    RETURN NULL;
+  END IF;
+
+  -- Compare with tolerances (no-change drop)
   pos_same := (NEW.geom IS NOT NULL AND prev.geom IS NOT NULL)
-              AND ST_DWithin(prev.geom::geography, NEW.geom::geography, m_pos_meters);
+           AND ST_DWithin(prev.geom::geography, NEW.geom::geography, m_pos_meters);
 
   sog_same := (NEW.sog IS NOT DISTINCT FROM prev.sog)
-              OR (NEW.sog IS NOT NULL AND prev.sog IS NOT NULL AND ABS(NEW.sog - prev.sog) <= m_sog_kn);
+           OR (NEW.sog IS NOT NULL AND prev.sog IS NOT NULL AND ABS(NEW.sog - prev.sog) <= m_sog_kn);
 
   cog_same := (NEW.cog IS NOT DISTINCT FROM prev.cog)
-              OR (NEW.cog IS NOT NULL AND prev.cog IS NOT NULL AND f_ang_diff(NEW.cog, prev.cog) <= m_ang_deg);
+           OR (NEW.cog IS NOT NULL AND prev.cog IS NOT NULL AND f_ang_diff(NEW.cog, prev.cog) <= m_ang_deg);
 
   hdg_same := (NEW.heading IS NOT DISTINCT FROM prev.heading)
-              OR (NEW.heading IS NOT NULL AND prev.heading IS NOT NULL AND f_ang_diff(NEW.heading, prev.heading) <= m_ang_deg);
+           OR (NEW.heading IS NOT NULL AND prev.heading IS NOT NULL AND f_ang_diff(NEW.heading, prev.heading) <= m_ang_deg);
 
   areas_same := (NEW.area_id_core     IS NOT DISTINCT FROM prev.area_id_core)
              AND (NEW.area_id_approach IS NOT DISTINCT FROM prev.area_id_approach)
@@ -310,32 +341,44 @@ BEGIN
   gates_same := (NEW.gate_id IS NOT DISTINCT FROM prev.gate_id)
              AND (NEW.gate_end IS NOT DISTINCT FROM prev.gate_end);
 
-  -- If position AND kinematics AND memberships are unchanged -> skip insert
   IF pos_same AND sog_same AND cog_same AND hdg_same AND areas_same AND gates_same THEN
-    RETURN NULL; -- drop row
+    RETURN NULL; -- unchanged → drop
   END IF;
 
-
--- Chronology + max-speed gate vs prev
-IF prev.ts IS NOT NULL THEN
+  -- Chronology + max-speed gate vs prev (backward neighbor)
   dt_s := EXTRACT(EPOCH FROM (NEW.ts - prev.ts));
-
-  -- 1) Non-monotonic (same/older than last accepted) → drop
   IF dt_s <= 0 THEN
-    RETURN NULL;
+    RETURN NULL;  -- non-monotonic vs previous
   END IF;
 
-  -- 2) Implied speed > vmax → drop
   IF dt_s >= m_min_dt_s AND NEW.geom IS NOT NULL AND prev.geom IS NOT NULL THEN
     dist_m := ST_DistanceSphere(prev.geom, NEW.geom);
-    v_kn := (dist_m / 1852.0) / (dt_s / 3600.0);
+    v_kn   := (dist_m / 1852.0) / (dt_s / 3600.0);
     IF v_kn > m_vmax_kn THEN
-      RETURN NULL;
+      RETURN NULL;  -- too fast vs previous
     END IF;
   END IF;
 
-  -- 3) Snap-back guard: NEW near prev_prev but far from prev → drop
-  --    (protects against late duplicate of an older point)
+  -- Forward neighbor guard: if a later fix already exists, ensure NEW→next is sane
+  SELECT *
+  INTO nxt
+  FROM public.ais_fix
+  WHERE vessel_uid = NEW.vessel_uid
+    AND ts >= NEW.ts
+  ORDER BY ts ASC
+  LIMIT 1;
+
+  IF FOUND AND NEW.geom IS NOT NULL AND nxt.geom IS NOT NULL THEN
+    dt2_s := EXTRACT(EPOCH FROM (nxt.ts - NEW.ts));
+    IF dt2_s > 0 THEN
+      v2_kn := (ST_DistanceSphere(NEW.geom, nxt.geom)/1852.0) / (dt2_s/3600.0);
+      IF v2_kn > m_vmax_kn THEN
+        RETURN NULL;  -- would create a forward teleport
+      END IF;
+    END IF;
+  END IF;
+
+  -- Snap-back guard: NEW near prev_prev but far from prev → drop
   SELECT *
   INTO prev2
   FROM public.ais_fix
@@ -345,26 +388,23 @@ IF prev.ts IS NOT NULL THEN
   LIMIT 1;
 
   IF FOUND AND NEW.geom IS NOT NULL AND prev.geom IS NOT NULL AND prev2.geom IS NOT NULL THEN
-    -- Close to the older point…
     IF ST_DistanceSphere(NEW.geom, prev2.geom) <= m_near_prev2_m
-       -- …but far from the immediate previous point
-       AND ST_DistanceSphere(NEW.geom, prev.geom) >= m_far_prev_m THEN
+       AND ST_DistanceSphere(NEW.geom, prev.geom)  >= m_far_prev_m THEN
       RETURN NULL;
     END IF;
   END IF;
-END IF;
-
-
 
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
+-- Recreate trigger (runs after geom/membership labelling)
 DROP TRIGGER IF EXISTS trg_b2_dedup_fix ON public.ais_fix;
 CREATE TRIGGER trg_b2_dedup_fix
 BEFORE INSERT ON public.ais_fix
 FOR EACH ROW
 EXECUTE FUNCTION f_dedup_fix();
+
 
 -- ============================================================================
 -- Vessel state + cargo state: eventization on transitions (guard for NULL UID)
