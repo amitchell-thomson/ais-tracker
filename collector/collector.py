@@ -654,6 +654,23 @@ def insert_fixes(rows: List[Dict[str, Any]], batch_size: int = 2000) -> int:
         conn.commit()
     return inserted
 
+def refresh_ewms_now(conn_dsn: str):
+    sql = """
+    REFRESH MATERIALIZED VIEW public.mv_lane_transit_time_daily;
+    REFRESH MATERIALIZED VIEW public.mv_area_occupancy_daily;
+    SELECT public.refresh_ca_port_lifts_ewm(      now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '21 days');
+    SELECT public.refresh_ca_lane_transit_ewm(    now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
+    SELECT public.refresh_ca_transit_time_ewm(    now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '10 days');
+    SELECT public.refresh_ca_anchorage_queue_ewm( now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '10 days');
+    SELECT public.refresh_ca_ballast_return_ewm(  now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
+    SELECT public.refresh_ca_class_mix_ewm(       now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
+    """
+    import psycopg
+    with psycopg.connect(conn_dsn) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql)
+        conn.commit()
+
 
 # ------------------------------ Main loop -----------------------------------
 def main() -> None:
@@ -701,6 +718,14 @@ def _run_loop(driver, tile_iter, total_tiles):
             except: pass
             driver = open_driver(minimized=True, size=(400, 300))
             logger.info("recycled browser")
+
+        # inside your loop:
+        if cycles % 15 == 0:   # ~every 15 cycles; tune
+            try:
+                refresh_ewms_now(PG_DSN)
+                logger.info("EWMs refreshed")
+            except Exception as e:
+                logger.exception("EWM refresh failed: %s", e)
 
         cycles += 1
         tiles_this_cycle = list(islice(tile_iter, TILES_PER_CYCLE))
