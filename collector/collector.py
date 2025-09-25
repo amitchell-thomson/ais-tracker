@@ -157,7 +157,7 @@ def ui_set_bottom(text: str):
 PG_DSN              = "postgresql://ais:aispass@localhost:5432/ais"
 
 CYCLES_PER_DRIVER   = 60
-INTERVAL_SECONDS    = 60
+INTERVAL_SECONDS    = 100
 TILES_PER_CYCLE     = 11
 TILE_MODE           = "static"
 
@@ -172,7 +172,7 @@ STATIC_TILES = (
 JITTER_SECONDS      = 8.0
 MAX_RETRIES         = 0
 BACKOFF_BASE_SECS   = 5.0
-TILE_PAUSE_MS       = 1000
+TILE_PAUSE_MS       = 2000
 TILE_JITTER_MS      = 400
 
 COOLDOWN_FAIL_RATIO = 0.2
@@ -183,10 +183,6 @@ REOPEN_FAIL_RATIO   = 0.3
 # Normalization cuts / tanker predicate / SAT continuity
 DROP_IF_OBS_AGE_MIN = 720                                                  # drop >12h old
 MAX_TANKER_SOG_KN   = 35.0                                                 # sanity cap
-
-# Sat track UID variables for future implementation
-# SAT_LINK_MAX_DT_MIN = 180                                                  # 3h track gap
-# SAT_LINK_MAX_DIST_KM= 30                                                   # 30km link radius
 
 # Prefilter by AREA/GATE bounding boxes (in degrees)
 ENABLE_BBOX_PREFILTER   = True
@@ -442,52 +438,6 @@ def make_vessel_uid(row: Dict[str, Any]) -> str:
 
 
 
-# SAT continuity + idempotency caches
-SAT_CACHE: Dict[str, Dict[str, Any]] = {}     # key=vuid → {uid,last_ts,last_lon,last_lat}
-ROW_FP_RECENT: Dict[str, float] = {}          # fp → expiry_epoch
-ROW_FP_TTL_SEC = int(os.getenv("ROW_FP_TTL_SEC", "10800"))  # default 3h
-
-def prune_caches():
-    """Remove expired row fingerprints; shrink stale SAT continuity."""
-    now = time.time()
-    # FP TTLs
-    stale = [k for k, exp in ROW_FP_RECENT.items() if exp < now]
-    for k in stale:
-        del ROW_FP_RECENT[k]
-    # Optional: truncate SAT cache if too large / too old (simple policy)
-    # e.g., drop entries whose last_ts is > 12h old
-    drop_keys = []
-    limit_dt = _utcnow() - timedelta(hours=12)
-    for k, v in SAT_CACHE.items():
-        if v.get("last_ts") and v["last_ts"] < limit_dt:
-            drop_keys.append(k)
-    for k in drop_keys:
-        del SAT_CACHE[k]
-
-def make_row_fp(tile_id: str, row: Dict[str, Any], ts: datetime, lat: float, lon: float,
-                sog: Optional[float], cog: Optional[float]) -> str:
-    """
-    Lightweight idempotency fingerprint to avoid refetch duplicates
-    within a short horizon (tile overlaps, retries).
-    """
-    sid = str(row.get("SHIP_ID") or "")
-    h = hashlib.sha1(
-        f"{tile_id}|{sid}|{ts.isoformat()}|{lat:.5f}|{lon:.5f}|{sog or ''}|{cog or ''}".encode("utf-8")
-    ).hexdigest()
-    return h
-
-def fp_recent_seen(fp: str) -> bool:
-    """
-    Return True if fingerprint was recently observed; otherwise record it
-    and return False.
-    """
-    now = time.time()
-    exp = ROW_FP_RECENT.get(fp)
-    if exp and exp > now:
-        return True
-    ROW_FP_RECENT[fp] = now + ROW_FP_TTL_SEC
-    return False
-
 # --------------------------- Optional bbox prefilter ------------------------
 # Load buffered bbox extents for area/gate polygons to cheaply reject far-away points.
 # This is an optional optimization; DB triggers still do exact membership labeling.
@@ -563,6 +513,10 @@ def fetch_with_backoff(driver, z, x, y, idx, max_retries=MAX_RETRIES) -> Optiona
                 z, x, y, max_retries + 1
             )
             ui_set_bottom(f"[BACKOFF] tile z:{z} x:{x} y:{y} exhausted retries {attempt+1}; continuing")
+
+            tile_jitter = random.uniform(-TILE_JITTER_MS, TILE_JITTER_MS)
+            time.sleep(max(0.0, (TILE_PAUSE_MS + tile_jitter) / 1000.0))
+            
             return payload or {}
 
         sleep_s = BACKOFF_BASE_SECS * (2 ** attempt)
@@ -639,12 +593,7 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
         vuid = make_vessel_uid(r)
         sat_uid = None
 
-        # 5) idempotency
-        fp = make_row_fp(tile_id, r, ts, lat, lon, sog, cog)
-        if fp_recent_seen(fp):
-            continue
-
-        # 6) project into ais_fix columns (DB triggers will enrich geom/memberships)
+        # 5) project into ais_fix columns (DB triggers will enrich geom/memberships)
         rec: Dict[str, Any] = {
             "ts": ts,
             "src": src,
@@ -789,7 +738,7 @@ def _run_loop(driver, tile_iter, total_tiles):
                    f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE})")
         ui_set_latest(summary)
         logger.info("cycle summary: received=%s kept=%s inserted=%s tiles=%s/%s",
-                    received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, total_tiles)
+                    received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, TILES_PER_CYCLE)
 
 
         # backoff/cooldown if many tiles failed; optionally recycle session
@@ -822,8 +771,6 @@ def _run_loop(driver, tile_iter, total_tiles):
             )
             time.sleep(COOLDOWN_SECONDS)
 
-        # maintenance
-        prune_caches()
 
         # countdown to next cycle (with jitter)
         elapsed = time.monotonic() - t0

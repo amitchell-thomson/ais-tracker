@@ -253,10 +253,21 @@ DECLARE
   areas_same BOOLEAN;
   gates_same BOOLEAN;
 
+  dt_s     DOUBLE PRECISION;
+  dist_m   DOUBLE PRECISION;
+  v_kn     DOUBLE PRECISION;
+  prev2 RECORD;
+
   -- Tolerances
   m_pos_meters CONSTANT DOUBLE PRECISION := 50;   -- ≤ 5 m considered same position
   m_sog_kn     CONSTANT DOUBLE PRECISION := 0.5;   -- ≤ 0.1 kn same speed
   m_ang_deg    CONSTANT DOUBLE PRECISION := 2.0;   -- ≤ 1° same angle
+
+  m_min_dt_s   CONSTANT DOUBLE PRECISION := 30.0;  -- need ≥30s gap to judge speed
+  m_vmax_kn    CONSTANT DOUBLE PRECISION := 45.0;  -- reject if implied speed > 45 kn
+  m_near_prev2_m CONSTANT DOUBLE PRECISION := 300.0; -- "near" snap-back distance to prev_prev
+  m_far_prev_m   CONSTANT DOUBLE PRECISION := 2000.0;-- "far" from prev to trigger snap-back
+
 BEGIN
   -- If we cannot key by vessel, do not dedup (SAT ghost without UID)
   IF NEW.vessel_uid IS NULL THEN
@@ -303,6 +314,47 @@ BEGIN
   IF pos_same AND sog_same AND cog_same AND hdg_same AND areas_same AND gates_same THEN
     RETURN NULL; -- drop row
   END IF;
+
+
+-- Chronology + max-speed gate vs prev
+IF prev.ts IS NOT NULL THEN
+  dt_s := EXTRACT(EPOCH FROM (NEW.ts - prev.ts));
+
+  -- 1) Non-monotonic (same/older than last accepted) → drop
+  IF dt_s <= 0 THEN
+    RETURN NULL;
+  END IF;
+
+  -- 2) Implied speed > vmax → drop
+  IF dt_s >= m_min_dt_s AND NEW.geom IS NOT NULL AND prev.geom IS NOT NULL THEN
+    dist_m := ST_DistanceSphere(prev.geom, NEW.geom);
+    v_kn := (dist_m / 1852.0) / (dt_s / 3600.0);
+    IF v_kn > m_vmax_kn THEN
+      RETURN NULL;
+    END IF;
+  END IF;
+
+  -- 3) Snap-back guard: NEW near prev_prev but far from prev → drop
+  --    (protects against late duplicate of an older point)
+  SELECT *
+  INTO prev2
+  FROM public.ais_fix
+  WHERE vessel_uid = NEW.vessel_uid
+    AND ts < prev.ts
+  ORDER BY ts DESC
+  LIMIT 1;
+
+  IF FOUND AND NEW.geom IS NOT NULL AND prev.geom IS NOT NULL AND prev2.geom IS NOT NULL THEN
+    -- Close to the older point…
+    IF ST_DistanceSphere(NEW.geom, prev2.geom) <= m_near_prev2_m
+       -- …but far from the immediate previous point
+       AND ST_DistanceSphere(NEW.geom, prev.geom) >= m_far_prev_m THEN
+      RETURN NULL;
+    END IF;
+  END IF;
+END IF;
+
+
 
   RETURN NEW;
 END;
