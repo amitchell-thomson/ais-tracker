@@ -20,3 +20,5 @@ caggs-ewms:
 
 features:
 	$(psql) -f features/ml_features.sql
+
+setup: init seed-areas caggs-ewms features

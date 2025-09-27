@@ -7,11 +7,16 @@
 CREATE EXTENSION IF NOT EXISTS timescaledb;   -- hypertables & policies
 CREATE EXTENSION IF NOT EXISTS postgis;       -- geometry types & spatial ops
 
--- Drops (safe order) ----------------------------------------------------------
-DROP TABLE IF EXISTS public.ais_event      CASCADE;  -- depends on ais_fix
-DROP TABLE IF EXISTS public.ais_fix        CASCADE;
-DROP TABLE IF EXISTS public.area_gate      CASCADE;  -- depends on area
-DROP TABLE IF EXISTS public.area           CASCADE;
+-- Drops (safe order)
+DROP TABLE IF EXISTS public.vessel_dwell_session CASCADE;  -- has trigger on ais_event
+DROP TABLE IF EXISTS public.vessel_cargo_state  CASCADE;   -- referenced by event emitter
+DROP TABLE IF EXISTS public.vessel_state        CASCADE;   -- referenced by event emitter
+DROP TABLE IF EXISTS public.ais_event           CASCADE;   -- written by event emitter
+DROP TABLE IF EXISTS public.ais_fix             CASCADE;   -- has BEFORE/AFTER triggers
+DROP TABLE IF EXISTS public.area_gate           CASCADE;   -- depends on area
+DROP TABLE IF EXISTS public.area                CASCADE;
+
+
 
 -- ============================================================================
 -- Geofence tables
@@ -58,7 +63,6 @@ CREATE TABLE public.ais_fix (
   ts               timestamptz NOT NULL,                              -- observation timestamp (hypertable time)
   src              text NOT NULL CHECK (src IN ('terrestrial','sat')),-- data source
   vessel_uid       text,                                              -- stable vessel id (IMO/MMSI or hashed surrogate)
-  sat_track_uid    text,                                              -- continuity id for SAT-only tracks
   lat              double precision CHECK (lat BETWEEN -90 AND 90),   -- latitude (deg)
   lon              double precision CHECK (lon BETWEEN -180 AND 180), -- longitude (deg)
   sog              real,                                              -- speed over ground (knots)
@@ -102,7 +106,6 @@ CREATE INDEX IF NOT EXISTS idx_fix_geom      ON public.ais_fix USING gist (geom)
 CREATE TABLE public.ais_event (
   ts            timestamptz NOT NULL,                                           -- event timestamp (from triggering fix)
   vessel_uid    text,                                                           -- stable vessel id (or surrogate)
-  sat_track_uid text,                                                           -- SAT track continuity id
   event         text NOT NULL CHECK (event IN (                                 -- event verb
                     'approach_enter','approach_exit',
                     'port_enter','port_exit',
@@ -411,7 +414,6 @@ EXECUTE FUNCTION f_dedup_fix();
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS public.vessel_state (
   vessel_uid    text PRIMARY KEY,
-  sat_track_uid text,
   core_area_id  text,
   approach_area_id text,
   lane_id       text,
@@ -426,7 +428,7 @@ CREATE TABLE IF NOT EXISTS public.vessel_cargo_state (
   updated_ts  timestamptz
 );
 
-CREATE OR REPLACE FUNCTION f_emit_events() RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION public.f_emit_events() RETURNS trigger AS $$
 DECLARE
   s public.vessel_state;
   cs public.vessel_cargo_state;
@@ -442,11 +444,6 @@ BEGIN
   SELECT * INTO s  FROM public.vessel_state        WHERE vessel_uid = NEW.vessel_uid;
   SELECT * INTO cs FROM public.vessel_cargo_state  WHERE vessel_uid = NEW.vessel_uid;
 
-  -- Helper: fetch port flow_role by area_id
-  -- (used only when we emit port_* events below)
-  -- NOTE: We query when needed, not up-front, to avoid extra lookups.
-  -- ---------------------------------------------------------------
-
   -- =========================
   -- Core port transitions
   -- =========================
@@ -455,21 +452,20 @@ BEGIN
       -- PORT ENTER
       SELECT flow_role INTO port_role FROM public.area WHERE area_id = NEW.area_id_core;
 
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'port_enter', NEW.area_id_core, 'port', NULL, NEW.lat, NEW.lon,
         jsonb_build_object(
           'src', NEW.src,
           'dwt', NEW.dwt,
-          -- optional arrival hint (doesn't change state, just informational)
           'arrival_likely_laden', CASE WHEN port_role='import' THEN true
                                        WHEN port_role='export' THEN false
                                        ELSE NULL END
         )
       );
 
-      -- Optionally initialize cargo state on enter if unknown:
+      -- Initialize cargo state if unknown
       IF cs.vessel_uid IS NULL THEN
         cur_laden := CASE WHEN port_role='import' THEN true
                           WHEN port_role='export' THEN false
@@ -488,13 +484,11 @@ BEGIN
       -- PORT EXIT
       SELECT flow_role INTO port_role FROM public.area WHERE area_id = s.core_area_id;
 
-      -- Determine cargo state on exit: export -> laden; import -> unladen; mixed -> unknown
       cur_laden := CASE WHEN port_role='export' THEN true
                         WHEN port_role='import' THEN false
                         ELSE NULL END;
       cur_conf  := CASE WHEN port_role IN ('export','import') THEN 'derived_port_exit' ELSE 'unknown' END;
 
-      -- Upsert cargo state if known
       IF cur_laden IS NOT NULL THEN
         INSERT INTO public.vessel_cargo_state(vessel_uid, laden, confidence, updated_ts)
         VALUES (NEW.vessel_uid, cur_laden, cur_conf, NEW.ts)
@@ -504,10 +498,9 @@ BEGIN
             updated_ts = EXCLUDED.updated_ts;
       END IF;
 
-      -- Emit event with cargo state + dwt stamped in meta
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'port_exit', s.core_area_id, 'port', NULL, NEW.lat, NEW.lon,
         jsonb_build_object(
           'src', NEW.src,
@@ -524,20 +517,19 @@ BEGIN
   -- Approach transitions
   -- =========================
   IF (s.approach_area_id IS DISTINCT FROM NEW.area_id_approach) THEN
-    -- Inherit known cargo state for stamping
     SELECT * INTO cs FROM public.vessel_cargo_state WHERE vessel_uid = NEW.vessel_uid;
 
     IF NEW.area_id_approach IS NOT NULL THEN
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'approach_enter', NEW.area_id_approach, 'approach', NULL, NEW.lat, NEW.lon,
         jsonb_build_object('src', NEW.src, 'dwt', NEW.dwt, 'laden', cs.laden, 'cargo_confidence', cs.confidence)
       );
     ELSIF s.approach_area_id IS NOT NULL THEN
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'approach_exit', s.approach_area_id, 'approach', NULL, NEW.lat, NEW.lon,
         jsonb_build_object('src', NEW.src, 'dwt', NEW.dwt, 'laden', cs.laden, 'cargo_confidence', cs.confidence)
       );
@@ -548,20 +540,19 @@ BEGIN
   -- Lane/corridor transitions
   -- =========================
   IF (s.lane_id IS DISTINCT FROM NEW.lane_id) THEN
-    -- Inherit cargo state when stamping lane events
     SELECT * INTO cs FROM public.vessel_cargo_state WHERE vessel_uid = NEW.vessel_uid;
 
     IF NEW.lane_id IS NOT NULL THEN
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'lane_enter', NEW.lane_id, 'lane', NEW.gate_end, NEW.lat, NEW.lon,
         jsonb_build_object('src', NEW.src, 'dwt', NEW.dwt, 'laden', cs.laden, 'cargo_confidence', cs.confidence)
       );
     ELSIF s.lane_id IS NOT NULL THEN
-      INSERT INTO public.ais_event(ts, vessel_uid, sat_track_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
       VALUES (
-        NEW.ts, NEW.vessel_uid, NEW.sat_track_uid,
+        NEW.ts, NEW.vessel_uid,
         'lane_exit', s.lane_id, 'lane', NEW.gate_end, NEW.lat, NEW.lon,
         jsonb_build_object('src', NEW.src, 'dwt', NEW.dwt, 'laden', cs.laden, 'cargo_confidence', cs.confidence)
       );
@@ -569,13 +560,12 @@ BEGIN
   END IF;
 
   -- =========================
-  -- Upsert new positional state (unchanged from your version)
+  -- Upsert new positional state
   -- =========================
-  INSERT INTO public.vessel_state(vessel_uid, sat_track_uid, core_area_id, approach_area_id, lane_id, gate_end, updated_ts)
-  VALUES (NEW.vessel_uid, NEW.sat_track_uid, NEW.area_id_core, NEW.area_id_approach, NEW.lane_id, NEW.gate_end, NEW.ts)
+  INSERT INTO public.vessel_state(vessel_uid, core_area_id, approach_area_id, lane_id, gate_end, updated_ts)
+  VALUES (NEW.vessel_uid, NEW.area_id_core, NEW.area_id_approach, NEW.lane_id, NEW.gate_end, NEW.ts)
   ON CONFLICT (vessel_uid) DO UPDATE
-  SET sat_track_uid    = EXCLUDED.sat_track_uid,
-      core_area_id     = EXCLUDED.core_area_id,
+  SET core_area_id     = EXCLUDED.core_area_id,
       approach_area_id = EXCLUDED.approach_area_id,
       lane_id          = EXCLUDED.lane_id,
       gate_end         = EXCLUDED.gate_end,
@@ -585,6 +575,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Enable event emission from fixes (AFTER all BEFORE-insert fix triggers are set)
+DROP TRIGGER IF EXISTS trg_emit_events ON public.ais_fix;
+
+CREATE TRIGGER trg_emit_events
+AFTER INSERT ON public.ais_fix
+FOR EACH ROW
+EXECUTE FUNCTION public.f_emit_events();
 
 -- ============================================================================
 -- Vessel dwell sessions (derived from events)

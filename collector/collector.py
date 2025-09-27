@@ -152,7 +152,6 @@ def ui_set_bottom(text: str):
     _refresh()
 
 # ------------------------------ Configuration -------------------------------
-# You can move these to a .env or YAML/TOML config later. See notes at bottom.
 
 PG_DSN              = "postgresql://ais:aispass@localhost:5432/ais"
 
@@ -420,9 +419,7 @@ def make_vessel_uid(row: Dict[str, Any]) -> str:
             # MT numeric id seen on terrestrial feeds: reasonably stable
             return f"mtid:{ship_id}"
         else:
-            # SAT-style opaque token (often base64-ish) → hash to compact, but keep uniqueness
-            h = hashlib.sha1(ship_id.encode("utf-8")).hexdigest()[:20]
-            return f"sat:{h}"
+            return f"sat:{ship_id}"
 
     # Fallback surrogate (for very sparse SAT rows without SHIP_ID)
     name   = _norm(row.get("SHIPNAME"))
