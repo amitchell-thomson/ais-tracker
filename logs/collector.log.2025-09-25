@@ -1,0 +1,951 @@
+2025-09-25 10:39:02,740 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 10:39:20,164 [INFO] cycle summary: received=5123 kept=158 inserted=155 tiles=11/31
+2025-09-25 10:40:25,008 [INFO] cycle summary: received=6244 kept=305 inserted=290 tiles=11/31
+2025-09-25 10:41:32,269 [INFO] cycle summary: received=5755 kept=263 inserted=153 tiles=11/31
+2025-09-25 10:42:28,614 [INFO] cycle summary: received=4430 kept=140 inserted=73 tiles=11/31
+2025-09-25 10:43:37,270 [INFO] cycle summary: received=7161 kept=357 inserted=116 tiles=11/31
+2025-09-25 10:44:40,068 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 10:44:40,085 [INFO] cycle summary: received=4631 kept=217 inserted=137 tiles=10/31
+2025-09-25 10:45:35,965 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 10:45:45,385 [INFO] cycle summary: received=4577 kept=113 inserted=27 tiles=10/31
+2025-09-25 10:46:33,209 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 10:46:33,267 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 10:46:33,328 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 10:46:33,384 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 10:46:35,646 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 10:46:37,000 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 10:46:37,060 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 10:46:37,113 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 10:46:37,129 [INFO] cycle summary: received=2046 kept=152 inserted=31 tiles=3/31
+2025-09-25 10:46:37,130 [WARNING] session_recycle_triggered: fail_ratio=0.73 (failed=8 of 11) → sleeping 197s
+2025-09-25 10:49:58,672 [INFO] session_recycle_complete
+2025-09-25 10:49:58,673 [WARNING] cooldown: fail_ratio=0.73 (failed=8 of 11) → sleeping 197s
+2025-09-25 10:50:29,574 [INFO] browser closed
+2025-09-25 10:57:46,463 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 10:58:01,204 [INFO] cycle summary: received=5089 kept=171 inserted=110 tiles=11/31
+2025-09-25 10:58:56,582 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 10:58:56,604 [INFO] cycle summary: received=6201 kept=293 inserted=244 tiles=10/31
+2025-09-25 10:59:43,479 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 10:59:43,542 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 10:59:43,647 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 10:59:46,579 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 10:59:46,651 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 10:59:46,730 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 10:59:46,793 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 10:59:46,870 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 10:59:46,933 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 10:59:46,953 [INFO] cycle summary: received=893 kept=25 inserted=2 tiles=2/31
+2025-09-25 10:59:46,953 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 345s
+2025-09-25 11:00:33,265 [INFO] browser closed
+2025-09-25 11:07:05,901 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 11:07:19,962 [INFO] cycle summary: received=5111 kept=174 inserted=162 tiles=11/31
+2025-09-25 11:08:22,398 [WARNING] backoff: tile z:6 x:12 y:11 attempt 1 -> sleeping 5.0s
+2025-09-25 11:08:27,507 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (2); continuing
+2025-09-25 11:08:27,581 [WARNING] backoff: tile z:6 x:18 y:13 attempt 1 -> sleeping 5.0s
+2025-09-25 11:08:32,656 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (2); continuing
+2025-09-25 11:08:32,721 [WARNING] backoff: tile z:6 x:17 y:19 attempt 1 -> sleeping 5.0s
+2025-09-25 11:08:37,831 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (2); continuing
+2025-09-25 11:08:37,847 [INFO] cycle summary: received=5546 kept=242 inserted=226 tiles=8/31
+2025-09-25 11:08:37,847 [WARNING] cooldown: fail_ratio=0.27 (failed=3 of 11) → sleeping 306s
+2025-09-25 11:11:37,956 [WARNING] backoff: tile z:7 x:16 y:26 attempt 1 -> sleeping 5.0s
+2025-09-25 11:11:43,028 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (2); continuing
+2025-09-25 11:11:44,889 [WARNING] backoff: tile z:7 x:32 y:20 attempt 1 -> sleeping 5.0s
+2025-09-25 11:11:49,945 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (2); continuing
+2025-09-25 11:11:50,009 [WARNING] backoff: tile z:7 x:15 y:26 attempt 1 -> sleeping 5.0s
+2025-09-25 11:11:55,073 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (2); continuing
+2025-09-25 11:11:55,148 [WARNING] backoff: tile z:7 x:32 y:21 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:00,212 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (2); continuing
+2025-09-25 11:12:00,272 [WARNING] backoff: tile z:7 x:41 y:27 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:05,335 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (2); continuing
+2025-09-25 11:12:05,397 [WARNING] backoff: tile z:7 x:33 y:20 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:10,464 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (2); continuing
+2025-09-25 11:12:10,526 [WARNING] backoff: tile z:7 x:40 y:27 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:15,587 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (2); continuing
+2025-09-25 11:12:15,651 [WARNING] backoff: tile z:7 x:42 y:27 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:20,716 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (2); continuing
+2025-09-25 11:12:20,781 [WARNING] backoff: tile z:7 x:40 y:26 attempt 1 -> sleeping 5.0s
+2025-09-25 11:12:40,001 [INFO] browser closed
+2025-09-25 11:42:00,819 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 11:42:16,016 [INFO] cycle summary: received=5087 kept=176 inserted=170 tiles=11/31
+2025-09-25 11:44:02,974 [INFO] cycle summary: received=6295 kept=309 inserted=283 tiles=11/31
+2025-09-25 11:45:29,461 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 11:45:29,563 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 11:45:29,620 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 11:45:29,677 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 11:45:29,744 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 11:45:29,807 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 11:45:29,860 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 11:45:29,915 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 11:45:29,975 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 11:45:30,031 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 11:45:31,048 [INFO] cycle summary: received=523 kept=14 inserted=1 tiles=1/31
+2025-09-25 11:45:31,049 [WARNING] session_recycle_triggered: fail_ratio=0.91 (failed=10 of 11) → sleeping 300s
+2025-09-25 11:46:06,212 [INFO] browser closed
+2025-09-25 11:46:23,792 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 11:46:50,442 [INFO] cycle summary: received=5078 kept=166 inserted=84 tiles=11/31
+2025-09-25 11:48:27,839 [INFO] cycle summary: received=6280 kept=308 inserted=121 tiles=11/31
+2025-09-25 11:50:10,546 [INFO] cycle summary: received=5759 kept=274 inserted=142 tiles=11/31
+2025-09-25 11:51:43,134 [INFO] cycle summary: received=4387 kept=141 inserted=47 tiles=11/31
+2025-09-25 11:53:18,965 [INFO] cycle summary: received=7180 kept=358 inserted=153 tiles=11/31
+2025-09-25 11:54:43,231 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 11:55:01,336 [INFO] cycle summary: received=5089 kept=215 inserted=67 tiles=10/31
+2025-09-25 11:56:34,107 [INFO] cycle summary: received=5126 kept=137 inserted=48 tiles=11/31
+2025-09-25 11:57:11,094 [INFO] browser closed
+2025-09-25 11:57:40,527 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 11:57:45,489 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 11:57:48,024 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 11:57:48,101 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 11:57:48,185 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 11:57:48,252 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 11:57:48,328 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 11:57:48,398 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 11:57:48,462 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 11:57:48,531 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 11:57:48,549 [INFO] cycle summary: received=1183 kept=15 inserted=15 tiles=2/11
+2025-09-25 11:57:48,549 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 285s
+2025-09-25 11:58:54,563 [INFO] browser closed
+2025-09-25 11:59:05,997 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 11:59:10,699 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 12:00:10,313 [INFO] browser closed
+2025-09-25 12:01:30,856 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 12:01:33,561 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 12:01:36,177 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 12:01:36,240 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 12:01:36,322 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 12:01:36,397 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 12:01:36,455 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 12:01:36,517 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 12:01:36,572 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 12:01:36,635 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 12:01:36,701 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 12:01:36,718 [INFO] cycle summary: received=264 kept=5 inserted=5 tiles=1/11
+2025-09-25 12:01:36,718 [WARNING] session_recycle_triggered: fail_ratio=0.91 (failed=10 of 11) → sleeping 185s
+2025-09-25 12:04:46,429 [INFO] session_recycle_complete
+2025-09-25 12:05:11,095 [INFO] cycle summary: received=6218 kept=295 inserted=261 tiles=11/11
+2025-09-25 12:06:58,276 [INFO] cycle summary: received=5710 kept=280 inserted=204 tiles=11/11
+2025-09-25 12:08:35,394 [INFO] cycle summary: received=4311 kept=146 inserted=83 tiles=11/11
+2025-09-25 12:10:03,901 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 12:10:08,939 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 12:10:11,173 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 12:10:13,131 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 12:10:13,148 [INFO] cycle summary: received=2986 kept=128 inserted=39 tiles=7/11
+2025-09-25 12:10:13,148 [WARNING] session_recycle_triggered: fail_ratio=0.36 (failed=4 of 11) → sleeping 238s
+2025-09-25 12:14:15,789 [INFO] session_recycle_complete
+2025-09-25 12:14:40,740 [INFO] cycle summary: received=5196 kept=233 inserted=83 tiles=11/11
+2025-09-25 12:16:23,985 [INFO] cycle summary: received=5058 kept=151 inserted=105 tiles=11/11
+2025-09-25 12:18:02,651 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 12:18:02,670 [INFO] cycle summary: received=6982 kept=398 inserted=215 tiles=10/11
+2025-09-25 12:19:23,701 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 12:19:23,769 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 12:19:23,834 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 12:19:30,042 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 12:19:30,107 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 12:19:32,324 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 12:19:32,341 [INFO] cycle summary: received=2196 kept=63 inserted=2 tiles=5/11
+2025-09-25 12:19:32,341 [WARNING] session_recycle_triggered: fail_ratio=0.55 (failed=6 of 11) → sleeping 290s
+2025-09-25 12:22:58,619 [INFO] browser closed
+2025-09-25 12:23:25,336 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 12:23:50,584 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 12:23:52,993 [INFO] cycle summary: received=4788 kept=171 inserted=168 tiles=10/11
+2025-09-25 12:25:08,192 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 12:25:10,588 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 12:25:12,684 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 12:25:14,748 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 12:25:16,705 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 12:25:18,501 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 12:25:20,991 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 12:25:22,881 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 12:25:24,698 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 12:25:26,464 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 12:25:28,981 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 12:25:30,915 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/11
+2025-09-25 12:25:30,915 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=11 of 11) → sleeping 222s
+2025-09-25 12:26:59,428 [INFO] browser closed
+2025-09-25 12:27:23,258 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 12:27:49,772 [INFO] cycle summary: received=5027 kept=184 inserted=166 tiles=11/11
+2025-09-25 12:29:25,477 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 12:29:27,807 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 12:29:29,843 [INFO] cycle summary: received=5633 kept=236 inserted=233 tiles=9/11
+2025-09-25 12:30:51,993 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 12:30:53,964 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 12:30:57,726 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 12:31:01,797 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 12:31:04,212 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 12:31:06,339 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 12:31:08,502 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 12:31:10,801 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 12:31:12,927 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 12:31:15,342 [INFO] cycle summary: received=873 kept=30 inserted=2 tiles=2/11
+2025-09-25 12:31:15,342 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 309s
+2025-09-25 12:36:28,965 [INFO] session_recycle_complete
+2025-09-25 12:36:55,098 [INFO] cycle summary: received=4289 kept=156 inserted=108 tiles=11/11
+2025-09-25 12:38:08,132 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 12:38:10,524 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 12:38:12,869 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 12:38:15,113 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 12:38:17,201 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 12:38:19,053 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 12:38:20,737 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 12:38:22,822 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 12:38:25,187 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 12:38:27,435 [INFO] cycle summary: received=520 kept=36 inserted=26 tiles=2/11
+2025-09-25 12:38:27,435 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 206s
+2025-09-25 12:41:58,028 [INFO] session_recycle_complete
+2025-09-25 12:42:21,679 [INFO] cycle summary: received=5183 kept=244 inserted=173 tiles=11/11
+2025-09-25 12:43:58,224 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 12:43:59,972 [INFO] cycle summary: received=4953 kept=151 inserted=27 tiles=10/11
+2025-09-25 12:45:10,061 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 12:45:12,443 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 12:45:14,167 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 12:45:16,475 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 12:45:20,964 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 12:45:22,784 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 12:45:27,430 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 12:45:29,707 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 12:45:31,717 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 12:45:33,990 [INFO] cycle summary: received=1462 kept=57 inserted=8 tiles=2/11
+2025-09-25 12:45:33,990 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 306s
+2025-09-25 12:50:44,992 [INFO] session_recycle_complete
+2025-09-25 12:51:10,465 [INFO] cycle summary: received=4898 kept=207 inserted=122 tiles=11/11
+2025-09-25 12:52:57,739 [INFO] cycle summary: received=6319 kept=209 inserted=157 tiles=11/11
+2025-09-25 12:54:29,012 [INFO] cycle summary: received=6119 kept=368 inserted=156 tiles=11/11
+2025-09-25 12:56:04,123 [INFO] cycle summary: received=5748 kept=234 inserted=78 tiles=11/11
+2025-09-25 12:57:45,181 [INFO] cycle summary: received=4930 kept=176 inserted=127 tiles=11/11
+2025-09-25 12:59:26,286 [INFO] cycle summary: received=6184 kept=366 inserted=125 tiles=11/11
+2025-09-25 13:00:46,760 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 13:00:57,774 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 13:00:59,563 [INFO] cycle summary: received=3850 kept=161 inserted=39 tiles=9/11
+2025-09-25 13:02:27,514 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 13:02:29,412 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 13:02:31,773 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 13:02:34,003 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 13:02:41,736 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 13:02:46,517 [INFO] cycle summary: received=4010 kept=132 inserted=34 tiles=6/11
+2025-09-25 13:02:46,517 [WARNING] session_recycle_triggered: fail_ratio=0.45 (failed=5 of 11) → sleeping 231s
+2025-09-25 13:06:42,082 [INFO] session_recycle_complete
+2025-09-25 13:07:07,184 [INFO] cycle summary: received=5452 kept=296 inserted=150 tiles=11/11
+2025-09-25 13:08:39,567 [INFO] cycle summary: received=4667 kept=162 inserted=70 tiles=11/11
+2025-09-25 13:10:29,564 [INFO] cycle summary: received=6787 kept=373 inserted=224 tiles=11/11
+2025-09-25 13:11:48,363 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 13:11:50,111 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 13:11:51,915 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 13:11:53,748 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 13:11:57,967 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 13:12:01,955 [INFO] cycle summary: received=2154 kept=66 inserted=15 tiles=6/11
+2025-09-25 13:12:01,956 [WARNING] session_recycle_triggered: fail_ratio=0.45 (failed=5 of 11) → sleeping 189s
+2025-09-25 13:15:15,608 [INFO] session_recycle_complete
+2025-09-25 13:15:40,351 [INFO] cycle summary: received=4187 kept=144 inserted=70 tiles=11/11
+2025-09-25 13:17:17,690 [INFO] cycle summary: received=7508 kept=381 inserted=178 tiles=11/11
+2025-09-25 13:18:32,051 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 13:18:34,200 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 13:18:36,287 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 13:18:40,395 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 13:18:42,293 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 13:18:44,370 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 13:18:46,199 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 13:18:48,480 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 13:18:50,569 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 13:18:54,425 [INFO] cycle summary: received=796 kept=23 inserted=0 tiles=2/11
+2025-09-25 13:18:54,425 [WARNING] session_recycle_triggered: fail_ratio=0.82 (failed=9 of 11) → sleeping 269s
+2025-09-25 13:20:37,339 [INFO] browser closed
+2025-09-25 13:27:34,877 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 13:28:01,866 [INFO] cycle summary: received=5001 kept=178 inserted=159 tiles=11/11
+2025-09-25 13:29:44,724 [INFO] cycle summary: received=6246 kept=317 inserted=243 tiles=11/11
+2025-09-25 13:31:08,446 [INFO] browser closed
+2025-09-25 13:33:13,706 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 13:33:40,859 [INFO] cycle summary: received=5014 kept=179 inserted=159 tiles=11/11
+2025-09-25 13:35:18,152 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 13:35:19,961 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 13:35:22,310 [INFO] cycle summary: received=5007 kept=297 inserted=236 tiles=9/11
+2025-09-25 13:36:39,673 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 13:36:41,406 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 13:36:43,583 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 13:36:45,612 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 13:36:47,526 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 13:36:49,750 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 13:36:51,811 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 13:36:54,052 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 13:36:56,462 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 13:36:58,317 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 13:36:59,940 [INFO] cycle summary: received=364 kept=14 inserted=0 tiles=1/11
+2025-09-25 13:36:59,941 [WARNING] session_recycle_triggered: fail_ratio=0.91 (failed=10 of 11) → sleeping 274s
+2025-09-25 13:41:38,640 [INFO] session_recycle_complete
+2025-09-25 13:42:03,418 [INFO] cycle summary: received=4239 kept=150 inserted=72 tiles=11/11
+2025-09-25 13:43:38,463 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 13:43:40,715 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 13:43:42,771 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 13:43:44,586 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 13:43:46,798 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 13:43:48,972 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 13:43:50,883 [INFO] cycle summary: received=4589 kept=157 inserted=112 tiles=5/11
+2025-09-25 13:43:50,884 [WARNING] session_recycle_triggered: fail_ratio=0.55 (failed=6 of 11) → sleeping 208s
+2025-09-25 13:45:06,214 [INFO] browser closed
+2025-09-25 14:55:38,100 [INFO] prefilter: loaded 36 buffered bboxes
+2025-09-25 14:55:41,238 [INFO] EWMs refreshed
+2025-09-25 14:55:58,965 [INFO] cycle summary: received=4566 kept=141 inserted=131 tiles=8/8
+2025-09-25 14:58:12,658 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 14:58:14,980 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 14:58:17,242 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 14:58:19,155 [INFO] cycle summary: received=2436 kept=80 inserted=79 tiles=5/8
+2025-09-25 14:58:19,155 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 201s
+2025-09-25 15:01:44,699 [INFO] session_recycle_complete
+2025-09-25 15:02:02,765 [INFO] cycle summary: received=3755 kept=310 inserted=219 tiles=8/8
+2025-09-25 15:04:25,578 [INFO] cycle summary: received=4310 kept=214 inserted=110 tiles=8/8
+2025-09-25 15:07:05,425 [INFO] cycle summary: received=4299 kept=147 inserted=71 tiles=8/8
+2025-09-25 15:09:31,266 [INFO] cycle summary: received=3923 kept=112 inserted=98 tiles=8/8
+2025-09-25 15:12:20,867 [INFO] cycle summary: received=3941 kept=279 inserted=162 tiles=8/8
+2025-09-25 15:14:52,263 [INFO] cycle summary: received=4083 kept=220 inserted=112 tiles=8/8
+2025-09-25 15:17:29,690 [INFO] cycle summary: received=3973 kept=133 inserted=85 tiles=8/8
+2025-09-25 15:19:53,749 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 15:19:55,776 [INFO] cycle summary: received=3719 kept=91 inserted=77 tiles=7/8
+2025-09-25 15:22:17,506 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 15:22:19,472 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 15:22:21,200 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 15:22:23,350 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 15:22:25,393 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 15:22:27,554 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 15:22:29,736 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 15:22:31,645 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 15:22:33,333 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 15:22:33,333 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 280s
+2025-09-25 15:27:17,955 [INFO] session_recycle_complete
+2025-09-25 15:27:25,687 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 15:27:28,152 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 15:27:30,120 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 15:27:32,195 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 15:27:34,067 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 15:27:36,485 [INFO] cycle summary: received=1231 kept=58 inserted=35 tiles=3/8
+2025-09-25 15:27:36,485 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 208s
+2025-09-25 15:31:09,141 [INFO] session_recycle_complete
+2025-09-25 15:31:12,111 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 15:31:14,547 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 15:31:16,776 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 15:31:18,925 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 15:31:21,167 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 15:31:23,126 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 15:31:24,874 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 15:31:26,933 [INFO] cycle summary: received=82 kept=9 inserted=8 tiles=1/8
+2025-09-25 15:31:26,934 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 327s
+2025-09-25 15:36:58,496 [INFO] session_recycle_complete
+2025-09-25 15:37:17,335 [INFO] cycle summary: received=4365 kept=140 inserted=121 tiles=8/8
+2025-09-25 15:39:22,544 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 15:39:24,404 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 15:39:26,231 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 15:39:27,945 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 15:39:29,893 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 15:39:32,068 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 15:39:34,373 [INFO] cycle summary: received=1098 kept=59 inserted=52 tiles=2/8
+2025-09-25 15:39:34,373 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 255s
+2025-09-25 15:43:53,982 [INFO] session_recycle_complete
+2025-09-25 15:43:54,040 [INFO] EWMs refreshed
+2025-09-25 15:43:58,799 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 15:44:01,255 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 15:44:03,542 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 15:44:05,528 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 15:44:07,942 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 15:44:10,254 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 15:44:11,958 [INFO] cycle summary: received=1017 kept=77 inserted=47 tiles=2/8
+2025-09-25 15:44:11,958 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 358s
+2025-09-25 15:50:14,625 [INFO] session_recycle_complete
+2025-09-25 15:50:15,093 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 15:50:16,833 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 15:50:18,517 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 15:50:20,608 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 15:50:22,605 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 15:50:24,669 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 15:50:26,686 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 15:50:28,926 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 15:50:30,885 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 15:50:30,885 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 276s
+2025-09-25 15:55:11,573 [INFO] session_recycle_complete
+2025-09-25 15:55:29,976 [INFO] cycle summary: received=5313 kept=227 inserted=185 tiles=8/8
+2025-09-25 15:57:30,882 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 15:57:32,848 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 15:57:34,548 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 15:57:36,379 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 15:57:38,467 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 15:57:40,601 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 15:57:42,224 [INFO] cycle summary: received=1434 kept=60 inserted=30 tiles=2/8
+2025-09-25 15:57:42,224 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 265s
+2025-09-25 16:02:12,430 [INFO] session_recycle_complete
+2025-09-25 16:02:30,204 [INFO] cycle summary: received=3041 kept=155 inserted=85 tiles=8/8
+2025-09-25 16:05:04,856 [INFO] cycle summary: received=3211 kept=123 inserted=90 tiles=8/8
+2025-09-25 16:07:54,383 [INFO] cycle summary: received=5833 kept=280 inserted=192 tiles=8/8
+2025-09-25 16:10:39,234 [INFO] cycle summary: received=3799 kept=196 inserted=99 tiles=8/8
+2025-09-25 16:12:49,086 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 16:12:51,284 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 16:12:57,413 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 16:13:04,231 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 16:13:06,344 [INFO] cycle summary: received=1736 kept=53 inserted=5 tiles=4/8
+2025-09-25 16:13:06,344 [WARNING] session_recycle_triggered: fail_ratio=0.50 (failed=4 of 8) → sleeping 311s
+2025-09-25 16:18:22,174 [INFO] session_recycle_complete
+2025-09-25 16:18:40,998 [INFO] cycle summary: received=2673 kept=117 inserted=79 tiles=8/8
+2025-09-25 16:21:13,636 [INFO] cycle summary: received=5887 kept=295 inserted=196 tiles=8/8
+2025-09-25 16:23:49,845 [INFO] cycle summary: received=4366 kept=213 inserted=114 tiles=8/8
+2025-09-25 16:26:10,865 [INFO] cycle summary: received=3833 kept=182 inserted=126 tiles=8/8
+2025-09-25 16:28:53,015 [INFO] cycle summary: received=2791 kept=46 inserted=34 tiles=8/8
+2025-09-25 16:31:22,846 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 16:31:25,269 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 16:31:26,961 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 16:31:29,158 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 16:31:31,030 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 16:31:32,990 [INFO] cycle summary: received=1486 kept=135 inserted=77 tiles=3/8
+2025-09-25 16:31:32,990 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 240s
+2025-09-25 16:35:37,598 [INFO] session_recycle_complete
+2025-09-25 16:35:43,781 [INFO] recycled browser
+2025-09-25 16:35:43,843 [INFO] EWMs refreshed
+2025-09-25 16:36:02,674 [INFO] cycle summary: received=4099 kept=199 inserted=125 tiles=8/8
+2025-09-25 16:38:22,800 [INFO] cycle summary: received=4508 kept=149 inserted=75 tiles=8/8
+2025-09-25 16:40:35,070 [INFO] cycle summary: received=3812 kept=106 inserted=85 tiles=8/8
+2025-09-25 16:42:51,249 [INFO] cycle summary: received=3685 kept=290 inserted=151 tiles=8/8
+2025-09-25 16:45:15,562 [INFO] cycle summary: received=4206 kept=212 inserted=91 tiles=8/8
+2025-09-25 16:47:19,829 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 16:47:21,708 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 16:47:23,787 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 16:47:28,052 [INFO] cycle summary: received=2449 kept=44 inserted=17 tiles=5/8
+2025-09-25 16:47:28,053 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 303s
+2025-09-25 16:52:35,850 [INFO] session_recycle_complete
+2025-09-25 16:52:54,899 [INFO] cycle summary: received=3925 kept=123 inserted=105 tiles=8/8
+2025-09-25 16:55:14,913 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 16:55:17,219 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 16:55:19,220 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 16:55:21,471 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 16:55:23,248 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 16:55:25,506 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 16:55:27,834 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 16:55:30,254 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 16:55:32,339 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 16:55:32,339 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 222s
+2025-09-25 16:59:18,939 [INFO] session_recycle_complete
+2025-09-25 16:59:22,081 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 16:59:24,545 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 16:59:26,344 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 16:59:28,808 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 16:59:30,935 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 16:59:32,904 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 16:59:35,286 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 16:59:37,482 [INFO] cycle summary: received=875 kept=55 inserted=46 tiles=1/8
+2025-09-25 16:59:37,482 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 263s
+2025-09-25 17:04:11,741 [INFO] session_recycle_complete
+2025-09-25 17:04:12,252 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 17:04:14,519 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 17:04:16,719 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 17:04:18,828 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 17:04:21,251 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 17:04:23,083 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 17:04:24,808 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 17:04:26,591 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 17:04:28,925 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 17:04:28,925 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 248s
+2025-09-25 17:08:41,477 [INFO] session_recycle_complete
+2025-09-25 17:08:59,246 [INFO] cycle summary: received=3916 kept=128 inserted=113 tiles=8/8
+2025-09-25 17:11:24,910 [INFO] cycle summary: received=4539 kept=297 inserted=180 tiles=8/8
+2025-09-25 17:13:43,572 [INFO] cycle summary: received=3363 kept=161 inserted=69 tiles=8/8
+2025-09-25 17:15:56,852 [INFO] cycle summary: received=3718 kept=141 inserted=89 tiles=8/8
+2025-09-25 17:18:27,730 [INFO] cycle summary: received=4193 kept=146 inserted=114 tiles=8/8
+2025-09-25 17:20:22,125 [INFO] EWMs refreshed
+2025-09-25 17:20:39,405 [INFO] cycle summary: received=4891 kept=287 inserted=148 tiles=8/8
+2025-09-25 17:22:56,032 [INFO] cycle summary: received=2854 kept=166 inserted=63 tiles=8/8
+2025-09-25 17:25:09,149 [INFO] cycle summary: received=3521 kept=143 inserted=58 tiles=8/8
+2025-09-25 17:27:58,707 [INFO] cycle summary: received=5305 kept=234 inserted=156 tiles=8/8
+2025-09-25 17:30:26,128 [INFO] cycle summary: received=4256 kept=239 inserted=111 tiles=8/8
+2025-09-25 17:33:11,925 [INFO] cycle summary: received=2936 kept=145 inserted=47 tiles=8/8
+2025-09-25 17:35:29,875 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 17:35:32,230 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 17:35:36,130 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 17:35:38,043 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 17:35:39,861 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 17:35:42,038 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 17:35:43,799 [INFO] cycle summary: received=173 kept=9 inserted=4 tiles=2/8
+2025-09-25 17:35:43,799 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 226s
+2025-09-25 17:39:34,379 [INFO] session_recycle_complete
+2025-09-25 17:39:52,395 [INFO] cycle summary: received=5872 kept=290 inserted=188 tiles=8/8
+2025-09-25 17:42:12,516 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 17:42:14,537 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 17:42:17,034 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 17:42:19,368 [INFO] cycle summary: received=2526 kept=145 inserted=79 tiles=5/8
+2025-09-25 17:42:19,368 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 352s
+2025-09-25 17:48:16,107 [INFO] session_recycle_complete
+2025-09-25 17:48:35,837 [INFO] cycle summary: received=3491 kept=145 inserted=77 tiles=8/8
+2025-09-25 17:50:51,506 [INFO] cycle summary: received=2701 kept=115 inserted=73 tiles=8/8
+2025-09-25 17:53:19,164 [INFO] cycle summary: received=5828 kept=288 inserted=187 tiles=8/8
+2025-09-25 17:55:34,499 [INFO] cycle summary: received=4358 kept=222 inserted=106 tiles=8/8
+2025-09-25 17:58:22,832 [INFO] cycle summary: received=3777 kept=183 inserted=94 tiles=8/8
+2025-09-25 18:01:08,235 [INFO] cycle summary: received=2800 kept=50 inserted=34 tiles=8/8
+2025-09-25 18:03:20,056 [INFO] recycled browser
+2025-09-25 18:03:20,124 [INFO] EWMs refreshed
+2025-09-25 18:03:39,097 [INFO] cycle summary: received=5498 kept=354 inserted=192 tiles=8/8
+2025-09-25 18:05:44,876 [INFO] cycle summary: received=4121 kept=206 inserted=90 tiles=8/8
+2025-09-25 18:08:24,836 [INFO] cycle summary: received=4583 kept=151 inserted=68 tiles=8/8
+2025-09-25 18:11:03,422 [INFO] cycle summary: received=3814 kept=104 inserted=84 tiles=8/8
+2025-09-25 18:13:44,198 [INFO] cycle summary: received=3754 kept=287 inserted=127 tiles=8/8
+2025-09-25 18:16:05,776 [INFO] cycle summary: received=4296 kept=200 inserted=98 tiles=8/8
+2025-09-25 18:18:26,911 [INFO] cycle summary: received=4363 kept=148 inserted=77 tiles=8/8
+2025-09-25 18:21:00,429 [INFO] cycle summary: received=3898 kept=127 inserted=107 tiles=8/8
+2025-09-25 18:23:28,113 [INFO] cycle summary: received=3981 kept=254 inserted=114 tiles=8/8
+2025-09-25 18:26:10,866 [INFO] cycle summary: received=4133 kept=208 inserted=107 tiles=8/8
+2025-09-25 18:28:37,322 [INFO] cycle summary: received=4018 kept=149 inserted=89 tiles=8/8
+2025-09-25 18:30:55,731 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 18:31:00,452 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 18:31:02,661 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 18:31:04,731 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 18:31:06,756 [INFO] cycle summary: received=1332 kept=27 inserted=12 tiles=4/8
+2025-09-25 18:31:06,756 [WARNING] session_recycle_triggered: fail_ratio=0.50 (failed=4 of 8) → sleeping 273s
+2025-09-25 18:35:47,231 [INFO] session_recycle_complete
+2025-09-25 18:36:04,711 [INFO] cycle summary: received=4671 kept=315 inserted=162 tiles=8/8
+2025-09-25 18:38:44,141 [INFO] cycle summary: received=3471 kept=161 inserted=71 tiles=8/8
+2025-09-25 18:41:07,684 [INFO] cycle summary: received=3861 kept=138 inserted=79 tiles=8/8
+2025-09-25 18:43:01,100 [INFO] EWMs refreshed
+2025-09-25 18:43:17,425 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 18:43:19,745 [INFO] cycle summary: received=3990 kept=114 inserted=96 tiles=7/8
+2025-09-25 18:45:19,326 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 18:45:21,033 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 18:45:23,433 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 18:45:25,308 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 18:45:27,186 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 18:45:29,561 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 18:45:31,521 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 18:45:33,805 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 18:45:35,541 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 18:45:35,541 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 359s
+2025-09-25 18:51:39,109 [INFO] session_recycle_complete
+2025-09-25 18:51:58,654 [INFO] cycle summary: received=3015 kept=161 inserted=83 tiles=8/8
+2025-09-25 18:54:32,195 [INFO] cycle summary: received=3686 kept=142 inserted=89 tiles=8/8
+2025-09-25 18:56:40,297 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 18:56:42,263 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 18:56:44,456 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 18:56:46,520 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 18:56:48,667 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 18:56:50,888 [INFO] cycle summary: received=687 kept=37 inserted=28 tiles=3/8
+2025-09-25 18:56:50,888 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 261s
+2025-09-25 19:01:16,584 [INFO] session_recycle_complete
+2025-09-25 19:01:19,151 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 19:01:21,368 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 19:01:23,650 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 19:01:25,318 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 19:01:27,430 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 19:01:29,790 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 19:01:31,556 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 19:01:33,425 [INFO] cycle summary: received=433 kept=40 inserted=25 tiles=1/8
+2025-09-25 19:01:33,426 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 190s
+2025-09-25 19:04:48,117 [INFO] session_recycle_complete
+2025-09-25 19:05:06,253 [INFO] cycle summary: received=3091 kept=144 inserted=59 tiles=8/8
+2025-09-25 19:07:10,903 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 19:07:12,976 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 19:07:15,154 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 19:07:17,270 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 19:07:19,105 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 19:07:21,476 [INFO] cycle summary: received=1232 kept=13 inserted=10 tiles=3/8
+2025-09-25 19:07:21,476 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 299s
+2025-09-25 19:12:25,128 [INFO] session_recycle_complete
+2025-09-25 19:12:25,582 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 19:12:27,960 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 19:12:29,949 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 19:12:32,242 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 19:12:34,188 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 19:12:36,108 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 19:12:38,215 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 19:12:40,246 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 19:12:42,165 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 19:12:42,165 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 335s
+2025-09-25 19:18:21,831 [INFO] session_recycle_complete
+2025-09-25 19:18:37,297 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 19:18:39,643 [INFO] cycle summary: received=3683 kept=185 inserted=137 tiles=7/8
+2025-09-25 19:21:05,411 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 19:21:07,694 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 19:21:09,640 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 19:21:11,377 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 19:21:13,704 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 19:21:16,043 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 19:21:17,966 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 19:21:20,325 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 19:21:22,633 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 19:21:22,633 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 277s
+2025-09-25 19:26:04,222 [INFO] session_recycle_complete
+2025-09-25 19:26:22,448 [INFO] cycle summary: received=2736 kept=119 inserted=74 tiles=8/8
+2025-09-25 19:29:00,402 [INFO] cycle summary: received=5812 kept=287 inserted=211 tiles=8/8
+2025-09-25 19:30:59,567 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 19:31:01,706 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 19:31:03,410 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 19:31:05,424 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 19:31:07,172 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 19:31:08,884 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 19:31:10,691 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 19:31:12,875 [INFO] cycle summary: received=883 kept=61 inserted=23 tiles=1/8
+2025-09-25 19:31:12,875 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 218s
+2025-09-25 19:34:55,502 [INFO] session_recycle_complete
+2025-09-25 19:35:14,422 [INFO] cycle summary: received=3900 kept=196 inserted=132 tiles=8/8
+2025-09-25 19:37:17,323 [INFO] recycled browser
+2025-09-25 19:37:17,384 [INFO] EWMs refreshed
+2025-09-25 19:37:35,501 [INFO] cycle summary: received=2776 kept=47 inserted=34 tiles=8/8
+2025-09-25 19:39:59,319 [INFO] cycle summary: received=5554 kept=358 inserted=212 tiles=8/8
+2025-09-25 19:42:38,291 [INFO] cycle summary: received=4119 kept=188 inserted=105 tiles=8/8
+2025-09-25 19:45:00,769 [INFO] cycle summary: received=4578 kept=151 inserted=54 tiles=8/8
+2025-09-25 19:47:41,544 [INFO] cycle summary: received=3774 kept=103 inserted=69 tiles=8/8
+2025-09-25 19:50:27,026 [INFO] cycle summary: received=3818 kept=295 inserted=156 tiles=8/8
+2025-09-25 19:52:57,162 [INFO] cycle summary: received=4283 kept=198 inserted=123 tiles=8/8
+2025-09-25 19:55:39,196 [INFO] cycle summary: received=4335 kept=156 inserted=81 tiles=8/8
+2025-09-25 19:58:02,595 [INFO] cycle summary: received=3874 kept=132 inserted=96 tiles=8/8
+2025-09-25 20:00:18,267 [INFO] cycle summary: received=3991 kept=274 inserted=166 tiles=8/8
+2025-09-25 20:02:47,385 [INFO] cycle summary: received=4111 kept=208 inserted=108 tiles=8/8
+2025-09-25 20:05:27,968 [INFO] cycle summary: received=4062 kept=159 inserted=62 tiles=8/8
+2025-09-25 20:08:17,047 [INFO] cycle summary: received=3982 kept=126 inserted=98 tiles=8/8
+2025-09-25 20:10:49,013 [INFO] cycle summary: received=4632 kept=305 inserted=178 tiles=8/8
+2025-09-25 20:13:21,374 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 20:13:25,496 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 20:13:27,729 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 20:13:29,670 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 20:13:31,686 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 20:13:34,079 [INFO] cycle summary: received=1315 kept=26 inserted=0 tiles=3/8
+2025-09-25 20:13:34,080 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 298s
+2025-09-25 20:18:36,786 [INFO] session_recycle_complete
+2025-09-25 20:18:36,840 [INFO] EWMs refreshed
+2025-09-25 20:18:55,320 [INFO] cycle summary: received=3933 kept=153 inserted=72 tiles=8/8
+2025-09-25 20:21:20,162 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 20:21:22,304 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 20:21:24,181 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 20:21:25,988 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 20:21:27,743 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 20:21:30,080 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 20:21:31,919 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 20:21:34,111 [INFO] cycle summary: received=411 kept=21 inserted=12 tiles=1/8
+2025-09-25 20:21:34,111 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 273s
+2025-09-25 20:26:11,698 [INFO] session_recycle_complete
+2025-09-25 20:26:28,572 [INFO] cycle summary: received=5012 kept=290 inserted=184 tiles=8/8
+2025-09-25 20:29:07,121 [INFO] cycle summary: received=3021 kept=168 inserted=74 tiles=8/8
+2025-09-25 20:31:52,213 [INFO] cycle summary: received=3717 kept=150 inserted=71 tiles=8/8
+2025-09-25 20:34:04,060 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 20:34:05,933 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 20:34:08,327 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 20:34:10,441 [INFO] cycle summary: received=4448 kept=157 inserted=121 tiles=5/8
+2025-09-25 20:34:10,441 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 256s
+2025-09-25 20:38:31,539 [INFO] session_recycle_complete
+2025-09-25 20:38:51,211 [INFO] cycle summary: received=4234 kept=243 inserted=153 tiles=8/8
+2025-09-25 20:41:23,456 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 20:41:25,534 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 20:41:27,815 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 20:41:29,944 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 20:41:31,724 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 20:41:34,051 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 20:41:36,068 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 20:41:38,323 [INFO] cycle summary: received=528 kept=11 inserted=5 tiles=1/8
+2025-09-25 20:41:38,323 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 266s
+2025-09-25 20:46:09,010 [INFO] session_recycle_complete
+2025-09-25 20:46:26,650 [INFO] cycle summary: received=3248 kept=134 inserted=93 tiles=8/8
+2025-09-25 20:48:54,193 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 20:48:56,101 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 20:48:58,058 [INFO] cycle summary: received=5035 kept=197 inserted=153 tiles=6/8
+2025-09-25 20:48:58,059 [WARNING] cooldown: fail_ratio=0.25 (failed=2 of 8) → sleeping 342s
+2025-09-25 20:52:10,602 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 20:52:12,277 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 20:52:14,075 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 20:52:16,466 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 20:52:18,294 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 20:52:20,315 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 20:52:22,012 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 20:52:24,220 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 20:52:26,355 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 20:52:26,355 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 345s
+2025-09-25 20:58:15,979 [INFO] session_recycle_complete
+2025-09-25 20:58:33,533 [INFO] cycle summary: received=3618 kept=142 inserted=93 tiles=8/8
+2025-09-25 21:01:11,519 [INFO] cycle summary: received=2730 kept=131 inserted=90 tiles=8/8
+2025-09-25 21:03:34,796 [INFO] cycle summary: received=5952 kept=283 inserted=183 tiles=8/8
+2025-09-25 21:06:01,078 [INFO] cycle summary: received=4348 kept=221 inserted=137 tiles=8/8
+2025-09-25 21:08:18,511 [INFO] recycled browser
+2025-09-25 21:08:18,568 [INFO] EWMs refreshed
+2025-09-25 21:08:27,743 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 21:08:30,260 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 21:08:32,549 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 21:08:34,346 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 21:08:36,168 [INFO] cycle summary: received=1502 kept=70 inserted=30 tiles=4/8
+2025-09-25 21:08:36,169 [WARNING] session_recycle_triggered: fail_ratio=0.50 (failed=4 of 8) → sleeping 224s
+2025-09-25 21:12:24,729 [INFO] session_recycle_complete
+2025-09-25 21:12:42,468 [INFO] cycle summary: received=2743 kept=50 inserted=36 tiles=8/8
+2025-09-25 21:15:05,060 [INFO] cycle summary: received=5544 kept=351 inserted=242 tiles=8/8
+2025-09-25 21:17:31,005 [INFO] cycle summary: received=4169 kept=197 inserted=97 tiles=8/8
+2025-09-25 21:19:40,412 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 21:19:42,493 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 21:19:44,807 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 21:19:46,702 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-25 21:19:48,816 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 21:19:50,891 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 21:19:53,155 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 21:19:55,256 [INFO] cycle summary: received=261 kept=5 inserted=5 tiles=1/8
+2025-09-25 21:19:55,257 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 263s
+2025-09-25 21:24:22,876 [INFO] session_recycle_complete
+2025-09-25 21:24:40,520 [INFO] cycle summary: received=3752 kept=98 inserted=77 tiles=8/8
+2025-09-25 21:27:05,274 [INFO] cycle summary: received=3796 kept=294 inserted=198 tiles=8/8
+2025-09-25 21:29:09,348 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 21:29:11,523 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 21:29:13,239 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 21:29:15,327 [INFO] cycle summary: received=2336 kept=77 inserted=30 tiles=5/8
+2025-09-25 21:29:15,328 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 213s
+2025-09-25 21:32:53,118 [INFO] session_recycle_complete
+2025-09-25 21:33:09,835 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 21:33:12,120 [INFO] cycle summary: received=3392 kept=77 inserted=47 tiles=7/8
+2025-09-25 21:35:03,558 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 21:35:05,242 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 21:35:07,122 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 21:35:09,310 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 21:35:11,086 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 21:35:12,887 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 21:35:15,020 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 21:35:17,353 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 21:35:19,236 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 21:35:19,236 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 303s
+2025-09-25 21:40:29,089 [INFO] session_recycle_complete
+2025-09-25 21:40:37,139 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 21:40:38,904 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 21:40:40,623 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 21:40:42,567 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 21:40:45,016 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 21:40:47,117 [INFO] cycle summary: received=1522 kept=122 inserted=89 tiles=3/8
+2025-09-25 21:40:47,117 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 219s
+2025-09-25 21:44:30,848 [INFO] session_recycle_complete
+2025-09-25 21:44:50,090 [INFO] cycle summary: received=4144 kept=214 inserted=119 tiles=8/8
+2025-09-25 21:47:05,107 [INFO] cycle summary: received=3972 kept=156 inserted=90 tiles=8/8
+2025-09-25 21:49:39,108 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 21:49:40,839 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 21:49:42,933 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 21:49:44,742 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 21:49:46,795 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 21:49:48,752 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 21:49:50,747 [INFO] cycle summary: received=150 kept=4 inserted=4 tiles=2/8
+2025-09-25 21:49:50,747 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 201s
+2025-09-25 21:53:16,372 [INFO] session_recycle_complete
+2025-09-25 21:53:21,271 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 21:53:23,312 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 21:53:24,980 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 21:53:27,292 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 21:53:29,020 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 21:53:31,237 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 21:53:32,982 [INFO] cycle summary: received=1809 kept=162 inserted=96 tiles=2/8
+2025-09-25 21:53:32,982 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 195s
+2025-09-25 21:56:52,617 [INFO] session_recycle_complete
+2025-09-25 21:56:52,669 [INFO] EWMs refreshed
+2025-09-25 21:57:09,977 [INFO] cycle summary: received=3475 kept=169 inserted=96 tiles=8/8
+2025-09-25 21:59:46,742 [INFO] cycle summary: received=3875 kept=152 inserted=93 tiles=8/8
+2025-09-25 22:02:05,070 [INFO] cycle summary: received=4322 kept=141 inserted=112 tiles=8/8
+2025-09-25 22:04:14,699 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 22:04:17,061 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 22:04:19,226 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 22:04:21,039 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 22:04:23,515 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 22:04:25,242 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 22:04:27,366 [INFO] cycle summary: received=1359 kept=67 inserted=36 tiles=2/8
+2025-09-25 22:04:27,366 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 326s
+2025-09-25 22:09:57,982 [INFO] session_recycle_complete
+2025-09-25 22:10:00,712 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 22:10:02,980 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 22:10:04,680 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 22:10:06,705 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-25 22:10:09,094 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 22:10:11,337 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 22:10:13,478 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 22:10:15,797 [INFO] cycle summary: received=378 kept=17 inserted=0 tiles=1/8
+2025-09-25 22:10:15,798 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 228s
+2025-09-25 22:14:08,599 [INFO] session_recycle_complete
+2025-09-25 22:14:19,698 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 22:14:21,818 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 22:14:23,604 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-25 22:14:25,621 [INFO] cycle summary: received=2453 kept=55 inserted=24 tiles=5/8
+2025-09-25 22:14:25,622 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 235s
+2025-09-25 22:18:25,238 [INFO] session_recycle_complete
+2025-09-25 22:18:42,143 [INFO] cycle summary: received=5409 kept=232 inserted=186 tiles=8/8
+2025-09-25 22:21:12,961 [INFO] cycle summary: received=4208 kept=238 inserted=150 tiles=8/8
+2025-09-25 22:23:24,346 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 22:23:26,155 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-25 22:23:27,939 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-25 22:23:30,124 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-25 22:23:32,261 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-25 22:23:34,473 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 22:23:36,614 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-25 22:23:38,344 [INFO] cycle summary: received=396 kept=37 inserted=28 tiles=1/8
+2025-09-25 22:23:38,344 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 353s
+2025-09-25 22:29:36,006 [INFO] session_recycle_complete
+2025-09-25 22:29:53,983 [INFO] cycle summary: received=3234 kept=125 inserted=80 tiles=8/8
+2025-09-25 22:32:34,082 [INFO] cycle summary: received=5914 kept=268 inserted=204 tiles=8/8
+2025-09-25 22:34:46,321 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 22:34:48,229 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 22:34:50,681 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 22:34:52,707 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 22:34:55,067 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 22:34:57,011 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 22:34:58,976 [INFO] cycle summary: received=1610 kept=52 inserted=26 tiles=2/8
+2025-09-25 22:34:58,976 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 249s
+2025-09-25 22:39:12,539 [INFO] session_recycle_complete
+2025-09-25 22:39:31,272 [INFO] cycle summary: received=3678 kept=140 inserted=95 tiles=8/8
+2025-09-25 22:42:15,224 [INFO] cycle summary: received=2651 kept=115 inserted=80 tiles=8/8
+2025-09-25 22:44:33,213 [INFO] cycle summary: received=5952 kept=286 inserted=186 tiles=8/8
+2025-09-25 22:46:56,440 [INFO] recycled browser
+2025-09-25 22:46:56,508 [INFO] EWMs refreshed
+2025-09-25 22:47:01,318 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 22:47:03,770 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 22:47:05,689 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-25 22:47:07,591 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-25 22:47:09,471 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-25 22:47:11,449 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 22:47:13,535 [INFO] cycle summary: received=1497 kept=114 inserted=69 tiles=2/8
+2025-09-25 22:47:13,535 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 241s
+2025-09-25 22:51:19,188 [INFO] session_recycle_complete
+2025-09-25 22:51:36,536 [INFO] cycle summary: received=3879 kept=180 inserted=100 tiles=8/8
+2025-09-25 22:53:58,641 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 22:54:00,471 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 22:54:02,435 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-25 22:54:04,228 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 22:54:06,381 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 22:54:08,552 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 22:54:10,387 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 22:54:12,090 [INFO] cycle summary: received=85 kept=2 inserted=2 tiles=1/8
+2025-09-25 22:54:12,090 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 342s
+2025-09-25 22:59:58,873 [INFO] session_recycle_complete
+2025-09-25 23:00:03,705 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 23:00:06,014 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 23:00:08,418 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 23:00:10,815 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 23:00:12,513 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 23:00:14,447 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 23:00:16,664 [INFO] cycle summary: received=323 kept=30 inserted=22 tiles=2/8
+2025-09-25 23:00:16,664 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 297s
+2025-09-25 23:05:22,652 [INFO] session_recycle_complete
+2025-09-25 23:05:40,293 [INFO] cycle summary: received=4101 kept=189 inserted=136 tiles=8/8
+2025-09-25 23:08:00,302 [INFO] cycle summary: received=4625 kept=156 inserted=82 tiles=8/8
+2025-09-25 23:10:36,099 [INFO] cycle summary: received=3799 kept=104 inserted=75 tiles=8/8
+2025-09-25 23:13:02,260 [INFO] cycle summary: received=3801 kept=277 inserted=160 tiles=8/8
+2025-09-25 23:15:49,728 [INFO] cycle summary: received=4311 kept=209 inserted=128 tiles=8/8
+2025-09-25 23:18:19,446 [INFO] cycle summary: received=4324 kept=161 inserted=69 tiles=8/8
+2025-09-25 23:20:49,553 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 23:20:51,561 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 23:20:53,471 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 23:20:55,391 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-25 23:20:57,746 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 23:20:59,547 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 23:21:03,281 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 23:21:05,591 [INFO] cycle summary: received=350 kept=29 inserted=10 tiles=1/8
+2025-09-25 23:21:05,591 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 283s
+2025-09-25 23:25:53,297 [INFO] session_recycle_complete
+2025-09-25 23:26:11,937 [INFO] cycle summary: received=3840 kept=253 inserted=141 tiles=8/8
+2025-09-25 23:28:48,452 [INFO] cycle summary: received=4167 kept=208 inserted=126 tiles=8/8
+2025-09-25 23:31:30,645 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-25 23:31:32,503 [INFO] cycle summary: received=2887 kept=141 inserted=80 tiles=7/8
+2025-09-25 23:33:47,207 [ERROR] backoff: tile z:6 x:17 y:19 exhausted retries (1); continuing
+2025-09-25 23:33:49,226 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-25 23:33:51,072 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-25 23:33:53,138 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-25 23:33:55,050 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-25 23:33:57,269 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-25 23:33:59,717 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-25 23:34:01,660 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-25 23:34:03,542 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 23:34:03,542 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 245s
+2025-09-25 23:38:13,172 [INFO] session_recycle_complete
+2025-09-25 23:38:13,225 [INFO] EWMs refreshed
+2025-09-25 23:38:13,672 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-25 23:38:16,010 [ERROR] backoff: tile z:7 x:32 y:21 exhausted retries (1); continuing
+2025-09-25 23:38:17,960 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-25 23:38:20,405 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-25 23:38:22,285 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-25 23:38:24,343 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-25 23:38:26,770 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-25 23:38:28,429 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-25 23:38:30,555 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-25 23:38:30,555 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 181s
+2025-09-25 23:41:36,155 [INFO] session_recycle_complete
+2025-09-25 23:41:54,009 [INFO] cycle summary: received=3489 kept=160 inserted=89 tiles=8/8
+2025-09-25 23:44:30,026 [INFO] cycle summary: received=3901 kept=145 inserted=76 tiles=8/8
+2025-09-25 23:47:19,042 [INFO] cycle summary: received=4336 kept=137 inserted=111 tiles=8/8
+2025-09-25 23:49:31,661 [INFO] cycle summary: received=4997 kept=276 inserted=127 tiles=8/8
+2025-09-25 23:52:06,569 [INFO] cycle summary: received=2989 kept=168 inserted=60 tiles=8/8
+2025-09-25 23:54:21,066 [INFO] cycle summary: received=3711 kept=141 inserted=76 tiles=8/8
+2025-09-25 23:56:58,067 [INFO] cycle summary: received=5438 kept=215 inserted=119 tiles=8/8
+2025-09-25 23:59:19,600 [ERROR] backoff: tile z:7 x:40 y:26 exhausted retries (1); continuing
+2025-09-25 23:59:21,642 [INFO] cycle summary: received=3803 kept=186 inserted=103 tiles=7/8
+2025-09-26 00:01:31,640 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-26 00:01:33,772 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-26 00:01:35,862 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-26 00:01:37,948 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-26 00:01:39,622 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-26 00:01:45,772 [INFO] cycle summary: received=1147 kept=29 inserted=1 tiles=3/8
+2025-09-26 00:01:45,772 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 267s
+2025-09-26 00:06:17,794 [INFO] session_recycle_complete
+2025-09-26 00:06:36,611 [INFO] cycle summary: received=3238 kept=126 inserted=61 tiles=8/8
+2025-09-26 00:08:37,574 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-26 00:08:39,919 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-26 00:08:42,386 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-26 00:08:44,833 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-26 00:08:47,258 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-26 00:08:49,112 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-26 00:08:51,512 [INFO] cycle summary: received=1590 kept=124 inserted=74 tiles=2/8
+2025-09-26 00:08:51,512 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 306s
+2025-09-26 00:14:02,165 [INFO] session_recycle_complete
+2025-09-26 00:14:20,414 [INFO] cycle summary: received=3798 kept=207 inserted=124 tiles=8/8
+2025-09-26 00:16:48,485 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-26 00:16:50,972 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-26 00:16:53,153 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-26 00:16:55,059 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-26 00:16:57,100 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-26 00:16:59,379 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-26 00:17:01,765 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-26 00:17:04,071 [ERROR] backoff: tile z:7 x:42 y:27 exhausted retries (1); continuing
+2025-09-26 00:17:06,230 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-26 00:17:06,230 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 225s
+2025-09-26 00:20:55,868 [INFO] session_recycle_complete
+2025-09-26 00:20:56,311 [ERROR] backoff: tile z:6 x:12 y:11 exhausted retries (1); continuing
+2025-09-26 00:20:58,406 [ERROR] backoff: tile z:6 x:11 y:11 exhausted retries (1); continuing
+2025-09-26 00:21:00,382 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-26 00:21:02,505 [ERROR] backoff: tile z:6 x:11 y:12 exhausted retries (1); continuing
+2025-09-26 00:21:04,266 [ERROR] backoff: tile z:6 x:12 y:13 exhausted retries (1); continuing
+2025-09-26 00:21:06,117 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-26 00:21:08,189 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-26 00:21:09,871 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-26 00:21:12,196 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-26 00:21:12,196 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 298s
+2025-09-26 00:26:14,865 [INFO] session_recycle_complete
+2025-09-26 00:26:20,939 [INFO] recycled browser
+2025-09-26 00:26:20,996 [INFO] EWMs refreshed
+2025-09-26 00:26:26,558 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-26 00:26:28,580 [ERROR] backoff: tile z:6 x:21 y:13 exhausted retries (1); continuing
+2025-09-26 00:26:30,771 [ERROR] backoff: tile z:6 x:20 y:13 exhausted retries (1); continuing
+2025-09-26 00:26:33,221 [ERROR] backoff: tile z:7 x:14 y:26 exhausted retries (1); continuing
+2025-09-26 00:26:35,360 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-26 00:26:37,623 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-26 00:26:40,009 [INFO] cycle summary: received=2460 kept=82 inserted=68 tiles=2/8
+2025-09-26 00:26:40,009 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 211s
+2025-09-26 00:30:15,587 [INFO] session_recycle_complete
+2025-09-26 00:30:20,823 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-26 00:30:23,270 [ERROR] backoff: tile z:7 x:32 y:20 exhausted retries (1); continuing
+2025-09-26 00:30:25,513 [ERROR] backoff: tile z:7 x:16 y:26 exhausted retries (1); continuing
+2025-09-26 00:30:27,526 [ERROR] backoff: tile z:7 x:41 y:27 exhausted retries (1); continuing
+2025-09-26 00:30:29,957 [ERROR] backoff: tile z:7 x:40 y:27 exhausted retries (1); continuing
+2025-09-26 00:30:31,767 [ERROR] backoff: tile z:7 x:33 y:20 exhausted retries (1); continuing
+2025-09-26 00:30:34,038 [INFO] cycle summary: received=1320 kept=109 inserted=71 tiles=2/8
+2025-09-26 00:30:34,038 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 340s
+2025-09-26 00:36:18,690 [INFO] session_recycle_complete
+2025-09-26 00:36:36,596 [INFO] cycle summary: received=3753 kept=176 inserted=132 tiles=8/8
+2025-09-26 00:39:24,420 [INFO] cycle summary: received=2789 kept=46 inserted=36 tiles=8/8
+2025-09-26 00:41:55,034 [ERROR] backoff: tile z:6 x:18 y:19 exhausted retries (1); continuing
+2025-09-26 00:41:56,826 [ERROR] backoff: tile z:6 x:18 y:13 exhausted retries (1); continuing
+2025-09-26 00:41:58,992 [ERROR] backoff: tile z:7 x:15 y:26 exhausted retries (1); continuing
+2025-09-26 00:42:00,875 [ERROR] backoff: tile z:6 x:16 y:10 exhausted retries (1); continuing
+2025-09-26 00:42:03,081 [INFO] cycle summary: received=2230 kept=181 inserted=104 tiles=4/8
+2025-09-26 00:42:03,081 [WARNING] session_recycle_triggered: fail_ratio=0.50 (failed=4 of 8) → sleeping 276s
+2025-09-26 00:46:43,731 [INFO] session_recycle_complete
+2025-09-26 00:47:00,299 [INFO] cycle summary: received=4178 kept=203 inserted=110 tiles=8/8
+2025-09-26 00:49:16,262 [ERROR] backoff: tile z:6 x:7 y:13 exhausted retries (1); continuing
+2025-09-26 00:49:18,202 [ERROR] backoff: tile z:5 x:9 y:9 exhausted retries (1); continuing
+2025-09-26 00:49:20,200 [ERROR] backoff: tile z:5 x:5 y:6 exhausted retries (1); continuing
+2025-09-26 00:49:22,510 [ERROR] backoff: tile z:5 x:5 y:5 exhausted retries (1); continuing
+2025-09-26 00:49:24,922 [ERROR] backoff: tile z:5 x:6 y:6 exhausted retries (1); continuing
+2025-09-26 00:49:26,720 [ERROR] backoff: tile z:6 x:8 y:13 exhausted retries (1); continuing
+2025-09-26 00:49:28,397 [ERROR] backoff: tile z:5 x:8 y:9 exhausted retries (1); continuing
+2025-09-26 00:49:30,797 [ERROR] backoff: tile z:5 x:6 y:5 exhausted retries (1); continuing
+2025-09-26 00:49:33,060 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-09-26 00:49:33,060 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 284s
+2025-09-26 00:54:21,662 [INFO] session_recycle_complete
+2025-09-26 00:54:33,069 [ERROR] backoff: tile z:6 x:11 y:13 exhausted retries (1); continuing
+2025-09-26 00:54:35,550 [ERROR] backoff: tile z:6 x:12 y:12 exhausted retries (1); continuing
+2025-09-26 00:54:37,763 [ERROR] backoff: tile z:6 x:15 y:12 exhausted retries (1); continuing
+2025-09-26 00:54:39,386 [INFO] cycle summary: received=2670 kept=85 inserted=63 tiles=5/8
+2025-09-26 00:54:39,386 [WARNING] session_recycle_triggered: fail_ratio=0.38 (failed=3 of 8) → sleeping 236s
+2025-09-26 00:58:40,007 [INFO] session_recycle_complete
+2025-09-26 00:58:57,940 [INFO] cycle summary: received=3829 kept=279 inserted=173 tiles=8/8

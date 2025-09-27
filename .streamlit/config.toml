@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#1e3a8aff"       # navy blue (you can tweak the hex)
+backgroundColor = "#ffffffff"    # white background
+secondaryBackgroundColor = "#fefeffff"  # light gray panels
+textColor = "#0e172bff"          # dark slate text
+font = "sans serif"
