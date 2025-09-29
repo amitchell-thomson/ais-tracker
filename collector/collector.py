@@ -3,13 +3,12 @@
 Unified AIS Collector (tiles → normalized tanker fixes → Timescale/PostGIS)
 
     - Inserts only the columns your new triggers expect to enrich:
-        ts, src, vessel_uid, sat_track_uid, lat, lon, sog, cog, heading, elapsed,
+        ts, src, vessel_uid, lat, lon, sog, cog, heading, elapsed,
         destination, flag, length_m, width_m, dwt, shipname, shiptype, ship_id, rot
         (geom + memberships are set by BEFORE triggers in the DB.)
     - Filters to **tankers only** (based on SHIPTYPE family 8 or TYPE hints).
     - Computes a robust **vessel_uid**:
         MMSI/IMO/MTID > else hashed surrogate from (name, flag, len, width, type).
-    - Creates **sat_track_uid** continuity IDs for SAT-only tracks.
     - Optional **spatial prefilter** against buffered AREA/GATE bounding boxes.
 
 
@@ -28,6 +27,7 @@ import random
 import logging
 import tempfile
 import subprocess
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Iterable
@@ -168,16 +168,19 @@ STATIC_TILES = (
 )
 
 # Fetch / backoff
-JITTER_SECONDS      = 20
+JITTER_SECONDS      = 10
 MAX_RETRIES         = 0
 BACKOFF_BASE_SECS   = 5.0
-TILE_PAUSE_MS       = 2000
-TILE_JITTER_MS      = 400
+TILE_PAUSE_MS       = 2500
+TILE_JITTER_MS      = 600
 
-COOLDOWN_FAIL_RATIO = 0.2
-COOLDOWN_SECONDS    = 180
-COOLDOWN_JITTER     = 180
-REOPEN_FAIL_RATIO   = 0.3
+COOLDOWN_FAIL_RATIO = 0.4
+COOLDOWN_SECONDS    = 120
+COOLDOWN_JITTER     = 60
+REOPEN_FAIL_RATIO   = 0.6
+
+DEAD_TILE_CONSEC_FAILS = 3
+DEAD_TILE_TTL_MIN      = 30
 
 # Normalization cuts / tanker predicate / SAT continuity
 DROP_IF_OBS_AGE_MIN = 720                                                  # drop >12h old
@@ -595,7 +598,6 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
             "ts": ts,
             "src": src,
             "vessel_uid": vuid,
-            "sat_track_uid": sat_uid,
             "lat": lat,
             "lon": lon,
             "sog": sog,
@@ -621,12 +623,12 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
 # ------------------------------ DB I/O --------------------------------------
 INSERT_FIX_SQL = """
 INSERT INTO public.ais_fix
-( ts, src, vessel_uid, sat_track_uid,
+( ts, src, vessel_uid,
   lat, lon, sog, cog, heading, elapsed,
   destination, flag, length_m, width_m, dwt, shipname, shiptype, ship_id, rot
 )
 VALUES
-( %(ts)s, %(src)s, %(vessel_uid)s, %(sat_track_uid)s,
+( %(ts)s, %(src)s, %(vessel_uid)s,
   %(lat)s, %(lon)s, %(sog)s, %(cog)s, %(heading)s, %(elapsed)s,
   %(destination)s, %(flag)s, %(length_m)s, %(width_m)s, %(dwt)s,
   %(shipname)s, %(shiptype)s, %(ship_id)s, %(rot)s
@@ -669,6 +671,32 @@ def refresh_ewms_now(conn_dsn: str):
         conn.commit()
 
 
+
+
+fail_streak: dict[str, int] = defaultdict(int)
+dead_until: dict[str, float] = {}
+
+def is_tile_dead(tile_id: str, now: float) -> bool:
+    until = dead_until.get(tile_id)
+    if until is None:
+        return False
+    if now >= until:
+        # TTL expired — resurrect
+        dead_until.pop(tile_id, None)
+        fail_streak.pop(tile_id, None)  # optional: give it a fresh start
+        return False
+    return True
+
+def record_tile_failure(tile_id: str, now: float):
+    streak = fail_streak[tile_id] + 1
+    fail_streak[tile_id] = streak
+    if streak >= DEAD_TILE_CONSEC_FAILS and dead_until.get(tile_id, 0) <= now:
+        dead_until[tile_id] = now + DEAD_TILE_TTL_MIN * 60
+
+def record_tile_success(tile_id: str):
+    fail_streak.pop(tile_id, None)
+    dead_until.pop(tile_id, None)
+
 # ------------------------------ Main loop -----------------------------------
 def main() -> None:
     global _live_obj
@@ -700,10 +728,14 @@ def main() -> None:
         print("[INFO] browser closed.")
 
 def _run_loop(driver, tile_iter, total_tiles):
-    from random import shuffle
+    import time
+    from itertools import islice
+    from random import shuffle, uniform
+
     cycles = 0
 
     while True:
+        now = time.time()
         t0 = time.monotonic()
         received_total = 0  # raw rows from payloads
         kept_total = 0      # rows kept after normalization/filters
@@ -711,39 +743,65 @@ def _run_loop(driver, tile_iter, total_tiles):
 
         # recycle webdriver periodically
         if cycles % CYCLES_PER_DRIVER == 0 and cycles != 0:
-            try: safe_quit(driver)
-            except: pass
+            try:
+                safe_quit(driver)
+            except Exception:
+                pass
             driver = open_driver(minimized=True, size=(400, 300))
             logger.info("recycled browser")
 
-        # inside your loop:
-        if cycles % 15 == 0:   # ~every 15 cycles; tune
+        # periodic maintenance task
+        if cycles % 15 == 0:
             try:
                 refresh_ewms_now(PG_DSN)
                 logger.info("EWMs refreshed")
-            except Exception as e:
-                logger.exception("EWM refresh failed: %s", e)
+            except Exception:
+                logger.exception("EWM refresh failed")
 
-        cycles += 1
+        # pull the next batch for this cycle
         tiles_this_cycle = list(islice(tile_iter, TILES_PER_CYCLE))
-        shuffle(tiles_this_cycle)
+        if not tiles_this_cycle:
+            # nothing in this slice (finite iterator?), move to next loop
+            cycles += 1
+            continue
+
+        # filter out tiles that are still dead at 'now'
+        active_tiles = []
+        for (z, x, y) in tiles_this_cycle:
+            tile_id = f"{z}/{x}/{y}"  # consistent ID used everywhere
+            if not is_tile_dead(tile_id, now):
+                active_tiles.append((z, x, y))
+
+        if not active_tiles:
+            ui_set_bottom("[INFO] all tiles in this batch are temporarily dead; pausing 10s")
+            time.sleep(10)
+            cycles += 1
+            continue
+
+        shuffle(active_tiles)
+        dead_tiles = TILES_PER_CYCLE - len(active_tiles)
         failed_tiles = 0
 
         for idx, (z, x, y) in enumerate(tiles_this_cycle, start=1):
+            tile_id = f"{z}, {x}, {y}"
+
             payload = fetch_with_backoff(driver, z, x, y, idx, max_retries=MAX_RETRIES)
             ok = bool(payload and payload.get("data", {}).get("rows"))
             if not ok:
                 failed_tiles += 1
+                record_tile_failure(tile_id, now)
                 continue
 
             rows_raw = payload.get("data", {}).get("rows", []) if payload else []
             received_total += len(rows_raw)
 
-            tile_id = f"{z}/{x}/{y}"
             batch = normalize_rows_from_payload(payload, tile_id)
             kept_total += len(batch)
             ins = insert_fixes(batch)
             inserted_total += ins
+
+            # clear failure state on success
+            record_tile_success(tile_id)
 
             ui_set_bottom(
                 f"[FETCH] tile {idx}/{TILES_PER_CYCLE} — z:{z} x:{x} y:{y} "
@@ -757,7 +815,7 @@ def _run_loop(driver, tile_iter, total_tiles):
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         summary = (f"[LATEST] {now_str} | received={received_total} | kept={kept_total} | "
-                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE})")
+                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE}, dead tiles={dead_tiles})")
         ui_set_latest(summary)
         logger.info("cycle summary: received=%s kept=%s inserted=%s tiles=%s/%s",
                     received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, TILES_PER_CYCLE)
