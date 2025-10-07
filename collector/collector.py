@@ -179,9 +179,6 @@ COOLDOWN_SECONDS    = 120
 COOLDOWN_JITTER     = 60
 REOPEN_FAIL_RATIO   = 0.6
 
-DEAD_TILE_CONSEC_FAILS = 3
-DEAD_TILE_TTL_MIN      = 30
-
 # Normalization cuts / tanker predicate / SAT continuity
 DROP_IF_OBS_AGE_MIN = 720                                                  # drop >12h old
 MAX_TANKER_SOG_KN   = 35.0                                                 # sanity cap
@@ -645,50 +642,6 @@ def insert_fixes(rows: List[Dict[str, Any]], batch_size: int = 2000) -> int:
         conn.commit()
     return inserted
 
-def refresh_ewms_now(conn_dsn: str):
-    sql = """
-    REFRESH MATERIALIZED VIEW public.mv_lane_transit_time_daily;
-    REFRESH MATERIALIZED VIEW public.mv_area_occupancy_daily;
-    SELECT public.refresh_ca_port_lifts_ewm(      now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '21 days');
-    SELECT public.refresh_ca_lane_transit_ewm(    now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
-    SELECT public.refresh_ca_transit_time_ewm(    now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '10 days');
-    SELECT public.refresh_ca_anchorage_queue_ewm( now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '10 days');
-    SELECT public.refresh_ca_ballast_return_ewm(  now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
-    SELECT public.refresh_ca_class_mix_ewm(       now() - interval '35 days', date_trunc('day', now()) + interval '1 day', interval '14 days');
-    """
-    import psycopg
-    with psycopg.connect(conn_dsn) as conn:
-        with conn.cursor() as cur:
-            cur.execute(sql)
-        conn.commit()
-
-
-
-
-fail_streak: dict[str, int] = defaultdict(int)
-dead_until: dict[str, float] = {}
-
-def is_tile_dead(tile_id: str, now: float) -> bool:
-    until = dead_until.get(tile_id)
-    if until is None:
-        return False
-    if now >= until:
-        # TTL expired — resurrect
-        dead_until.pop(tile_id, None)
-        fail_streak.pop(tile_id, None)  # optional: give it a fresh start
-        return False
-    return True
-
-def record_tile_failure(tile_id: str, now: float):
-    streak = fail_streak[tile_id] + 1
-    fail_streak[tile_id] = streak
-    if streak >= DEAD_TILE_CONSEC_FAILS and dead_until.get(tile_id, 0) <= now:
-        dead_until[tile_id] = now + DEAD_TILE_TTL_MIN * 60
-
-def record_tile_success(tile_id: str):
-    fail_streak.pop(tile_id, None)
-    dead_until.pop(tile_id, None)
-
 # ------------------------------ Main loop -----------------------------------
 def main() -> None:
     global _live_obj
@@ -745,7 +698,6 @@ def _run_loop(driver, tile_iter, total_tiles):
         # periodic maintenance task
         if cycles % 15 == 0:
             try:
-                refresh_ewms_now(PG_DSN)
                 logger.info("EWMs refreshed")
             except Exception:
                 logger.exception("EWM refresh failed")
@@ -753,25 +705,11 @@ def _run_loop(driver, tile_iter, total_tiles):
         # pull the next batch for this cycle
         tiles_this_cycle = list(islice(tile_iter, TILES_PER_CYCLE))
         if not tiles_this_cycle:
-            # nothing in this slice (finite iterator?), move to next loop
+            # nothing in this slice, move to next loop
             cycles += 1
             continue
-
-        # filter out tiles that are still dead at 'now'
-        active_tiles = []
-        for (z, x, y) in tiles_this_cycle:
-            tile_id = f"{z}/{x}/{y}"  # consistent ID used everywhere
-            if not is_tile_dead(tile_id, now):
-                active_tiles.append((z, x, y))
-
-        if not active_tiles:
-            ui_set_bottom("[INFO] all tiles in this batch are temporarily dead; pausing 10s")
-            time.sleep(10)
-            cycles += 1
-            continue
-
-        shuffle(active_tiles)
-        dead_tiles = TILES_PER_CYCLE - len(active_tiles)
+      
+        shuffle(tiles_this_cycle)
         failed_tiles = 0
 
         for idx, (z, x, y) in enumerate(tiles_this_cycle, start=1):
@@ -781,7 +719,6 @@ def _run_loop(driver, tile_iter, total_tiles):
             ok = bool(payload and payload.get("data", {}).get("rows"))
             if not ok:
                 failed_tiles += 1
-                record_tile_failure(tile_id, now)
                 continue
 
             rows_raw = payload.get("data", {}).get("rows", []) if payload else []
@@ -792,8 +729,7 @@ def _run_loop(driver, tile_iter, total_tiles):
             ins = insert_fixes(batch)
             inserted_total += ins
 
-            # clear failure state on success
-            record_tile_success(tile_id)
+
 
             ui_set_bottom(
                 f"[FETCH] tile {idx}/{TILES_PER_CYCLE} — z:{z} x:{x} y:{y} "
@@ -809,7 +745,7 @@ def _run_loop(driver, tile_iter, total_tiles):
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         summary = (f"[LATEST] {now_str} | received={received_total} | kept={kept_total} | "
-                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE}, dead tiles={dead_tiles})")
+                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE}")
         ui_set_latest(summary)
         logger.info("cycle summary: received=%s kept=%s inserted=%s tiles=%s/%s",
                     received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, TILES_PER_CYCLE)

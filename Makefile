@@ -16,10 +16,10 @@ seed-areas:
 seed-flow-roles:
 	$(psql) -f db/seed-flow-role.sql
 
-caggs-ewms:
-	$(psql) -f features/caggs_and_ewms.sql
+caggs-mvs:
+	$(psql) -f features/caggs_and_mvs.sql
 
 features:
 	$(psql) -f features/ml_features.sql
 
-setup: init seed-areas caggs-ewms features
+setup: init seed-areas caggs-mvs features
