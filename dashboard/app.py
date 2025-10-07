@@ -97,10 +97,8 @@ SELECT
 FROM public.area_gate
 """
 
-
-
 SQL_INGEST_RATE = """
-SELECT date_trunc('minute', ts) AS minute, count(*) AS rows_inserted
+SELECT date_trunc('hour', ts) AS minute, count(*) AS rows_inserted
 FROM public.ais_fix
 WHERE ts >= now() - make_interval(hours => :hours)
 GROUP BY 1
@@ -111,21 +109,23 @@ ORDER BY 1;
 SQL_OCCUPANCY_SNAPSHOT = """
 WITH latest AS (
   SELECT DISTINCT ON (vessel_uid)
-         vessel_uid,
-         area_id_core,
-         area_id_approach,
-         ts
+         vessel_uid, area_id_core, area_id_approach, ts
   FROM public.ais_fix
   WHERE area_id_core IS NOT NULL OR area_id_approach IS NOT NULL
   ORDER BY vessel_uid, ts DESC
 )
 SELECT
-  coalesce(area_id_core, area_id_approach) AS area_id,
-  sum((area_id_core IS NOT NULL)::int)     AS vessels_in_core,
-  sum((area_id_approach IS NOT NULL AND area_id_core IS NULL)::int) AS vessels_in_approach
-FROM latest
-GROUP BY 1
-ORDER BY 2 DESC, 3 DESC, 1;
+  COALESCE(ac."group", aa."group")                           AS port_group,
+  SUM((l.area_id_core IS NOT NULL)::int)                     AS vessels_in_core,
+  SUM((l.area_id_core IS NULL AND l.area_id_approach IS NOT NULL)::int)
+                                                             AS vessels_in_approach,
+  SUM((l.area_id_core IS NOT NULL OR l.area_id_approach IS NOT NULL)::int)
+                                                             AS vessels_total
+FROM latest l
+LEFT JOIN public.area ac ON ac.area_id = l.area_id_core
+LEFT JOIN public.area aa ON aa.area_id = l.area_id_approach
+GROUP BY port_group
+ORDER BY vessels_in_core DESC, vessels_in_approach DESC, port_group;
 """
 
 # Areas & lanes lists from your seed tables
@@ -290,7 +290,7 @@ def tab_overview(hours):
     cols[3].metric("Vessels in approach (recent snapshot)", f"{in_appr:,}")
 
     st.markdown("---")
-    st.subheader("Ingestion rate (rows/min)")
+    st.subheader("Ingestion rate (rows/hour)")
     try:
         rate = fetch_df(SQL_INGEST_RATE, {"hours": hours})
         if rate.empty:
@@ -337,7 +337,7 @@ def tab_ports():
 
     # If you later add an occupancy CAGG, call it here; for now do on-the-fly 5-min buckets
     sql_fallback = """
-    SELECT time_bucket('5 minutes', ts) AS bucket,
+    SELECT time_bucket('30 minutes', ts) AS bucket,
            count(DISTINCT vessel_uid) FILTER (WHERE area_id_core = :aid) AS in_core,
            count(DISTINCT vessel_uid) FILTER (WHERE area_id_approach = :aid AND area_id_core IS NULL) AS in_approach
     FROM public.ais_fix
@@ -353,7 +353,7 @@ def tab_ports():
 
     series["bucket"] = pd.to_datetime(series["bucket"], utc=True)
     series = series.sort_values("bucket")
-    st.write(f"**Time series occupancy (5-min buckets)** — {area_id}")
+    st.write(f"**Time series occupancy (30-min buckets)** — {area_id}")
     st.line_chart(series.set_index("bucket")[["in_core", "in_approach"]], width='stretch', height=280)
 
 def tab_map(map_age):
@@ -364,7 +364,7 @@ def tab_map(map_age):
     st.markdown("## 🗺️ Live Map")
 
     # New: choose how many recent fixes per vessel to draw (1..5)
-    top_n = st.slider("Recent fixes per vessel", 1, 5, 5, step=1)
+    top_n = st.slider("Recent fixes per vessel", 1, 10, 5, step=1)
 
     # --- Data ---
     if top_n == 1:
@@ -490,7 +490,7 @@ def tab_map(map_age):
     def color_and_radius(row):
         stype = str(row.get("shiptype") or "")
         color = "#e74c3c" if stype.startswith("8") else "#7f8c8d"
-        return color, 1200
+        return color, 300
 
     if not fixes.empty:
         if top_n == 1:

@@ -508,10 +508,6 @@ def fetch_with_backoff(driver, z, x, y, idx, max_retries=MAX_RETRIES) -> Optiona
             return payload or {}
 
         if attempt >= max_retries:
-            logger.error(
-                "backoff: tile z:%s x:%s y:%s exhausted retries (%s); continuing",
-                z, x, y, max_retries + 1
-            )
             ui_set_bottom(f"[BACKOFF] tile z:{z} x:{x} y:{y} exhausted retries {attempt+1}; continuing")
 
             tile_jitter = random.uniform(-TILE_JITTER_MS, TILE_JITTER_MS)
@@ -520,10 +516,6 @@ def fetch_with_backoff(driver, z, x, y, idx, max_retries=MAX_RETRIES) -> Optiona
             return payload or {}
 
         sleep_s = BACKOFF_BASE_SECS * (2 ** attempt)
-        logger.warning(
-            "backoff: tile z:%s x:%s y:%s attempt %s -> sleeping %.1fs",
-            z, x, y, attempt + 1, sleep_s
-        )
         ui_set_bottom(f"[BACKOFF] tile z:{z} x:{x} y:{y} attempt {attempt+1} -> sleeping {sleep_s:.1f}s")
         time.sleep(sleep_s)
         attempt += 1
@@ -811,6 +803,8 @@ def _run_loop(driver, tile_iter, total_tiles):
             # gentle pacing between tiles
             tile_jitter = random.uniform(-TILE_JITTER_MS, TILE_JITTER_MS)
             time.sleep(max(0.0, (TILE_PAUSE_MS + tile_jitter) / 1000.0))
+        
+        cycles+=1
 
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

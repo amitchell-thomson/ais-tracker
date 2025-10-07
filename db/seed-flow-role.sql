@@ -11,16 +11,15 @@ WHERE name IN (
   'LOOP - approach',
   'Corpus Christi - approach',
   'Arthur - approach',
-  'Houston - approach'
+  'Houston - approach',
 
   -- ME
   'Ras Tanura - core',
   'Fujairah - core',
-  'Basrah - core',
+  'Basrah',
 
   'Ras Tanura - approach',
-  'Fujairah - approach',
-  'Basrah - approach'
+  'Fujairah - approach'
 );
 
 -- Import cores + approaches

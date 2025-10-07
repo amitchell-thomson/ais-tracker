@@ -448,46 +448,22 @@ BEGIN
   -- Core port transitions
   -- =========================
   IF (s.core_area_id IS DISTINCT FROM NEW.area_id_core) THEN
-    IF NEW.area_id_core IS NOT NULL THEN
-      -- PORT ENTER
-      SELECT flow_role INTO port_role FROM public.area WHERE area_id = NEW.area_id_core;
 
-      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
-      VALUES (
-        NEW.ts, NEW.vessel_uid,
-        'port_enter', NEW.area_id_core, 'port', NULL, NEW.lat, NEW.lon,
-        jsonb_build_object(
-          'src', NEW.src,
-          'dwt', NEW.dwt,
-          'arrival_likely_laden', CASE WHEN port_role='import' THEN true
-                                       WHEN port_role='export' THEN false
-                                       ELSE NULL END
-        )
-      );
+    -- 1) If we were in a core port previously, emit EXIT first
+    IF s.core_area_id IS NOT NULL THEN
+      SELECT flow_role INTO port_role
+      FROM public.area
+      WHERE area_id = s.core_area_id;
 
-      -- Initialize cargo state if unknown
-      IF cs.vessel_uid IS NULL THEN
-        cur_laden := CASE WHEN port_role='import' THEN true
-                          WHEN port_role='export' THEN false
-                          ELSE NULL END;
-        cur_conf  := CASE WHEN port_role IN ('import','export') THEN 'derived_approach_enter' ELSE 'unknown' END;
-
-        IF cur_laden IS NOT NULL THEN
-          INSERT INTO public.vessel_cargo_state(vessel_uid, laden, confidence, updated_ts)
-          VALUES (NEW.vessel_uid, cur_laden, cur_conf, NEW.ts)
-          ON CONFLICT (vessel_uid) DO UPDATE
-          SET laden = EXCLUDED.laden, confidence = EXCLUDED.confidence, updated_ts = EXCLUDED.updated_ts;
-        END IF;
-      END IF;
-
-    ELSIF s.core_area_id IS NOT NULL THEN
-      -- PORT EXIT
-      SELECT flow_role INTO port_role FROM public.area WHERE area_id = s.core_area_id;
-
-      cur_laden := CASE WHEN port_role='export' THEN true
-                        WHEN port_role='import' THEN false
-                        ELSE NULL END;
-      cur_conf  := CASE WHEN port_role IN ('export','import') THEN 'derived_port_exit' ELSE 'unknown' END;
+      cur_laden := CASE
+                    WHEN port_role = 'export' THEN TRUE   -- leaving export => laden
+                    WHEN port_role = 'import' THEN FALSE  -- leaving import => ballast
+                    ELSE NULL
+                  END;
+      cur_conf  := CASE
+                    WHEN port_role IN ('export','import') THEN 'derived_port_exit'
+                    ELSE 'unknown'
+                  END;
 
       IF cur_laden IS NOT NULL THEN
         INSERT INTO public.vessel_cargo_state(vessel_uid, laden, confidence, updated_ts)
@@ -511,7 +487,55 @@ BEGIN
         )
       );
     END IF;
+
+    -- 2) If we are now in a (possibly different) core port, emit ENTER
+    IF NEW.area_id_core IS NOT NULL THEN
+      SELECT flow_role INTO port_role
+      FROM public.area
+      WHERE area_id = NEW.area_id_core;
+
+      INSERT INTO public.ais_event(ts, vessel_uid, event, area_id, area_kind, gate_end, lat, lon, meta)
+      VALUES (
+        NEW.ts, NEW.vessel_uid,
+        'port_enter', NEW.area_id_core, 'port', NULL, NEW.lat, NEW.lon,
+        jsonb_build_object(
+          'src', NEW.src,
+          'dwt', NEW.dwt,
+          -- arriving to import => likely laden; arriving to export => likely ballast
+          'arrival_likely_laden', CASE
+                                    WHEN port_role='import' THEN TRUE
+                                    WHEN port_role='export' THEN FALSE
+                                    ELSE NULL
+                                  END,
+          'port_flow_role', port_role
+        )
+      );
+
+      -- Initialize/upgrade cargo state if unknown
+      IF cs.vessel_uid IS NULL OR cs.confidence = 'unknown' THEN
+        cur_laden := CASE
+                      WHEN port_role='import' THEN TRUE
+                      WHEN port_role='export' THEN FALSE
+                      ELSE NULL
+                    END;
+        cur_conf  := CASE
+                      WHEN port_role IN ('import','export') THEN 'derived_port_enter'
+                      ELSE 'unknown'
+                    END;
+
+        IF cur_laden IS NOT NULL THEN
+          INSERT INTO public.vessel_cargo_state(vessel_uid, laden, confidence, updated_ts)
+          VALUES (NEW.vessel_uid, cur_laden, cur_conf, NEW.ts)
+          ON CONFLICT (vessel_uid) DO UPDATE
+          SET laden = EXCLUDED.laden,
+              confidence = EXCLUDED.confidence,
+              updated_ts = EXCLUDED.updated_ts;
+        END IF;
+      END IF;
+    END IF;
+
   END IF;
+
 
   -- =========================
   -- Approach transitions
