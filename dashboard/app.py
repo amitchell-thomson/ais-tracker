@@ -154,32 +154,41 @@ ORDER BY vessel_uid, ts DESC;
 """
 
 
-# ---- CAGGs / EWMs (new features) ----
+# ---- CAGGs / (EWMs removed; keep names but point to daily sources) ----
 
-# Port lifts (daily raw cagg + ewm)
+# Port lifts (daily CAGG; alias columns to keep downstream unchanged)
 SQL_CA_PORT_LIFTS_DAILY = """
-SELECT day, area_id, arrive_dwt, depart_dwt
+SELECT day,
+       port_id AS area_id,
+       arrive_dwt_laden AS arrive_dwt,
+       depart_dwt_laden AS depart_dwt
 FROM public.ca_port_lifts_daily
-WHERE area_id = :area_id AND day BETWEEN :start AND :end
+WHERE port_id = :area_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
+# Former EWM endpoint now returns daily CAGG with EWM-like aliases
 SQL_CA_PORT_LIFTS_EWM = """
-SELECT day, area_id, arrive_dwt_ewm, depart_dwt_ewm
-FROM public.ca_port_lifts_ewm
-WHERE area_id = :area_id AND day BETWEEN :start AND :end
+SELECT day,
+       port_id AS area_id,
+       arrive_dwt_laden AS arrive_dwt_ewm,
+       depart_dwt_laden AS depart_dwt_ewm
+FROM public.ca_port_lifts_daily
+WHERE port_id = :area_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
-# Lane transit (ewm)
+# Lane transit: use daily CAGG and alias as *_ewm for compatibility
 SQL_CA_LANE_EWM = """
-SELECT day, lane_id, transit_cnt_ewm, laden_dwt_sum_ewm
-FROM public.ca_lane_transit_ewm
+SELECT day, lane_id,
+       transit_cnt      AS transit_cnt_ewm,
+       laden_dwt_sum    AS laden_dwt_sum_ewm
+FROM public.ca_lane_transit_daily
 WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
-# Transit time (mv + ewm)
+# Transit time: use MV (daily) and alias p50 as *_ewm for compatibility
 SQL_MV_LANE_TT = """
 SELECT day, lane_id, p50_hours, p90_hours, mean_hours
 FROM public.mv_lane_transit_time_daily
@@ -187,13 +196,14 @@ WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 SQL_CA_TT_EWM = """
-SELECT day, lane_id, transit_time_p50_ewm
-FROM public.ca_transit_time_ewm
+SELECT day, lane_id,
+       p50_hours AS transit_time_p50_ewm
+FROM public.mv_lane_transit_time_daily
 WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
-# Anchorage queue (mv + ewm) — uses area_id (approaches)
+# Anchorage queue: use MV daily and alias avg to *_ewm for compatibility
 SQL_MV_ANCHOR = """
 SELECT day, area_id, avg_cnt, p50_cnt
 FROM public.mv_area_occupancy_daily
@@ -201,25 +211,39 @@ WHERE area_id = :area_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 SQL_CA_ANCHOR_EWM = """
-SELECT day, area_id, queue_cnt_ewm
-FROM public.ca_anchorage_queue_ewm
+SELECT day, area_id,
+       avg_cnt AS queue_cnt_ewm
+FROM public.mv_area_occupancy_daily
 WHERE area_id = :area_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
-# Ballast returns (ewm)
+# Ballast returns: use daily CAGG and alias as *_ewm for compatibility
 SQL_CA_BALLAST_EWM = """
-SELECT day, lane_id, ballast_dwt_ewm
-FROM public.ca_ballast_return_ewm
+SELECT day, lane_id,
+       ballast_dwt AS ballast_dwt_ewm
+FROM public.ca_ballast_return_daily
 WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
 ORDER BY day;
 """
 
-# Class mix (ewm)
+# Class mix: compute daily shares from CAGG and alias as *_ewm for compatibility
 SQL_CA_CLASS_MIX = """
-SELECT day, lane_id, vlcc_share_ewm, suezmax_share_ewm, aframax_share_ewm
-FROM public.ca_class_mix_ewm
-WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
+WITH base AS (
+  SELECT day, lane_id,
+         COALESCE(dwt_vlcc,0)    AS vlcc,
+         COALESCE(dwt_suezmax,0) AS suez,
+         COALESCE(dwt_aframax,0) AS afra,
+         COALESCE(dwt_other,0)   AS oth
+  FROM public.ca_class_mix_daily
+  WHERE lane_id = :lane_id AND day BETWEEN :start AND :end
+)
+SELECT
+  day, lane_id,
+  CASE WHEN (vlcc+suez+afra+oth) > 0 THEN vlcc/(vlcc+suez+afra+oth) END AS vlcc_share_ewm,
+  CASE WHEN (vlcc+suez+afra+oth) > 0 THEN suez/(vlcc+suez+afra+oth) END AS suezmax_share_ewm,
+  CASE WHEN (vlcc+suez+afra+oth) > 0 THEN afra/(vlcc+suez+afra+oth) END AS aframax_share_ewm
+FROM base
 ORDER BY day;
 """
 
@@ -693,7 +717,7 @@ def tab_explorer():
 # NEW ANALYTICS TABS
 # -----------------------------
 def tab_flows_and_lifts():
-    st.markdown("## 📈 Flows & Lifts (CAGGs + EWMs)")
+    st.markdown("## 📈 Flows & Lifts (CAGGs)")
 
     # Choose port area for lifts (use core areas ideally)
     ports = fetch_df(SQL_AREA_PORTS)
@@ -706,16 +730,16 @@ def tab_flows_and_lifts():
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("Port lifts — EWM")
+        st.subheader("Port lifts — Daily (CAGG)")
         try:
             df = fetch_df(SQL_CA_PORT_LIFTS_EWM, {"area_id": p_choice, "start": start, "end": end})
             if df.empty:
-                st.info("No EWM data for selected window.")
+                st.info("No daily lifts for selected window.")
             else:
                 df["day"] = pd.to_datetime(df["day"], utc=True)
                 st.line_chart(df.set_index("day")[["arrive_dwt_ewm","depart_dwt_ewm"]], height=280)
         except Exception as e:
-            st.error(f"Lifts EWM error: {e}")
+            st.error(f"Lifts daily error: {e}")
 
     with c2:
         st.subheader("Port lifts — Daily raw (CAGG)")
@@ -736,16 +760,16 @@ def tab_flows_and_lifts():
         return
     l_choice = st.selectbox("Lane / chokepoint (for flows)", lanes["lane_id"].tolist(), index=0)
 
-    st.subheader("Lane flows — EWM")
+    st.subheader("Lane flows — Daily (CAGG)")
     try:
         df = fetch_df(SQL_CA_LANE_EWM, {"lane_id": l_choice, "start": start, "end": end})
         if df.empty:
-            st.info("No lane EWM for selected window.")
+            st.info("No lane data for selected window.")
         else:
             df["day"] = pd.to_datetime(df["day"], utc=True)
             st.line_chart(df.set_index("day")[["transit_cnt_ewm","laden_dwt_sum_ewm"]], height=280)
     except Exception as e:
-        st.error(f"Lane flow EWM error: {e}")
+        st.error(f"Lane flow error: {e}")
 
 def tab_queues_and_transit():
     st.markdown("## ⛴️ Queues & Transit Times")
@@ -765,16 +789,16 @@ def tab_queues_and_transit():
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("Anchorage queue — EWM")
+        st.subheader("Anchorage queue — Daily MV")
         try:
             df = fetch_df(SQL_CA_ANCHOR_EWM, {"area_id": a_choice, "start": start, "end": end})
             if df.empty:
-                st.info("No queue EWM in window.")
+                st.info("No occupancy MV in window.")
             else:
                 df["day"] = pd.to_datetime(df["day"], utc=True)
                 st.line_chart(df.set_index("day")[["queue_cnt_ewm"]], height=280)
         except Exception as e:
-            st.error(f"Queue EWM error: {e}")
+            st.error(f"Occupancy MV error: {e}")
 
     with c2:
         st.subheader("Anchorage occupancy — Daily MV")
@@ -797,16 +821,16 @@ def tab_queues_and_transit():
 
     c3, c4 = st.columns(2)
     with c3:
-        st.subheader("Transit time — EWM (p50)")
+        st.subheader("Transit time — Daily MV (p50)")
         try:
             df = fetch_df(SQL_CA_TT_EWM, {"lane_id": l_choice, "start": start, "end": end})
             if df.empty:
-                st.info("No TT EWM in window.")
+                st.info("No transit MV in window.")
             else:
                 df["day"] = pd.to_datetime(df["day"], utc=True)
                 st.line_chart(df.set_index("day")[["transit_time_p50_ewm"]], height=280)
         except Exception as e:
-            st.error(f"Transit EWM error: {e}")
+            st.error(f"Transit MV error: {e}")
 
     with c4:
         st.subheader("Transit time — Daily MV (p50/p90/mean)")
@@ -836,7 +860,7 @@ def tab_routing_and_mix():
     start = st.date_input("Start date", value=pd.Timestamp.utcnow().date() - pd.Timedelta(days=60), key="rm_start")
     end   = st.date_input("End date", value=pd.Timestamp.utcnow().date(), key="rm_end")
 
-    # Fetch both EWMs
+    # Fetch both (daily CAGG with aliases)
     def lane_flow(lid):
         df = fetch_df(SQL_CA_LANE_EWM, {"lane_id": lid, "start": start, "end": end})
         if not df.empty:
@@ -848,7 +872,7 @@ def tab_routing_and_mix():
     b = lane_flow(right_lane)
 
     if a is None or a.empty or b is None or b.empty:
-        st.info("Insufficient lane EWM data for routing share.")
+        st.info("Insufficient lane data for routing share.")
     else:
         merged = a.join(b, how="outer").sort_index()
         merged["routing_share_A"] = merged[left_lane] / (merged[left_lane] + merged[right_lane])
@@ -856,7 +880,7 @@ def tab_routing_and_mix():
         st.line_chart(merged[["routing_share_A"]], height=280)
 
     st.markdown("---")
-    # Class mix on a selected lane
+    # Class mix on a selected lane (daily shares via CAGG)
     lane_mix = st.selectbox("Lane for class mix", lane_ids, index=0, key="lane_mix")
     try:
         mix = fetch_df(SQL_CA_CLASS_MIX, {"lane_id": lane_mix, "start": start, "end": end})
@@ -864,24 +888,24 @@ def tab_routing_and_mix():
             st.info("No class mix data.")
         else:
             mix["day"] = pd.to_datetime(mix["day"], utc=True)
-            st.subheader("Class mix — EWMs")
+            st.subheader("Class mix — Daily shares (CAGG)")
             st.line_chart(mix.set_index("day")[["vlcc_share_ewm","suezmax_share_ewm","aframax_share_ewm"]], height=280)
     except Exception as e:
         st.error(f"Class mix error: {e}")
 
     st.markdown("---")
-    # Ballast returns (lead signal)
-    lane_ballast = st.selectbox("Lane for ballast return EWM", lane_ids, index=0, key="lane_ballast")
+    # Ballast returns (lead signal) — daily CAGG
+    lane_ballast = st.selectbox("Lane for ballast return", lane_ids, index=0, key="lane_ballast")
     try:
         bal = fetch_df(SQL_CA_BALLAST_EWM, {"lane_id": lane_ballast, "start": start, "end": end})
         if bal.empty:
-            st.info("No ballast EWM data.")
+            st.info("No ballast data.")
         else:
             bal["day"] = pd.to_datetime(bal["day"], utc=True)
-            st.subheader("Ballast return — EWM")
+            st.subheader("Ballast return — Daily (CAGG)")
             st.line_chart(bal.set_index("day")[["ballast_dwt_ewm"]], height=280)
     except Exception as e:
-        st.error(f"Ballast EWM error: {e}")
+        st.error(f"Ballast error: {e}")
 
 def tab_features():
     st.markdown("## 🧪 Final ML Features")

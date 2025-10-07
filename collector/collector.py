@@ -567,7 +567,11 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
 
         # 3) source & kinematics
         src = classify_src(r)
-        # MarineTraffic SPEED looks like deciknots in your samples; normalize to knots
+        if src == "SAT":
+            # DROP SAT SIGNAL AS TOO JITTERY FOR NOW
+            continue
+
+        # MarineTraffic SPEED looks like deciknots; normalize to knots
         sog = _to_float(r.get("SPEED"))
         sog = sog / 10.0 if sog is not None else None
         if sog is not None and sog > MAX_TANKER_SOG_KN:
@@ -580,7 +584,6 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
 
         # 4) identity & continuity
         vuid = make_vessel_uid(r)
-        sat_uid = None
 
         # 5) project into ais_fix columns (DB triggers will enrich geom/memberships)
         rec: Dict[str, Any] = {
@@ -641,6 +644,15 @@ def insert_fixes(rows: List[Dict[str, Any]], batch_size: int = 2000) -> int:
                 inserted += cur.rowcount if cur.rowcount is not None else len(chunk)
         conn.commit()
     return inserted
+
+
+from sqlalchemy import create_engine, text
+engine = create_engine("postgresql+psycopg2://ais:aispass@localhost:5432/ais", future=True)
+
+def tick_refresh_all(backfill_days: int = 2) -> None:
+    with engine.begin() as conn:
+        conn.execute(text("SET LOCAL TIME ZONE 'UTC'"))
+        conn.execute(text("CALL public.tick_refresh_all(:d)"), {"d": backfill_days})
 
 # ------------------------------ Main loop -----------------------------------
 def main() -> None:
@@ -742,6 +754,9 @@ def _run_loop(driver, tile_iter, total_tiles):
         
         cycles+=1
 
+        # Refresh MVs
+        tick_refresh_all(2)
+
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         summary = (f"[LATEST] {now_str} | received={received_total} | kept={kept_total} | "
@@ -802,3 +817,7 @@ def _run_loop(driver, tile_iter, total_tiles):
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     main()
+
+
+
+

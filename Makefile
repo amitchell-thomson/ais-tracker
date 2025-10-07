@@ -23,3 +23,7 @@ features:
 	$(psql) -f features/ml_features.sql
 
 setup: init seed-areas caggs-mvs features
+
+maintenance:
+	$(psql) -f features/maintenance.sql
+
