@@ -1,0 +1,818 @@
+2025-10-02 01:02:26,251 [INFO] cycle summary: received=673 kept=37 inserted=6 tiles=1/8
+2025-10-02 01:02:26,253 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 164s
+2025-10-02 01:05:15,635 [INFO] session_recycle_complete
+2025-10-02 01:05:37,391 [INFO] cycle summary: received=3790 kept=191 inserted=92 tiles=8/8
+2025-10-02 01:08:08,080 [INFO] cycle summary: received=2700 kept=54 inserted=47 tiles=8/8
+2025-10-02 01:10:47,603 [INFO] cycle summary: received=5117 kept=297 inserted=184 tiles=7/8
+2025-10-02 01:13:05,822 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:13:05,824 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 129s
+2025-10-02 01:15:19,773 [INFO] session_recycle_complete
+2025-10-02 01:15:42,326 [INFO] cycle summary: received=4368 kept=147 inserted=81 tiles=8/8
+2025-10-02 01:18:17,179 [INFO] cycle summary: received=395 kept=34 inserted=28 tiles=4/8
+2025-10-02 01:18:17,179 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 131s
+2025-10-02 01:20:45,919 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:20:45,919 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 153s
+2025-10-02 01:23:23,783 [INFO] session_recycle_complete
+2025-10-02 01:23:44,584 [INFO] cycle summary: received=4274 kept=183 inserted=110 tiles=8/8
+2025-10-02 01:26:24,753 [INFO] cycle summary: received=1952 kept=71 inserted=26 tiles=5/8
+2025-10-02 01:28:48,627 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:28:48,627 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 169s
+2025-10-02 01:31:42,450 [INFO] session_recycle_complete
+2025-10-02 01:32:03,585 [INFO] cycle summary: received=4105 kept=283 inserted=169 tiles=8/8
+2025-10-02 01:34:15,870 [INFO] recycled browser
+2025-10-02 01:34:15,956 [INFO] EWMs refreshed
+2025-10-02 01:34:36,747 [INFO] cycle summary: received=2169 kept=96 inserted=42 tiles=4/8
+2025-10-02 01:34:36,747 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 140s
+2025-10-02 01:36:56,358 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:36:56,358 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 143s
+2025-10-02 01:39:24,167 [INFO] session_recycle_complete
+2025-10-02 01:39:46,642 [INFO] cycle summary: received=4161 kept=117 inserted=53 tiles=8/8
+2025-10-02 01:42:16,152 [INFO] cycle summary: received=2947 kept=249 inserted=149 tiles=5/8
+2025-10-02 01:44:44,150 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:44:44,150 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 121s
+2025-10-02 01:46:50,128 [INFO] session_recycle_complete
+2025-10-02 01:47:11,718 [INFO] cycle summary: received=3805 kept=147 inserted=92 tiles=8/8
+2025-10-02 01:49:46,379 [INFO] cycle summary: received=4473 kept=147 inserted=93 tiles=8/8
+2025-10-02 01:52:09,679 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 01:52:09,680 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 151s
+2025-10-02 01:54:45,544 [INFO] session_recycle_complete
+2025-10-02 01:55:07,934 [INFO] cycle summary: received=2775 kept=161 inserted=98 tiles=8/8
+2025-10-02 01:57:42,410 [INFO] cycle summary: received=3614 kept=144 inserted=85 tiles=8/8
+2025-10-02 02:00:07,204 [INFO] cycle summary: received=4052 kept=110 inserted=75 tiles=6/8
+2025-10-02 02:02:28,668 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 02:02:28,668 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 140s
+2025-10-02 02:04:53,534 [INFO] session_recycle_complete
+2025-10-02 02:05:15,648 [INFO] cycle summary: received=2985 kept=137 inserted=56 tiles=8/8
+2025-10-02 02:07:55,719 [INFO] cycle summary: received=2857 kept=114 inserted=64 tiles=5/8
+2025-10-02 02:10:18,141 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 02:10:18,141 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 179s
+2025-10-02 02:13:22,368 [INFO] session_recycle_complete
+2025-10-02 02:13:22,441 [INFO] EWMs refreshed
+2025-10-02 02:13:45,380 [INFO] cycle summary: received=3768 kept=184 inserted=124 tiles=8/8
+2025-10-02 02:16:04,935 [INFO] cycle summary: received=2862 kept=125 inserted=78 tiles=7/8
+2025-10-02 02:18:42,272 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 02:18:42,272 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 120s
+2025-10-02 02:20:47,072 [INFO] session_recycle_complete
+2025-10-02 02:21:09,812 [INFO] cycle summary: received=6122 kept=290 inserted=161 tiles=8/8
+2025-10-02 02:23:35,937 [INFO] cycle summary: received=966 kept=58 inserted=39 tiles=2/8
+2025-10-02 02:23:35,937 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 157s
+2025-10-02 02:26:17,771 [INFO] session_recycle_complete
+2025-10-02 02:26:40,978 [INFO] cycle summary: received=3733 kept=184 inserted=56 tiles=8/8
+2025-10-02 02:29:10,981 [INFO] cycle summary: received=2773 kept=51 inserted=43 tiles=8/8
+2025-10-02 02:31:35,363 [INFO] cycle summary: received=5678 kept=326 inserted=211 tiles=8/8
+2025-10-02 02:34:12,994 [INFO] cycle summary: received=4187 kept=186 inserted=86 tiles=8/8
+2025-10-02 02:36:45,529 [INFO] cycle summary: received=4375 kept=146 inserted=9 tiles=8/8
+2025-10-02 02:39:21,164 [INFO] cycle summary: received=3755 kept=98 inserted=56 tiles=8/8
+2025-10-02 02:41:47,320 [INFO] cycle summary: received=3934 kept=292 inserted=164 tiles=8/8
+2025-10-02 02:44:25,423 [INFO] cycle summary: received=4295 kept=188 inserted=109 tiles=8/8
+2025-10-02 02:47:01,555 [INFO] cycle summary: received=4182 kept=137 inserted=24 tiles=8/8
+2025-10-02 02:49:38,379 [INFO] cycle summary: received=4023 kept=111 inserted=55 tiles=8/8
+2025-10-02 02:52:00,632 [INFO] recycled browser
+2025-10-02 02:52:00,704 [INFO] EWMs refreshed
+2025-10-02 02:52:20,930 [INFO] cycle summary: received=2453 kept=206 inserted=107 tiles=4/8
+2025-10-02 02:52:20,930 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 139s
+2025-10-02 02:54:41,871 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 02:54:41,872 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 155s
+2025-10-02 02:57:21,787 [INFO] session_recycle_complete
+2025-10-02 02:57:43,065 [INFO] cycle summary: received=3927 kept=126 inserted=78 tiles=8/8
+2025-10-02 03:00:16,926 [INFO] cycle summary: received=4200 kept=114 inserted=80 tiles=8/8
+2025-10-02 03:02:45,393 [INFO] cycle summary: received=4776 kept=301 inserted=165 tiles=8/8
+2025-10-02 03:05:25,915 [INFO] cycle summary: received=3244 kept=156 inserted=81 tiles=8/8
+2025-10-02 03:07:59,389 [INFO] cycle summary: received=1582 kept=50 inserted=2 tiles=4/8
+2025-10-02 03:07:59,389 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 130s
+2025-10-02 03:10:19,899 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 03:10:19,899 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 179s
+2025-10-02 03:13:24,237 [INFO] session_recycle_complete
+2025-10-02 03:13:46,965 [INFO] cycle summary: received=5069 kept=256 inserted=142 tiles=8/8
+2025-10-02 03:16:23,512 [INFO] cycle summary: received=385 kept=38 inserted=10 tiles=1/8
+2025-10-02 03:16:23,512 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 135s
+2025-10-02 03:18:43,324 [INFO] session_recycle_complete
+2025-10-02 03:19:03,888 [INFO] cycle summary: received=3192 kept=103 inserted=50 tiles=4/8
+2025-10-02 03:19:03,888 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 148s
+2025-10-02 03:21:38,701 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 03:21:38,701 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 160s
+2025-10-02 03:24:23,516 [INFO] session_recycle_complete
+2025-10-02 03:24:44,834 [INFO] cycle summary: received=737 kept=63 inserted=50 tiles=2/8
+2025-10-02 03:24:44,834 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 143s
+2025-10-02 03:27:12,629 [INFO] session_recycle_complete
+2025-10-02 03:27:34,659 [INFO] cycle summary: received=2994 kept=134 inserted=78 tiles=8/8
+2025-10-02 03:30:05,467 [INFO] cycle summary: received=2584 kept=90 inserted=59 tiles=3/8
+2025-10-02 03:30:05,467 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 168s
+2025-10-02 03:32:58,269 [INFO] session_recycle_complete
+2025-10-02 03:32:58,337 [INFO] EWMs refreshed
+2025-10-02 03:33:19,997 [INFO] cycle summary: received=3282 kept=63 inserted=55 tiles=3/8
+2025-10-02 03:33:19,997 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 139s
+2025-10-02 03:35:43,857 [INFO] session_recycle_complete
+2025-10-02 03:36:02,935 [INFO] cycle summary: received=92 kept=16 inserted=11 tiles=1/8
+2025-10-02 03:36:02,935 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 131s
+2025-10-02 03:38:18,785 [INFO] session_recycle_complete
+2025-10-02 03:38:40,044 [INFO] cycle summary: received=3435 kept=148 inserted=50 tiles=8/8
+2025-10-02 03:41:19,916 [INFO] cycle summary: received=2600 kept=111 inserted=80 tiles=8/8
+2025-10-02 03:43:58,350 [INFO] cycle summary: received=3850 kept=94 inserted=69 tiles=4/8
+2025-10-02 03:43:58,350 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 128s
+2025-10-02 03:46:33,128 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 03:46:33,128 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 173s
+2025-10-02 03:49:30,967 [INFO] session_recycle_complete
+2025-10-02 03:49:52,336 [INFO] cycle summary: received=3646 kept=173 inserted=59 tiles=8/8
+2025-10-02 03:52:30,337 [INFO] cycle summary: received=1089 kept=2 inserted=2 tiles=1/8
+2025-10-02 03:52:30,337 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 163s
+2025-10-02 03:55:18,108 [INFO] session_recycle_complete
+2025-10-02 03:55:40,699 [INFO] cycle summary: received=5634 kept=311 inserted=197 tiles=8/8
+2025-10-02 03:58:00,896 [INFO] cycle summary: received=4198 kept=177 inserted=77 tiles=8/8
+2025-10-02 04:00:40,463 [INFO] cycle summary: received=4307 kept=132 inserted=82 tiles=8/8
+2025-10-02 04:03:20,587 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 04:03:20,587 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 142s
+2025-10-02 04:05:47,577 [INFO] session_recycle_complete
+2025-10-02 04:06:08,255 [INFO] cycle summary: received=633 kept=35 inserted=19 tiles=2/8
+2025-10-02 04:06:08,255 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 143s
+2025-10-02 04:08:36,538 [INFO] session_recycle_complete
+2025-10-02 04:08:56,841 [INFO] cycle summary: received=4263 kept=190 inserted=114 tiles=8/8
+2025-10-02 04:11:38,474 [INFO] cycle summary: received=2794 kept=125 inserted=56 tiles=6/8
+2025-10-02 04:13:59,946 [INFO] recycled browser
+2025-10-02 04:14:00,024 [INFO] EWMs refreshed
+2025-10-02 04:14:21,525 [INFO] cycle summary: received=311 kept=29 inserted=25 tiles=4/8
+2025-10-02 04:14:21,526 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 162s
+2025-10-02 04:16:42,039 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 04:16:42,039 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 158s
+2025-10-02 04:19:24,853 [INFO] session_recycle_complete
+2025-10-02 04:19:46,977 [INFO] cycle summary: received=1654 kept=51 inserted=35 tiles=2/8
+2025-10-02 04:19:46,977 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 173s
+2025-10-02 04:22:44,770 [INFO] session_recycle_complete
+2025-10-02 04:23:06,562 [INFO] cycle summary: received=3876 kept=131 inserted=95 tiles=8/8
+2025-10-02 04:25:34,938 [INFO] cycle summary: received=4187 kept=115 inserted=77 tiles=8/8
+2025-10-02 04:28:10,629 [INFO] cycle summary: received=4754 kept=299 inserted=174 tiles=8/8
+2025-10-02 04:30:49,223 [INFO] cycle summary: received=3191 kept=153 inserted=63 tiles=8/8
+2025-10-02 04:33:25,124 [INFO] cycle summary: received=3834 kept=144 inserted=83 tiles=8/8
+2025-10-02 04:35:47,063 [INFO] cycle summary: received=4511 kept=145 inserted=81 tiles=8/8
+2025-10-02 04:38:21,958 [INFO] cycle summary: received=5055 kept=269 inserted=149 tiles=8/8
+2025-10-02 04:40:59,810 [INFO] cycle summary: received=2748 kept=155 inserted=26 tiles=8/8
+2025-10-02 04:43:34,481 [INFO] cycle summary: received=3564 kept=138 inserted=78 tiles=8/8
+2025-10-02 04:45:55,618 [INFO] cycle summary: received=5643 kept=228 inserted=163 tiles=8/8
+2025-10-02 04:48:14,400 [INFO] cycle summary: received=4307 kept=210 inserted=91 tiles=8/8
+2025-10-02 04:50:52,706 [INFO] cycle summary: received=2906 kept=130 inserted=38 tiles=8/8
+2025-10-02 04:53:02,449 [INFO] EWMs refreshed
+2025-10-02 04:53:24,679 [INFO] cycle summary: received=3139 kept=129 inserted=73 tiles=8/8
+2025-10-02 04:55:55,248 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 04:55:55,248 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 140s
+2025-10-02 04:58:20,220 [INFO] session_recycle_complete
+2025-10-02 04:58:43,974 [INFO] cycle summary: received=3734 kept=182 inserted=101 tiles=8/8
+2025-10-02 05:01:11,919 [INFO] cycle summary: received=3389 kept=139 inserted=75 tiles=8/8
+2025-10-02 05:03:39,725 [INFO] cycle summary: received=2586 kept=111 inserted=72 tiles=8/8
+2025-10-02 05:06:14,408 [INFO] cycle summary: received=3238 kept=62 inserted=44 tiles=2/8
+2025-10-02 05:06:14,408 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 179s
+2025-10-02 05:09:18,234 [INFO] session_recycle_complete
+2025-10-02 05:09:41,433 [INFO] cycle summary: received=4328 kept=194 inserted=108 tiles=8/8
+2025-10-02 05:12:04,346 [INFO] cycle summary: received=3683 kept=174 inserted=45 tiles=8/8
+2025-10-02 05:14:43,800 [INFO] cycle summary: received=2787 kept=47 inserted=42 tiles=8/8
+2025-10-02 05:17:14,446 [INFO] cycle summary: received=2099 kept=53 inserted=37 tiles=1/8
+2025-10-02 05:17:14,446 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 145s
+2025-10-02 05:19:44,735 [INFO] session_recycle_complete
+2025-10-02 05:20:07,900 [INFO] cycle summary: received=4170 kept=177 inserted=95 tiles=8/8
+2025-10-02 05:22:44,369 [INFO] cycle summary: received=4378 kept=144 inserted=81 tiles=8/8
+2025-10-02 05:25:11,388 [INFO] cycle summary: received=3836 kept=104 inserted=81 tiles=8/8
+2025-10-02 05:27:36,262 [INFO] cycle summary: received=3973 kept=288 inserted=169 tiles=8/8
+2025-10-02 05:29:57,501 [INFO] cycle summary: received=4257 kept=190 inserted=71 tiles=8/8
+2025-10-02 05:32:10,545 [INFO] recycled browser
+2025-10-02 05:32:10,624 [INFO] EWMs refreshed
+2025-10-02 05:32:33,104 [INFO] cycle summary: received=4183 kept=150 inserted=47 tiles=8/8
+2025-10-02 05:34:54,072 [INFO] cycle summary: received=209 kept=28 inserted=24 tiles=3/8
+2025-10-02 05:34:54,072 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 128s
+2025-10-02 05:37:06,914 [INFO] session_recycle_complete
+2025-10-02 05:37:28,189 [INFO] cycle summary: received=4093 kept=270 inserted=148 tiles=8/8
+2025-10-02 05:40:05,004 [INFO] cycle summary: received=3944 kept=195 inserted=69 tiles=8/8
+2025-10-02 05:42:30,806 [INFO] cycle summary: received=3959 kept=140 inserted=27 tiles=8/8
+2025-10-02 05:44:55,509 [INFO] cycle summary: received=4249 kept=138 inserted=104 tiles=8/8
+2025-10-02 05:47:27,084 [INFO] cycle summary: received=2329 kept=186 inserted=103 tiles=4/8
+2025-10-02 05:47:27,084 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 147s
+2025-10-02 05:50:05,349 [INFO] cycle summary: received=434 kept=22 inserted=0 tiles=2/8
+2025-10-02 05:50:05,349 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 150s
+2025-10-02 05:52:40,208 [INFO] session_recycle_complete
+2025-10-02 05:53:03,213 [INFO] cycle summary: received=3905 kept=153 inserted=98 tiles=8/8
+2025-10-02 05:55:30,411 [INFO] cycle summary: received=4135 kept=109 inserted=78 tiles=7/8
+2025-10-02 05:58:07,405 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 05:58:07,405 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 170s
+2025-10-02 06:01:02,212 [INFO] session_recycle_complete
+2025-10-02 06:01:22,769 [INFO] cycle summary: received=2794 kept=161 inserted=88 tiles=8/8
+2025-10-02 06:04:02,073 [INFO] cycle summary: received=3582 kept=134 inserted=91 tiles=8/8
+2025-10-02 06:06:27,621 [INFO] cycle summary: received=5602 kept=241 inserted=130 tiles=8/8
+2025-10-02 06:09:02,513 [INFO] cycle summary: received=4345 kept=217 inserted=141 tiles=8/8
+2025-10-02 06:11:04,159 [INFO] EWMs refreshed
+2025-10-02 06:11:25,931 [INFO] cycle summary: received=2974 kept=144 inserted=36 tiles=8/8
+2025-10-02 06:13:59,709 [INFO] cycle summary: received=3141 kept=126 inserted=79 tiles=8/8
+2025-10-02 06:16:29,792 [INFO] cycle summary: received=6170 kept=281 inserted=152 tiles=8/8
+2025-10-02 06:18:51,727 [INFO] cycle summary: received=3770 kept=171 inserted=82 tiles=8/8
+2025-10-02 06:21:23,757 [INFO] cycle summary: received=3451 kept=151 inserted=35 tiles=8/8
+2025-10-02 06:23:47,107 [INFO] cycle summary: received=2625 kept=113 inserted=50 tiles=8/8
+2025-10-02 06:26:18,662 [INFO] cycle summary: received=6124 kept=271 inserted=117 tiles=7/8
+2025-10-02 06:28:55,808 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 06:28:55,808 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 177s
+2025-10-02 06:31:58,052 [INFO] session_recycle_complete
+2025-10-02 06:32:19,882 [INFO] cycle summary: received=3772 kept=182 inserted=119 tiles=8/8
+2025-10-02 06:34:57,541 [INFO] cycle summary: received=2795 kept=54 inserted=47 tiles=8/8
+2025-10-02 06:37:24,942 [INFO] cycle summary: received=2110 kept=54 inserted=44 tiles=1/8
+2025-10-02 06:37:24,942 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 139s
+2025-10-02 06:39:48,753 [INFO] session_recycle_complete
+2025-10-02 06:40:10,815 [INFO] cycle summary: received=4204 kept=182 inserted=96 tiles=8/8
+2025-10-02 06:42:34,676 [INFO] cycle summary: received=4394 kept=148 inserted=50 tiles=8/8
+2025-10-02 06:45:01,002 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 06:45:01,002 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 174s
+2025-10-02 06:47:59,836 [INFO] session_recycle_complete
+2025-10-02 06:48:20,913 [INFO] cycle summary: received=3579 kept=268 inserted=149 tiles=7/8
+2025-10-02 06:50:31,921 [INFO] recycled browser
+2025-10-02 06:50:31,996 [INFO] EWMs refreshed
+2025-10-02 06:50:53,624 [INFO] cycle summary: received=4256 kept=191 inserted=90 tiles=8/8
+2025-10-02 06:53:22,000 [INFO] cycle summary: received=4199 kept=148 inserted=72 tiles=8/8
+2025-10-02 06:55:45,829 [INFO] cycle summary: received=4001 kept=112 inserted=88 tiles=8/8
+2025-10-02 06:58:11,304 [INFO] cycle summary: received=1258 kept=81 inserted=51 tiles=3/8
+2025-10-02 06:58:11,304 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 152s
+2025-10-02 07:00:48,064 [INFO] session_recycle_complete
+2025-10-02 07:01:11,034 [INFO] cycle summary: received=3928 kept=194 inserted=122 tiles=8/8
+2025-10-02 07:03:48,404 [INFO] cycle summary: received=1685 kept=50 inserted=10 tiles=4/8
+2025-10-02 07:03:48,404 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 121s
+2025-10-02 07:06:19,641 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 07:06:19,641 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 143s
+2025-10-02 07:08:47,481 [INFO] session_recycle_complete
+2025-10-02 07:09:08,468 [INFO] cycle summary: received=4714 kept=290 inserted=192 tiles=8/8
+2025-10-02 07:11:45,915 [INFO] cycle summary: received=3237 kept=151 inserted=38 tiles=8/8
+2025-10-02 07:14:14,566 [INFO] cycle summary: received=3941 kept=151 inserted=69 tiles=8/8
+2025-10-02 07:16:35,709 [INFO] cycle summary: received=4556 kept=149 inserted=109 tiles=8/8
+2025-10-02 07:19:02,786 [INFO] cycle summary: received=5068 kept=251 inserted=139 tiles=8/8
+2025-10-02 07:21:36,789 [INFO] cycle summary: received=2788 kept=162 inserted=43 tiles=8/8
+2025-10-02 07:24:16,703 [INFO] cycle summary: received=3693 kept=144 inserted=85 tiles=8/8
+2025-10-02 07:26:53,830 [INFO] cycle summary: received=5626 kept=228 inserted=135 tiles=8/8
+2025-10-02 07:29:10,635 [INFO] EWMs refreshed
+2025-10-02 07:29:31,338 [INFO] cycle summary: received=4334 kept=205 inserted=122 tiles=8/8
+2025-10-02 07:32:02,319 [INFO] cycle summary: received=2993 kept=142 inserted=62 tiles=8/8
+2025-10-02 07:34:29,528 [INFO] cycle summary: received=3197 kept=134 inserted=51 tiles=8/8
+2025-10-02 07:36:57,255 [INFO] cycle summary: received=644 kept=45 inserted=24 tiles=1/8
+2025-10-02 07:36:57,255 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 166s
+2025-10-02 07:39:50,949 [INFO] session_recycle_complete
+2025-10-02 07:40:12,514 [INFO] cycle summary: received=722 kept=64 inserted=49 tiles=2/8
+2025-10-02 07:40:12,515 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 160s
+2025-10-02 07:42:57,318 [INFO] session_recycle_complete
+2025-10-02 07:43:21,785 [INFO] cycle summary: received=3512 kept=150 inserted=43 tiles=8/8
+2025-10-02 07:45:49,237 [INFO] cycle summary: received=2635 kept=106 inserted=58 tiles=8/8
+2025-10-02 07:48:11,443 [INFO] cycle summary: received=6182 kept=283 inserted=169 tiles=8/8
+2025-10-02 07:50:45,132 [INFO] cycle summary: received=4412 kept=189 inserted=118 tiles=8/8
+2025-10-02 07:53:19,760 [INFO] cycle summary: received=3789 kept=183 inserted=48 tiles=8/8
+2025-10-02 07:55:45,010 [INFO] cycle summary: received=2755 kept=54 inserted=44 tiles=8/8
+2025-10-02 07:58:09,435 [INFO] cycle summary: received=5736 kept=340 inserted=164 tiles=8/8
+2025-10-02 08:00:41,433 [INFO] cycle summary: received=4190 kept=172 inserted=97 tiles=8/8
+2025-10-02 08:03:10,428 [INFO] cycle summary: received=4420 kept=141 inserted=60 tiles=8/8
+2025-10-02 08:05:47,937 [INFO] cycle summary: received=3815 kept=98 inserted=80 tiles=8/8
+2025-10-02 08:07:57,834 [INFO] recycled browser
+2025-10-02 08:07:57,909 [INFO] EWMs refreshed
+2025-10-02 08:08:19,442 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 08:08:19,442 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 143s
+2025-10-02 08:10:49,340 [INFO] session_recycle_complete
+2025-10-02 08:11:11,815 [INFO] cycle summary: received=4251 kept=174 inserted=111 tiles=8/8
+2025-10-02 08:13:31,727 [INFO] cycle summary: received=4202 kept=144 inserted=50 tiles=8/8
+2025-10-02 08:16:08,518 [INFO] cycle summary: received=3974 kept=108 inserted=84 tiles=8/8
+2025-10-02 08:18:44,286 [INFO] cycle summary: received=2999 kept=191 inserted=103 tiles=5/8
+2025-10-02 08:21:15,059 [INFO] cycle summary: received=258 kept=20 inserted=0 tiles=1/8
+2025-10-02 08:21:15,059 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 148s
+2025-10-02 08:23:47,981 [INFO] session_recycle_complete
+2025-10-02 08:24:11,023 [INFO] cycle summary: received=4021 kept=129 inserted=76 tiles=8/8
+2025-10-02 08:26:50,098 [INFO] cycle summary: received=4171 kept=121 inserted=92 tiles=8/8
+2025-10-02 08:29:12,884 [INFO] cycle summary: received=4842 kept=283 inserted=155 tiles=8/8
+2025-10-02 08:31:49,457 [INFO] cycle summary: received=3259 kept=146 inserted=70 tiles=8/8
+2025-10-02 08:34:15,936 [INFO] cycle summary: received=3882 kept=129 inserted=71 tiles=8/8
+2025-10-02 08:36:53,472 [INFO] cycle summary: received=4521 kept=142 inserted=104 tiles=8/8
+2025-10-02 08:39:16,682 [INFO] cycle summary: received=5150 kept=242 inserted=134 tiles=8/8
+2025-10-02 08:41:56,074 [INFO] cycle summary: received=2792 kept=156 inserted=62 tiles=8/8
+2025-10-02 08:44:23,330 [INFO] cycle summary: received=3615 kept=125 inserted=73 tiles=8/8
+2025-10-02 08:46:35,090 [INFO] EWMs refreshed
+2025-10-02 08:46:56,970 [INFO] cycle summary: received=5597 kept=225 inserted=154 tiles=8/8
+2025-10-02 08:49:34,529 [INFO] cycle summary: received=4424 kept=199 inserted=98 tiles=8/8
+2025-10-02 08:52:06,933 [INFO] cycle summary: received=2986 kept=132 inserted=50 tiles=8/8
+2025-10-02 08:54:41,396 [INFO] cycle summary: received=3171 kept=120 inserted=77 tiles=8/8
+2025-10-02 08:57:04,339 [INFO] cycle summary: received=6178 kept=263 inserted=156 tiles=8/8
+2025-10-02 08:59:29,900 [INFO] cycle summary: received=3881 kept=171 inserted=90 tiles=8/8
+2025-10-02 09:01:57,419 [INFO] cycle summary: received=3455 kept=147 inserted=86 tiles=8/8
+2025-10-02 09:04:23,061 [INFO] cycle summary: received=2657 kept=109 inserted=71 tiles=8/8
+2025-10-02 09:06:53,270 [INFO] cycle summary: received=6124 kept=257 inserted=161 tiles=7/8
+2025-10-02 09:09:19,178 [INFO] cycle summary: received=670 kept=33 inserted=18 tiles=1/8
+2025-10-02 09:09:19,179 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 120s
+2025-10-02 09:11:24,445 [INFO] session_recycle_complete
+2025-10-02 09:11:46,094 [INFO] cycle summary: received=3800 kept=177 inserted=32 tiles=8/8
+2025-10-02 09:14:13,855 [INFO] cycle summary: received=2781 kept=51 inserted=39 tiles=8/8
+2025-10-02 09:16:55,491 [INFO] cycle summary: received=5109 kept=267 inserted=174 tiles=7/8
+2025-10-02 09:19:31,671 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 09:19:31,671 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 140s
+2025-10-02 09:21:56,525 [INFO] session_recycle_complete
+2025-10-02 09:22:17,940 [INFO] cycle summary: received=4475 kept=138 inserted=63 tiles=8/8
+2025-10-02 09:24:33,898 [INFO] recycled browser
+2025-10-02 09:24:33,968 [INFO] EWMs refreshed
+2025-10-02 09:24:55,904 [INFO] cycle summary: received=3749 kept=101 inserted=80 tiles=8/8
+2025-10-02 09:27:30,409 [INFO] cycle summary: received=4015 kept=261 inserted=162 tiles=8/8
+2025-10-02 09:29:59,376 [INFO] cycle summary: received=4289 kept=177 inserted=81 tiles=8/8
+2025-10-02 09:32:24,660 [INFO] cycle summary: received=2991 kept=129 inserted=77 tiles=6/8
+2025-10-02 09:34:57,736 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 09:34:57,736 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 124s
+2025-10-02 09:37:06,573 [INFO] session_recycle_complete
+2025-10-02 09:37:28,579 [INFO] cycle summary: received=4163 kept=265 inserted=150 tiles=8/8
+2025-10-02 09:40:09,558 [INFO] cycle summary: received=4004 kept=198 inserted=94 tiles=8/8
+2025-10-02 09:42:47,094 [INFO] cycle summary: received=4036 kept=129 inserted=64 tiles=8/8
+2025-10-02 09:45:12,665 [INFO] cycle summary: received=4171 kept=119 inserted=88 tiles=8/8
+2025-10-02 09:47:42,493 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 09:47:42,493 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 136s
+2025-10-02 09:50:03,285 [INFO] session_recycle_complete
+2025-10-02 09:50:25,791 [INFO] cycle summary: received=3229 kept=158 inserted=90 tiles=8/8
+2025-10-02 09:52:47,337 [INFO] cycle summary: received=3972 kept=140 inserted=67 tiles=8/8
+2025-10-02 09:55:20,173 [INFO] cycle summary: received=4465 kept=132 inserted=97 tiles=8/8
+2025-10-02 09:57:44,410 [INFO] cycle summary: received=5157 kept=243 inserted=128 tiles=8/8
+2025-10-02 10:00:14,470 [INFO] cycle summary: received=2760 kept=160 inserted=90 tiles=8/8
+2025-10-02 10:02:30,282 [INFO] EWMs refreshed
+2025-10-02 10:02:49,897 [INFO] cycle summary: received=3642 kept=133 inserted=80 tiles=8/8
+2025-10-02 10:05:22,534 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 10:05:22,534 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 166s
+2025-10-02 10:08:13,265 [INFO] session_recycle_complete
+2025-10-02 10:08:35,677 [INFO] cycle summary: received=4447 kept=202 inserted=148 tiles=8/8
+2025-10-02 10:11:06,589 [INFO] cycle summary: received=2922 kept=137 inserted=48 tiles=8/8
+2025-10-02 10:13:44,453 [INFO] cycle summary: received=3158 kept=126 inserted=72 tiles=8/8
+2025-10-02 10:16:24,233 [INFO] cycle summary: received=6175 kept=257 inserted=161 tiles=8/8
+2025-10-02 10:18:51,629 [INFO] cycle summary: received=3907 kept=172 inserted=110 tiles=8/8
+2025-10-02 10:21:18,690 [INFO] cycle summary: received=3416 kept=128 inserted=51 tiles=8/8
+2025-10-02 10:23:44,734 [INFO] cycle summary: received=2276 kept=78 inserted=43 tiles=3/8
+2025-10-02 10:23:44,734 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 173s
+2025-10-02 10:26:44,956 [INFO] session_recycle_complete
+2025-10-02 10:27:07,285 [INFO] cycle summary: received=6222 kept=267 inserted=163 tiles=8/8
+2025-10-02 10:29:36,626 [INFO] cycle summary: received=3694 kept=142 inserted=75 tiles=6/8
+2025-10-02 10:32:02,283 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 10:32:02,283 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 135s
+2025-10-02 10:34:22,208 [INFO] session_recycle_complete
+2025-10-02 10:34:44,212 [INFO] cycle summary: received=2782 kept=57 inserted=43 tiles=8/8
+2025-10-02 10:37:21,268 [INFO] cycle summary: received=5732 kept=306 inserted=201 tiles=8/8
+2025-10-02 10:39:42,510 [INFO] cycle summary: received=4254 kept=170 inserted=56 tiles=8/8
+2025-10-02 10:42:06,031 [INFO] recycled browser
+2025-10-02 10:42:06,100 [INFO] EWMs refreshed
+2025-10-02 10:42:27,899 [INFO] cycle summary: received=4471 kept=128 inserted=58 tiles=8/8
+2025-10-02 10:44:42,845 [INFO] cycle summary: received=3763 kept=101 inserted=77 tiles=8/8
+2025-10-02 10:47:21,704 [INFO] cycle summary: received=3995 kept=264 inserted=165 tiles=8/8
+2025-10-02 10:49:49,752 [INFO] cycle summary: received=4281 kept=173 inserted=71 tiles=8/8
+2025-10-02 10:52:11,040 [INFO] cycle summary: received=4251 kept=131 inserted=47 tiles=8/8
+2025-10-02 10:54:34,872 [INFO] cycle summary: received=3935 kept=109 inserted=81 tiles=8/8
+2025-10-02 10:56:56,000 [INFO] cycle summary: received=2451 kept=174 inserted=94 tiles=4/8
+2025-10-02 10:56:56,000 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 141s
+2025-10-02 10:59:19,572 [INFO] cycle summary: received=694 kept=31 inserted=0 tiles=2/8
+2025-10-02 10:59:19,572 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 164s
+2025-10-02 11:02:08,367 [INFO] session_recycle_complete
+2025-10-02 11:02:29,571 [INFO] cycle summary: received=4022 kept=121 inserted=66 tiles=8/8
+2025-10-02 11:04:56,915 [INFO] cycle summary: received=4213 kept=131 inserted=95 tiles=8/8
+2025-10-02 11:07:24,222 [INFO] cycle summary: received=4864 kept=272 inserted=171 tiles=8/8
+2025-10-02 11:09:48,311 [INFO] cycle summary: received=3246 kept=143 inserted=69 tiles=8/8
+2025-10-02 11:12:19,099 [INFO] cycle summary: received=3944 kept=135 inserted=67 tiles=8/8
+2025-10-02 11:14:57,653 [INFO] cycle summary: received=4515 kept=135 inserted=92 tiles=8/8
+2025-10-02 11:17:22,850 [INFO] cycle summary: received=3458 kept=203 inserted=99 tiles=6/8
+2025-10-02 11:19:25,517 [INFO] EWMs refreshed
+2025-10-02 11:19:46,032 [INFO] cycle summary: received=754 kept=34 inserted=0 tiles=3/8
+2025-10-02 11:19:46,032 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 165s
+2025-10-02 11:22:35,890 [INFO] session_recycle_complete
+2025-10-02 11:22:56,200 [INFO] cycle summary: received=3641 kept=131 inserted=73 tiles=8/8
+2025-10-02 11:25:18,850 [INFO] cycle summary: received=5547 kept=232 inserted=169 tiles=8/8
+2025-10-02 11:27:41,528 [INFO] cycle summary: received=4448 kept=212 inserted=111 tiles=8/8
+2025-10-02 11:30:10,527 [INFO] cycle summary: received=2868 kept=128 inserted=54 tiles=8/8
+2025-10-02 11:32:36,924 [INFO] cycle summary: received=3189 kept=122 inserted=69 tiles=8/8
+2025-10-02 11:35:00,664 [INFO] cycle summary: received=6101 kept=264 inserted=164 tiles=8/8
+2025-10-02 11:37:35,828 [INFO] cycle summary: received=1679 kept=79 inserted=35 tiles=4/8
+2025-10-02 11:37:35,828 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 131s
+2025-10-02 11:39:56,484 [INFO] cycle summary: received=2041 kept=40 inserted=5 tiles=5/8
+2025-10-02 11:42:29,658 [INFO] cycle summary: received=57 kept=1 inserted=0 tiles=1/8
+2025-10-02 11:42:29,658 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 139s
+2025-10-02 11:44:53,992 [INFO] session_recycle_complete
+2025-10-02 11:45:16,486 [INFO] cycle summary: received=6185 kept=292 inserted=200 tiles=8/8
+2025-10-02 11:47:53,146 [INFO] cycle summary: received=4456 kept=191 inserted=95 tiles=8/8
+2025-10-02 11:50:31,473 [INFO] cycle summary: received=3719 kept=165 inserted=80 tiles=8/8
+2025-10-02 11:52:51,296 [INFO] cycle summary: received=2744 kept=60 inserted=40 tiles=8/8
+2025-10-02 11:55:24,081 [INFO] cycle summary: received=2735 kept=100 inserted=53 tiles=2/8
+2025-10-02 11:55:24,081 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 152s
+2025-10-02 11:58:00,878 [INFO] session_recycle_complete
+2025-10-02 11:58:07,088 [INFO] recycled browser
+2025-10-02 11:58:07,163 [INFO] EWMs refreshed
+2025-10-02 11:58:29,611 [INFO] cycle summary: received=4193 kept=182 inserted=124 tiles=8/8
+2025-10-02 12:01:00,322 [INFO] cycle summary: received=2405 kept=71 inserted=46 tiles=6/8
+2025-10-02 12:03:23,199 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 12:03:23,200 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 155s
+2025-10-02 12:06:02,968 [INFO] session_recycle_complete
+2025-10-02 12:06:24,470 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 12:06:24,470 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 152s
+2025-10-02 12:09:03,746 [INFO] session_recycle_complete
+2025-10-02 12:09:25,164 [INFO] cycle summary: received=4295 kept=190 inserted=121 tiles=8/8
+2025-10-02 12:11:52,210 [INFO] cycle summary: received=1967 kept=60 inserted=2 tiles=5/8
+2025-10-02 12:14:21,324 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 12:14:21,324 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 146s
+2025-10-02 12:16:52,185 [INFO] session_recycle_complete
+2025-10-02 12:17:14,572 [INFO] cycle summary: received=4083 kept=258 inserted=177 tiles=8/8
+2025-10-02 12:19:45,699 [INFO] cycle summary: received=3309 kept=165 inserted=56 tiles=6/8
+2025-10-02 12:22:23,625 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 12:22:23,626 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 128s
+2025-10-02 12:24:36,483 [INFO] session_recycle_complete
+2025-10-02 12:24:59,087 [INFO] cycle summary: received=4136 kept=135 inserted=104 tiles=8/8
+2025-10-02 12:27:35,963 [INFO] cycle summary: received=4773 kept=275 inserted=160 tiles=8/8
+2025-10-02 12:30:00,687 [INFO] cycle summary: received=3277 kept=154 inserted=40 tiles=8/8
+2025-10-02 12:32:40,006 [INFO] cycle summary: received=3867 kept=142 inserted=94 tiles=8/8
+2025-10-02 12:35:06,553 [INFO] cycle summary: received=4524 kept=155 inserted=109 tiles=8/8
+2025-10-02 12:37:19,370 [INFO] EWMs refreshed
+2025-10-02 12:37:41,650 [INFO] cycle summary: received=5109 kept=263 inserted=157 tiles=8/8
+2025-10-02 12:40:09,636 [INFO] cycle summary: received=2802 kept=160 inserted=47 tiles=8/8
+2025-10-02 12:42:30,384 [INFO] cycle summary: received=3583 kept=133 inserted=68 tiles=8/8
+2025-10-02 12:45:01,673 [INFO] cycle summary: received=5619 kept=248 inserted=176 tiles=8/8
+2025-10-02 12:47:20,580 [INFO] cycle summary: received=1344 kept=106 inserted=66 tiles=3/8
+2025-10-02 12:47:20,580 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 128s
+2025-10-02 12:49:34,016 [INFO] session_recycle_complete
+2025-10-02 12:49:56,452 [INFO] cycle summary: received=783 kept=40 inserted=24 tiles=2/8
+2025-10-02 12:49:56,452 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 136s
+2025-10-02 12:52:17,257 [INFO] session_recycle_complete
+2025-10-02 12:52:37,688 [INFO] cycle summary: received=3164 kept=131 inserted=79 tiles=8/8
+2025-10-02 12:55:09,626 [INFO] cycle summary: received=6155 kept=300 inserted=201 tiles=8/8
+2025-10-02 12:57:32,865 [INFO] cycle summary: received=3862 kept=184 inserted=81 tiles=8/8
+2025-10-02 13:00:05,718 [INFO] cycle summary: received=685 kept=29 inserted=23 tiles=1/8
+2025-10-02 13:00:05,718 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 138s
+2025-10-02 13:02:28,504 [INFO] session_recycle_complete
+2025-10-02 13:02:50,333 [INFO] cycle summary: received=2534 kept=119 inserted=85 tiles=8/8
+2025-10-02 13:05:13,736 [INFO] cycle summary: received=6060 kept=293 inserted=195 tiles=7/8
+2025-10-02 13:07:46,964 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 13:07:46,964 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 134s
+2025-10-02 13:10:05,727 [INFO] session_recycle_complete
+2025-10-02 13:10:27,803 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 13:10:27,803 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 153s
+2025-10-02 13:13:05,584 [INFO] session_recycle_complete
+2025-10-02 13:13:26,894 [INFO] cycle summary: received=2688 kept=62 inserted=40 tiles=8/8
+2025-10-02 13:15:48,334 [INFO] recycled browser
+2025-10-02 13:15:48,404 [INFO] EWMs refreshed
+2025-10-02 13:16:10,485 [INFO] cycle summary: received=5698 kept=348 inserted=229 tiles=8/8
+2025-10-02 13:18:37,452 [INFO] cycle summary: received=4226 kept=194 inserted=58 tiles=8/8
+2025-10-02 13:21:02,879 [INFO] cycle summary: received=4358 kept=145 inserted=90 tiles=8/8
+2025-10-02 13:23:40,040 [INFO] cycle summary: received=3772 kept=125 inserted=72 tiles=8/8
+2025-10-02 13:26:05,392 [INFO] cycle summary: received=3910 kept=307 inserted=178 tiles=8/8
+2025-10-02 13:28:44,888 [INFO] cycle summary: received=4288 kept=207 inserted=72 tiles=8/8
+2025-10-02 13:31:18,415 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 13:31:18,415 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 172s
+2025-10-02 13:34:15,231 [INFO] session_recycle_complete
+2025-10-02 13:34:35,470 [INFO] cycle summary: received=351 kept=41 inserted=33 tiles=5/8
+2025-10-02 13:36:56,708 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 13:36:56,708 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 139s
+2025-10-02 13:39:20,561 [INFO] session_recycle_complete
+2025-10-02 13:39:42,809 [INFO] cycle summary: received=4015 kept=209 inserted=143 tiles=8/8
+2025-10-02 13:42:11,985 [INFO] cycle summary: received=3872 kept=131 inserted=94 tiles=8/8
+2025-10-02 13:44:48,233 [INFO] cycle summary: received=4152 kept=142 inserted=111 tiles=8/8
+2025-10-02 13:47:24,103 [INFO] cycle summary: received=4765 kept=294 inserted=157 tiles=8/8
+2025-10-02 13:49:46,936 [INFO] cycle summary: received=3246 kept=161 inserted=39 tiles=8/8
+2025-10-02 13:52:19,156 [INFO] cycle summary: received=3813 kept=141 inserted=79 tiles=8/8
+2025-10-02 13:54:34,967 [INFO] EWMs refreshed
+2025-10-02 13:54:57,027 [INFO] cycle summary: received=4526 kept=163 inserted=101 tiles=8/8
+2025-10-02 13:57:25,773 [INFO] cycle summary: received=5093 kept=270 inserted=159 tiles=8/8
+2025-10-02 13:59:46,414 [INFO] cycle summary: received=2792 kept=165 inserted=58 tiles=8/8
+2025-10-02 14:02:25,088 [INFO] cycle summary: received=1218 kept=34 inserted=13 tiles=3/8
+2025-10-02 14:02:25,088 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 157s
+2025-10-02 14:05:07,577 [INFO] session_recycle_complete
+2025-10-02 14:05:29,591 [INFO] cycle summary: received=5580 kept=239 inserted=180 tiles=8/8
+2025-10-02 14:07:49,511 [INFO] cycle summary: received=686 kept=54 inserted=43 tiles=2/8
+2025-10-02 14:07:49,511 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 127s
+2025-10-02 14:10:01,347 [INFO] session_recycle_complete
+2025-10-02 14:10:23,939 [INFO] cycle summary: received=2938 kept=129 inserted=50 tiles=8/8
+2025-10-02 14:12:51,352 [INFO] cycle summary: received=3106 kept=122 inserted=77 tiles=8/8
+2025-10-02 14:15:26,832 [INFO] cycle summary: received=6087 kept=288 inserted=206 tiles=8/8
+2025-10-02 14:18:11,309 [INFO] cycle summary: received=3826 kept=182 inserted=97 tiles=8/8
+2025-10-02 14:20:38,240 [INFO] cycle summary: received=3439 kept=134 inserted=33 tiles=8/8
+2025-10-02 14:22:59,589 [INFO] cycle summary: received=2537 kept=107 inserted=38 tiles=8/8
+2025-10-02 14:25:34,738 [INFO] cycle summary: received=6120 kept=282 inserted=200 tiles=8/8
+2025-10-02 14:28:04,351 [INFO] cycle summary: received=4444 kept=192 inserted=114 tiles=8/8
+2025-10-02 14:30:23,829 [INFO] cycle summary: received=3735 kept=161 inserted=40 tiles=8/8
+2025-10-02 14:32:40,800 [INFO] recycled browser
+2025-10-02 14:32:40,877 [INFO] EWMs refreshed
+2025-10-02 14:33:02,704 [INFO] cycle summary: received=2671 kept=51 inserted=32 tiles=8/8
+2025-10-02 14:35:18,174 [INFO] cycle summary: received=5629 kept=316 inserted=210 tiles=8/8
+2025-10-02 14:37:51,539 [INFO] cycle summary: received=4173 kept=176 inserted=86 tiles=8/8
+2025-10-02 14:40:12,913 [INFO] cycle summary: received=4379 kept=127 inserted=23 tiles=8/8
+2025-10-02 14:42:37,752 [INFO] cycle summary: received=3719 kept=104 inserted=63 tiles=8/8
+2025-10-02 14:45:09,943 [INFO] cycle summary: received=3893 kept=270 inserted=169 tiles=8/8
+2025-10-02 14:47:46,879 [INFO] cycle summary: received=4225 kept=180 inserted=95 tiles=8/8
+2025-10-02 14:50:23,753 [INFO] cycle summary: received=4124 kept=126 inserted=15 tiles=8/8
+2025-10-02 14:52:47,574 [INFO] cycle summary: received=3936 kept=123 inserted=97 tiles=8/8
+2025-10-02 14:55:12,079 [INFO] cycle summary: received=4065 kept=273 inserted=173 tiles=8/8
+2025-10-02 14:57:39,214 [INFO] cycle summary: received=3951 kept=185 inserted=99 tiles=8/8
+2025-10-02 15:00:05,396 [INFO] cycle summary: received=3874 kept=123 inserted=41 tiles=8/8
+2025-10-02 15:02:39,534 [INFO] cycle summary: received=4137 kept=136 inserted=108 tiles=8/8
+2025-10-02 15:05:05,566 [INFO] cycle summary: received=1593 kept=112 inserted=89 tiles=2/8
+2025-10-02 15:05:05,566 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 163s
+2025-10-02 15:07:53,784 [INFO] session_recycle_complete
+2025-10-02 15:08:16,678 [INFO] cycle summary: received=3198 kept=139 inserted=63 tiles=8/8
+2025-10-02 15:10:29,471 [INFO] EWMs refreshed
+2025-10-02 15:10:49,260 [INFO] cycle summary: received=3834 kept=137 inserted=65 tiles=8/8
+2025-10-02 15:13:21,115 [INFO] cycle summary: received=4429 kept=147 inserted=114 tiles=8/8
+2025-10-02 15:16:01,037 [INFO] cycle summary: received=5033 kept=255 inserted=157 tiles=8/8
+2025-10-02 15:18:25,327 [INFO] cycle summary: received=2767 kept=143 inserted=39 tiles=8/8
+2025-10-02 15:20:58,139 [INFO] cycle summary: received=3563 kept=130 inserted=35 tiles=8/8
+2025-10-02 15:23:26,721 [INFO] cycle summary: received=5496 kept=235 inserted=177 tiles=8/8
+2025-10-02 15:26:01,150 [INFO] cycle summary: received=4266 kept=207 inserted=124 tiles=8/8
+2025-10-02 15:28:38,617 [INFO] cycle summary: received=1052 kept=52 inserted=20 tiles=3/8
+2025-10-02 15:28:38,618 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 127s
+2025-10-02 15:30:50,587 [INFO] session_recycle_complete
+2025-10-02 15:31:13,317 [INFO] cycle summary: received=3072 kept=109 inserted=41 tiles=8/8
+2025-10-02 15:33:38,691 [INFO] cycle summary: received=3830 kept=118 inserted=87 tiles=5/8
+2025-10-02 15:36:10,178 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 15:36:10,178 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 174s
+2025-10-02 15:39:09,087 [INFO] session_recycle_complete
+2025-10-02 15:39:32,616 [INFO] cycle summary: received=3458 kept=117 inserted=73 tiles=8/8
+2025-10-02 15:42:01,881 [INFO] cycle summary: received=2548 kept=105 inserted=76 tiles=8/8
+2025-10-02 15:44:25,900 [INFO] cycle summary: received=6006 kept=293 inserted=198 tiles=8/8
+2025-10-02 15:46:56,914 [INFO] cycle summary: received=3558 kept=156 inserted=106 tiles=6/8
+2025-10-02 15:49:15,000 [INFO] recycled browser
+2025-10-02 15:49:15,069 [INFO] EWMs refreshed
+2025-10-02 15:49:37,063 [INFO] cycle summary: received=3733 kept=150 inserted=41 tiles=8/8
+2025-10-02 15:52:04,859 [INFO] cycle summary: received=2645 kept=53 inserted=42 tiles=8/8
+2025-10-02 15:54:25,891 [INFO] cycle summary: received=5647 kept=329 inserted=223 tiles=8/8
+2025-10-02 15:56:59,617 [INFO] cycle summary: received=4169 kept=181 inserted=111 tiles=8/8
+2025-10-02 15:59:38,000 [INFO] cycle summary: received=4379 kept=121 inserted=38 tiles=8/8
+2025-10-02 16:02:02,711 [INFO] cycle summary: received=192 kept=9 inserted=6 tiles=1/8
+2025-10-02 16:02:02,711 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 134s
+2025-10-02 16:04:21,476 [INFO] session_recycle_complete
+2025-10-02 16:04:43,754 [INFO] cycle summary: received=3831 kept=273 inserted=172 tiles=8/8
+2025-10-02 16:07:09,443 [INFO] cycle summary: received=4218 kept=187 inserted=115 tiles=8/8
+2025-10-02 16:09:33,345 [INFO] cycle summary: received=4133 kept=125 inserted=34 tiles=8/8
+2025-10-02 16:12:01,723 [INFO] cycle summary: received=295 kept=27 inserted=20 tiles=4/8
+2025-10-02 16:12:01,723 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 172s
+2025-10-02 16:14:40,644 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 16:14:40,644 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 148s
+2025-10-02 16:17:16,401 [INFO] session_recycle_complete
+2025-10-02 16:17:39,265 [INFO] cycle summary: received=3924 kept=192 inserted=123 tiles=8/8
+2025-10-02 16:20:11,796 [INFO] cycle summary: received=3894 kept=110 inserted=57 tiles=8/8
+2025-10-02 16:22:48,317 [INFO] cycle summary: received=3443 kept=87 inserted=70 tiles=6/8
+2025-10-02 16:25:15,397 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 16:25:15,397 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 163s
+2025-10-02 16:28:03,175 [INFO] session_recycle_complete
+2025-10-02 16:28:03,245 [INFO] EWMs refreshed
+2025-10-02 16:28:24,243 [INFO] cycle summary: received=1107 kept=38 inserted=31 tiles=2/8
+2025-10-02 16:28:24,243 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 147s
+2025-10-02 16:30:56,069 [INFO] session_recycle_complete
+2025-10-02 16:31:18,485 [INFO] cycle summary: received=3866 kept=127 inserted=93 tiles=8/8
+2025-10-02 16:33:54,989 [INFO] cycle summary: received=3327 kept=70 inserted=59 tiles=5/8
+2025-10-02 16:36:23,617 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 16:36:23,617 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 166s
+2025-10-02 16:39:14,378 [INFO] session_recycle_complete
+2025-10-02 16:39:35,583 [INFO] cycle summary: received=2725 kept=147 inserted=98 tiles=8/8
+2025-10-02 16:41:58,027 [INFO] cycle summary: received=3599 kept=125 inserted=76 tiles=8/8
+2025-10-02 16:44:29,409 [INFO] cycle summary: received=5442 kept=238 inserted=182 tiles=8/8
+2025-10-02 16:47:00,966 [INFO] cycle summary: received=4229 kept=213 inserted=140 tiles=8/8
+2025-10-02 16:49:33,801 [INFO] cycle summary: received=2914 kept=122 inserted=30 tiles=8/8
+2025-10-02 16:52:04,536 [INFO] cycle summary: received=3103 kept=114 inserted=44 tiles=8/8
+2025-10-02 16:54:35,256 [INFO] cycle summary: received=5982 kept=271 inserted=181 tiles=8/8
+2025-10-02 16:56:56,633 [INFO] cycle summary: received=3712 kept=173 inserted=107 tiles=8/8
+2025-10-02 16:59:28,242 [INFO] cycle summary: received=3462 kept=130 inserted=51 tiles=8/8
+2025-10-02 17:01:51,886 [INFO] cycle summary: received=2519 kept=106 inserted=45 tiles=8/8
+2025-10-02 17:04:22,226 [INFO] cycle summary: received=6037 kept=291 inserted=188 tiles=8/8
+2025-10-02 17:06:46,255 [INFO] recycled browser
+2025-10-02 17:06:46,329 [INFO] EWMs refreshed
+2025-10-02 17:07:07,502 [INFO] cycle summary: received=4279 kept=184 inserted=112 tiles=8/8
+2025-10-02 17:09:35,093 [INFO] cycle summary: received=3752 kept=164 inserted=48 tiles=8/8
+2025-10-02 17:11:55,177 [INFO] cycle summary: received=2557 kept=52 inserted=40 tiles=8/8
+2025-10-02 17:14:19,212 [INFO] cycle summary: received=5606 kept=332 inserted=185 tiles=8/8
+2025-10-02 17:16:43,173 [INFO] cycle summary: received=4113 kept=176 inserted=98 tiles=8/8
+2025-10-02 17:19:06,522 [INFO] cycle summary: received=4390 kept=130 inserted=39 tiles=8/8
+2025-10-02 17:21:37,414 [INFO] cycle summary: received=402 kept=36 inserted=28 tiles=4/8
+2025-10-02 17:21:37,414 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 136s
+2025-10-02 17:24:05,351 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 17:24:05,351 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 137s
+2025-10-02 17:26:27,738 [INFO] session_recycle_complete
+2025-10-02 17:26:48,437 [INFO] cycle summary: received=4215 kept=180 inserted=123 tiles=8/8
+2025-10-02 17:29:23,931 [INFO] cycle summary: received=1322 kept=42 inserted=16 tiles=4/8
+2025-10-02 17:29:23,932 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 163s
+2025-10-02 17:31:47,805 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 17:31:47,805 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 158s
+2025-10-02 17:34:30,624 [INFO] session_recycle_complete
+2025-10-02 17:34:53,146 [INFO] cycle summary: received=4065 kept=256 inserted=164 tiles=8/8
+2025-10-02 17:37:30,821 [INFO] cycle summary: received=3943 kept=190 inserted=106 tiles=8/8
+2025-10-02 17:40:06,537 [INFO] cycle summary: received=3870 kept=122 inserted=62 tiles=8/8
+2025-10-02 17:42:37,016 [INFO] cycle summary: received=3993 kept=140 inserted=85 tiles=8/8
+2025-10-02 17:44:52,840 [INFO] EWMs refreshed
+2025-10-02 17:45:15,456 [INFO] cycle summary: received=4762 kept=260 inserted=134 tiles=8/8
+2025-10-02 17:47:37,517 [INFO] cycle summary: received=3211 kept=139 inserted=52 tiles=8/8
+2025-10-02 17:50:10,827 [INFO] cycle summary: received=3801 kept=137 inserted=71 tiles=8/8
+2025-10-02 17:52:50,005 [INFO] cycle summary: received=4327 kept=145 inserted=98 tiles=8/8
+2025-10-02 17:55:20,393 [INFO] cycle summary: received=5005 kept=242 inserted=126 tiles=8/8
+2025-10-02 17:57:44,493 [INFO] cycle summary: received=2831 kept=144 inserted=74 tiles=8/8
+2025-10-02 18:00:07,658 [INFO] cycle summary: received=566 kept=14 inserted=10 tiles=1/8
+2025-10-02 18:00:07,659 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 127s
+2025-10-02 18:02:19,425 [INFO] session_recycle_complete
+2025-10-02 18:02:41,841 [INFO] cycle summary: received=5400 kept=213 inserted=147 tiles=8/8
+2025-10-02 18:05:19,229 [INFO] cycle summary: received=4228 kept=195 inserted=125 tiles=8/8
+2025-10-02 18:07:48,804 [INFO] cycle summary: received=3017 kept=126 inserted=52 tiles=8/8
+2025-10-02 18:10:14,786 [INFO] cycle summary: received=3116 kept=118 inserted=77 tiles=8/8
+2025-10-02 18:12:48,882 [INFO] cycle summary: received=3100 kept=62 inserted=45 tiles=3/8
+2025-10-02 18:12:48,882 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 178s
+2025-10-02 18:15:51,834 [INFO] session_recycle_complete
+2025-10-02 18:16:11,736 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 18:16:11,736 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 176s
+2025-10-02 18:19:12,561 [INFO] session_recycle_complete
+2025-10-02 18:19:35,147 [INFO] cycle summary: received=3570 kept=136 inserted=53 tiles=8/8
+2025-10-02 18:22:04,220 [INFO] cycle summary: received=2518 kept=107 inserted=73 tiles=8/8
+2025-10-02 18:24:25,411 [INFO] recycled browser
+2025-10-02 18:24:25,484 [INFO] EWMs refreshed
+2025-10-02 18:24:48,976 [INFO] cycle summary: received=5967 kept=271 inserted=192 tiles=8/8
+2025-10-02 18:27:10,902 [INFO] cycle summary: received=4314 kept=181 inserted=91 tiles=8/8
+2025-10-02 18:29:39,759 [INFO] cycle summary: received=1634 kept=75 inserted=42 tiles=5/8
+2025-10-02 18:32:18,587 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 18:32:18,587 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 133s
+2025-10-02 18:34:36,951 [INFO] session_recycle_complete
+2025-10-02 18:34:59,767 [INFO] cycle summary: received=5560 kept=314 inserted=215 tiles=8/8
+2025-10-02 18:37:34,914 [INFO] cycle summary: received=2514 kept=62 inserted=29 tiles=4/8
+2025-10-02 18:37:34,915 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 141s
+2025-10-02 18:39:58,283 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 18:39:58,284 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 144s
+2025-10-02 18:42:27,120 [INFO] session_recycle_complete
+2025-10-02 18:42:47,963 [INFO] cycle summary: received=3604 kept=103 inserted=79 tiles=8/8
+2025-10-02 18:45:26,520 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 18:45:26,520 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 145s
+2025-10-02 18:47:56,417 [INFO] session_recycle_complete
+2025-10-02 18:48:17,587 [INFO] cycle summary: received=2162 kept=64 inserted=48 tiles=3/8
+2025-10-02 18:48:17,588 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 166s
+2025-10-02 18:51:08,349 [INFO] session_recycle_complete
+2025-10-02 18:51:30,548 [INFO] cycle summary: received=4130 kept=123 inserted=87 tiles=8/8
+2025-10-02 18:53:53,576 [INFO] cycle summary: received=3781 kept=119 inserted=87 tiles=8/8
+2025-10-02 18:56:22,046 [INFO] cycle summary: received=4018 kept=246 inserted=124 tiles=8/8
+2025-10-02 18:58:52,803 [INFO] cycle summary: received=3912 kept=189 inserted=103 tiles=8/8
+2025-10-02 19:01:16,188 [INFO] cycle summary: received=1087 kept=23 inserted=16 tiles=3/8
+2025-10-02 19:01:16,188 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 134s
+2025-10-02 19:03:34,996 [INFO] session_recycle_complete
+2025-10-02 19:03:35,069 [INFO] EWMs refreshed
+2025-10-02 19:03:55,390 [INFO] cycle summary: received=3998 kept=136 inserted=88 tiles=8/8
+2025-10-02 19:06:19,283 [INFO] cycle summary: received=4708 kept=289 inserted=177 tiles=8/8
+2025-10-02 19:08:46,866 [INFO] cycle summary: received=1911 kept=84 inserted=44 tiles=4/8
+2025-10-02 19:08:46,866 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 122s
+2025-10-02 19:11:10,567 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 19:11:10,568 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 144s
+2025-10-02 19:13:39,686 [INFO] session_recycle_complete
+2025-10-02 19:14:01,315 [INFO] cycle summary: received=4325 kept=140 inserted=98 tiles=8/8
+2025-10-02 19:16:43,170 [INFO] cycle summary: received=4987 kept=274 inserted=177 tiles=8/8
+2025-10-02 19:19:11,848 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 19:19:11,848 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 158s
+2025-10-02 19:21:54,758 [INFO] session_recycle_complete
+2025-10-02 19:22:17,209 [INFO] cycle summary: received=3550 kept=130 inserted=86 tiles=7/8
+2025-10-02 19:24:47,894 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 19:24:47,894 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 145s
+2025-10-02 19:27:17,823 [INFO] session_recycle_complete
+2025-10-02 19:27:39,181 [INFO] cycle summary: received=4188 kept=219 inserted=140 tiles=8/8
+2025-10-02 19:30:18,754 [INFO] cycle summary: received=112 kept=10 inserted=4 tiles=1/8
+2025-10-02 19:30:18,754 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 155s
+2025-10-02 19:32:58,589 [INFO] session_recycle_complete
+2025-10-02 19:33:20,006 [INFO] cycle summary: received=3056 kept=121 inserted=88 tiles=8/8
+2025-10-02 19:35:44,087 [INFO] cycle summary: received=5961 kept=270 inserted=164 tiles=8/8
+2025-10-02 19:38:15,095 [INFO] cycle summary: received=3690 kept=192 inserted=103 tiles=8/8
+2025-10-02 19:40:49,856 [INFO] cycle summary: received=1300 kept=40 inserted=16 tiles=2/8
+2025-10-02 19:40:49,856 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 153s
+2025-10-02 19:43:28,091 [INFO] session_recycle_complete
+2025-10-02 19:43:34,346 [INFO] recycled browser
+2025-10-02 19:43:34,430 [INFO] EWMs refreshed
+2025-10-02 19:43:56,424 [INFO] cycle summary: received=2483 kept=113 inserted=82 tiles=8/8
+2025-10-02 19:46:15,257 [INFO] cycle summary: received=6011 kept=272 inserted=179 tiles=8/8
+2025-10-02 19:48:54,053 [INFO] cycle summary: received=4273 kept=193 inserted=96 tiles=8/8
+2025-10-02 19:51:22,776 [INFO] cycle summary: received=3755 kept=169 inserted=71 tiles=8/8
+2025-10-02 19:53:53,010 [INFO] cycle summary: received=2507 kept=54 inserted=43 tiles=8/8
+2025-10-02 19:56:22,176 [INFO] cycle summary: received=5647 kept=310 inserted=195 tiles=8/8
+2025-10-02 19:58:56,865 [INFO] cycle summary: received=4088 kept=180 inserted=85 tiles=8/8
+2025-10-02 20:01:24,912 [INFO] cycle summary: received=2833 kept=52 inserted=14 tiles=6/8
+2025-10-02 20:03:54,602 [INFO] cycle summary: received=2096 kept=58 inserted=40 tiles=1/8
+2025-10-02 20:03:54,602 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 133s
+2025-10-02 20:06:12,620 [INFO] session_recycle_complete
+2025-10-02 20:06:34,388 [INFO] cycle summary: received=3880 kept=255 inserted=160 tiles=8/8
+2025-10-02 20:08:58,035 [INFO] cycle summary: received=4178 kept=190 inserted=98 tiles=8/8
+2025-10-02 20:11:29,106 [INFO] cycle summary: received=4095 kept=124 inserted=64 tiles=8/8
+2025-10-02 20:13:50,737 [INFO] cycle summary: received=3806 kept=126 inserted=73 tiles=8/8
+2025-10-02 20:16:24,099 [INFO] cycle summary: received=2513 kept=180 inserted=107 tiles=5/8
+2025-10-02 20:18:48,068 [INFO] cycle summary: received=727 kept=29 inserted=0 tiles=2/8
+2025-10-02 20:18:48,068 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 168s
+2025-10-02 20:21:40,923 [INFO] session_recycle_complete
+2025-10-02 20:21:41,000 [INFO] EWMs refreshed
+2025-10-02 20:22:02,735 [INFO] cycle summary: received=3829 kept=108 inserted=54 tiles=8/8
+2025-10-02 20:24:29,739 [INFO] cycle summary: received=4015 kept=142 inserted=101 tiles=8/8
+2025-10-02 20:26:58,311 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 20:26:58,311 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 146s
+2025-10-02 20:29:29,114 [INFO] session_recycle_complete
+2025-10-02 20:29:51,899 [INFO] cycle summary: received=3217 kept=148 inserted=84 tiles=8/8
+2025-10-02 20:32:22,293 [INFO] cycle summary: received=2437 kept=85 inserted=41 tiles=4/8
+2025-10-02 20:32:22,293 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 146s
+2025-10-02 20:34:44,207 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 20:34:44,207 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 141s
+2025-10-02 20:37:10,031 [INFO] session_recycle_complete
+2025-10-02 20:37:31,879 [INFO] cycle summary: received=4908 kept=267 inserted=159 tiles=8/8
+2025-10-02 20:40:14,649 [INFO] cycle summary: received=2823 kept=147 inserted=61 tiles=8/8
+2025-10-02 20:42:41,137 [INFO] cycle summary: received=3155 kept=94 inserted=53 tiles=4/8
+2025-10-02 20:42:41,137 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 171s
+2025-10-02 20:45:08,737 [INFO] cycle summary: received=1143 kept=86 inserted=37 tiles=1/8
+2025-10-02 20:45:08,737 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 166s
+2025-10-02 20:48:00,241 [INFO] session_recycle_complete
+2025-10-02 20:48:20,266 [INFO] cycle summary: received=4168 kept=221 inserted=132 tiles=8/8
+2025-10-02 20:51:00,169 [INFO] cycle summary: received=3006 kept=128 inserted=28 tiles=8/8
+2025-10-02 20:53:32,397 [INFO] cycle summary: received=3087 kept=111 inserted=57 tiles=8/8
+2025-10-02 20:55:56,221 [INFO] cycle summary: received=5323 kept=224 inserted=147 tiles=7/8
+2025-10-02 20:58:25,580 [INFO] cycle summary: received=104 kept=10 inserted=2 tiles=1/8
+2025-10-02 20:58:25,580 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 166s
+2025-10-02 21:01:16,458 [INFO] session_recycle_complete
+2025-10-02 21:01:22,757 [INFO] recycled browser
+2025-10-02 21:01:22,836 [INFO] EWMs refreshed
+2025-10-02 21:01:43,827 [INFO] cycle summary: received=3540 kept=129 inserted=53 tiles=8/8
+2025-10-02 21:04:17,817 [INFO] cycle summary: received=2507 kept=99 inserted=77 tiles=8/8
+2025-10-02 21:06:45,166 [INFO] cycle summary: received=5998 kept=278 inserted=157 tiles=8/8
+2025-10-02 21:09:14,081 [INFO] cycle summary: received=4277 kept=209 inserted=115 tiles=8/8
+2025-10-02 21:11:45,590 [INFO] cycle summary: received=3760 kept=164 inserted=73 tiles=8/8
+2025-10-02 21:14:19,106 [INFO] cycle summary: received=2486 kept=48 inserted=41 tiles=8/8
+2025-10-02 21:16:59,384 [INFO] cycle summary: received=5664 kept=327 inserted=169 tiles=8/8
+2025-10-02 21:19:33,581 [INFO] cycle summary: received=4098 kept=188 inserted=102 tiles=8/8
+2025-10-02 21:22:14,530 [INFO] cycle summary: received=4336 kept=128 inserted=35 tiles=8/8
+2025-10-02 21:24:50,367 [INFO] cycle summary: received=3592 kept=110 inserted=81 tiles=8/8
+2025-10-02 21:27:30,293 [INFO] cycle summary: received=3883 kept=256 inserted=151 tiles=8/8
+2025-10-02 21:30:00,898 [INFO] cycle summary: received=4191 kept=194 inserted=85 tiles=8/8
+2025-10-02 21:32:33,394 [INFO] cycle summary: received=4101 kept=133 inserted=44 tiles=8/8
+2025-10-02 21:35:02,248 [INFO] cycle summary: received=3812 kept=120 inserted=96 tiles=8/8
+2025-10-02 21:37:30,151 [INFO] cycle summary: received=1833 kept=132 inserted=82 tiles=3/8
+2025-10-02 21:37:30,151 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 154s
+2025-10-02 21:40:08,909 [INFO] session_recycle_complete
+2025-10-02 21:40:08,985 [INFO] EWMs refreshed
+2025-10-02 21:40:31,501 [INFO] cycle summary: received=2810 kept=140 inserted=86 tiles=5/8
+2025-10-02 21:43:01,953 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 21:43:01,953 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 176s
+2025-10-02 21:46:02,936 [INFO] session_recycle_complete
+2025-10-02 21:46:24,333 [INFO] cycle summary: received=280 kept=25 inserted=22 tiles=3/8
+2025-10-02 21:46:24,333 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 145s
+2025-10-02 21:48:56,310 [INFO] session_recycle_complete
+2025-10-02 21:49:19,333 [INFO] cycle summary: received=4696 kept=287 inserted=177 tiles=8/8
+2025-10-02 21:51:41,678 [INFO] cycle summary: received=1890 kept=76 inserted=22 tiles=4/8
+2025-10-02 21:51:41,678 [WARNING] cooldown: fail_ratio=0.50 (failed=4 of 8) → sleeping 164s
+2025-10-02 21:54:01,924 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 21:54:01,924 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 143s
+2025-10-02 21:56:29,744 [INFO] session_recycle_complete
+2025-10-02 21:56:51,968 [INFO] cycle summary: received=138 kept=2 inserted=2 tiles=2/8
+2025-10-02 21:56:51,968 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 149s
+2025-10-02 21:59:25,754 [INFO] session_recycle_complete
+2025-10-02 21:59:47,544 [INFO] cycle summary: received=4921 kept=259 inserted=154 tiles=8/8
+2025-10-02 22:02:19,347 [INFO] cycle summary: received=1179 kept=71 inserted=23 tiles=3/8
+2025-10-02 22:02:19,348 [WARNING] session_recycle_triggered: fail_ratio=0.62 (failed=5 of 8) → sleeping 125s
+2025-10-02 22:04:29,169 [INFO] session_recycle_complete
+2025-10-02 22:04:53,117 [INFO] cycle summary: received=3534 kept=124 inserted=81 tiles=8/8
+2025-10-02 22:07:13,343 [INFO] cycle summary: received=86 kept=0 inserted=0 tiles=1/8
+2025-10-02 22:07:13,343 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 134s
+2025-10-02 22:09:32,195 [INFO] session_recycle_complete
+2025-10-02 22:09:54,778 [INFO] cycle summary: received=4184 kept=219 inserted=146 tiles=8/8
+2025-10-02 22:12:16,289 [INFO] cycle summary: received=3023 kept=131 inserted=66 tiles=8/8
+2025-10-02 22:14:37,445 [INFO] cycle summary: received=3030 kept=107 inserted=55 tiles=8/8
+2025-10-02 22:17:17,958 [INFO] cycle summary: received=6047 kept=272 inserted=165 tiles=8/8
+2025-10-02 22:19:27,823 [INFO] recycled browser
+2025-10-02 22:19:27,902 [INFO] EWMs refreshed
+2025-10-02 22:19:50,503 [INFO] cycle summary: received=3655 kept=182 inserted=100 tiles=8/8
+2025-10-02 22:22:22,132 [INFO] cycle summary: received=3538 kept=127 inserted=53 tiles=8/8
+2025-10-02 22:24:41,618 [INFO] cycle summary: received=2450 kept=102 inserted=62 tiles=8/8
+2025-10-02 22:27:23,307 [INFO] cycle summary: received=5975 kept=253 inserted=141 tiles=7/8
+2025-10-02 22:29:52,875 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 22:29:52,875 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 163s
+2025-10-02 22:32:40,726 [INFO] session_recycle_complete
+2025-10-02 22:33:03,481 [INFO] cycle summary: received=3818 kept=163 inserted=89 tiles=8/8
+2025-10-02 22:35:27,695 [INFO] cycle summary: received=2486 kept=55 inserted=48 tiles=8/8
+2025-10-02 22:38:07,394 [INFO] cycle summary: received=5711 kept=312 inserted=201 tiles=8/8
+2025-10-02 22:40:43,093 [INFO] cycle summary: received=4118 kept=183 inserted=99 tiles=8/8
+2025-10-02 22:43:15,945 [INFO] cycle summary: received=4380 kept=131 inserted=76 tiles=8/8
+2025-10-02 22:45:41,415 [INFO] cycle summary: received=2340 kept=67 inserted=35 tiles=2/8
+2025-10-02 22:45:41,415 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 153s
+2025-10-02 22:48:19,234 [INFO] session_recycle_complete
+2025-10-02 22:48:40,620 [INFO] cycle summary: received=638 kept=39 inserted=27 tiles=2/8
+2025-10-02 22:48:40,620 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 175s
+2025-10-02 22:51:42,695 [INFO] session_recycle_complete
+2025-10-02 22:52:05,589 [INFO] cycle summary: received=4234 kept=189 inserted=120 tiles=8/8
+2025-10-02 22:54:41,768 [INFO] cycle summary: received=4120 kept=130 inserted=47 tiles=8/8
+2025-10-02 22:57:20,805 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 22:57:20,805 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 120s
+2025-10-02 22:59:25,677 [INFO] session_recycle_complete
+2025-10-02 22:59:25,750 [INFO] EWMs refreshed
+2025-10-02 22:59:49,021 [INFO] cycle summary: received=224 kept=19 inserted=7 tiles=1/8
+2025-10-02 22:59:49,021 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 169s
+2025-10-02 23:02:42,807 [INFO] session_recycle_complete
+2025-10-02 23:03:04,978 [INFO] cycle summary: received=3994 kept=203 inserted=120 tiles=8/8
+2025-10-02 23:05:26,414 [INFO] cycle summary: received=3803 kept=110 inserted=61 tiles=8/8
+2025-10-02 23:07:52,445 [INFO] cycle summary: received=4076 kept=140 inserted=108 tiles=8/8
+2025-10-02 23:10:16,388 [INFO] cycle summary: received=2981 kept=215 inserted=122 tiles=5/8
+2025-10-02 23:12:45,805 [INFO] cycle summary: received=620 kept=10 inserted=1 tiles=2/8
+2025-10-02 23:12:45,805 [WARNING] session_recycle_triggered: fail_ratio=0.75 (failed=6 of 8) → sleeping 144s
+2025-10-02 23:15:14,595 [INFO] session_recycle_complete
+2025-10-02 23:15:34,843 [INFO] cycle summary: received=3801 kept=136 inserted=72 tiles=8/8
+2025-10-02 23:17:57,633 [INFO] cycle summary: received=4379 kept=146 inserted=101 tiles=8/8
+2025-10-02 23:20:24,328 [INFO] cycle summary: received=5006 kept=262 inserted=138 tiles=8/8
+2025-10-02 23:22:47,201 [INFO] cycle summary: received=2870 kept=148 inserted=61 tiles=8/8
+2025-10-02 23:25:12,743 [INFO] cycle summary: received=3574 kept=129 inserted=63 tiles=8/8
+2025-10-02 23:27:51,329 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 23:27:51,329 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 175s
+2025-10-02 23:30:51,136 [INFO] session_recycle_complete
+2025-10-02 23:31:15,260 [INFO] cycle summary: received=4236 kept=215 inserted=131 tiles=8/8
+2025-10-02 23:33:47,377 [INFO] cycle summary: received=104 kept=9 inserted=3 tiles=1/8
+2025-10-02 23:33:47,377 [WARNING] session_recycle_triggered: fail_ratio=0.88 (failed=7 of 8) → sleeping 159s
+2025-10-02 23:36:31,188 [INFO] session_recycle_complete
+2025-10-02 23:36:53,207 [INFO] cycle summary: received=0 kept=0 inserted=0 tiles=0/8
+2025-10-02 23:36:53,207 [WARNING] session_recycle_triggered: fail_ratio=1.00 (failed=8 of 8) → sleeping 144s
+2025-10-02 23:39:21,972 [INFO] session_recycle_complete
+2025-10-02 23:39:28,104 [INFO] recycled browser
+2025-10-02 23:39:28,196 [INFO] EWMs refreshed
+2025-10-02 23:39:51,070 [INFO] cycle summary: received=6077 kept=252 inserted=154 tiles=8/8
+2025-10-02 23:42:12,782 [INFO] cycle summary: received=3705 kept=185 inserted=102 tiles=8/8
+2025-10-02 23:44:46,036 [INFO] cycle summary: received=3614 kept=120 inserted=81 tiles=8/8
+2025-10-02 23:47:16,181 [INFO] cycle summary: received=2468 kept=113 inserted=73 tiles=8/8
+2025-10-02 23:49:35,873 [INFO] cycle summary: received=6091 kept=260 inserted=131 tiles=8/8
+2025-10-02 23:50:07,732 [INFO] browser closed

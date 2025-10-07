@@ -567,7 +567,7 @@ def normalize_rows_from_payload(payload: Dict[str, Any], tile_id: str) -> List[D
 
         # 3) source & kinematics
         src = classify_src(r)
-        if src == "SAT":
+        if src == "sat":
             # DROP SAT SIGNAL AS TOO JITTERY FOR NOW
             continue
 
@@ -707,12 +707,6 @@ def _run_loop(driver, tile_iter, total_tiles):
             driver = open_driver(minimized=True, size=(400, 300))
             logger.info("recycled browser")
 
-        # periodic maintenance task
-        if cycles % 15 == 0:
-            try:
-                logger.info("EWMs refreshed")
-            except Exception:
-                logger.exception("EWM refresh failed")
 
         # pull the next batch for this cycle
         tiles_this_cycle = list(islice(tile_iter, TILES_PER_CYCLE))
@@ -754,13 +748,14 @@ def _run_loop(driver, tile_iter, total_tiles):
         
         cycles+=1
 
-        # Refresh MVs
-        tick_refresh_all(2)
+        # Refresh Caggs/MVs
+        from maintenance import refresh_all
+        refresh_all(backfill_days=2)
 
         # per-cycle summary
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         summary = (f"[LATEST] {now_str} | received={received_total} | kept={kept_total} | "
-                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE}")
+                   f"inserted={inserted_total} | (tiles this cycle={TILES_PER_CYCLE-failed_tiles}/{TILES_PER_CYCLE})")
         ui_set_latest(summary)
         logger.info("cycle summary: received=%s kept=%s inserted=%s tiles=%s/%s",
                     received_total, kept_total, inserted_total, TILES_PER_CYCLE-failed_tiles, TILES_PER_CYCLE)

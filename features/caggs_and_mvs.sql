@@ -1,5 +1,5 @@
--- caggs_and_ewm.sql  (EWMs REMOVED)
--- One-shot initializer: extensions, continuous aggregates, support MVs, and policies (no EWM state).
+-- caggs_and_mvs.sql  
+-- One-shot initializer: extensions, continuous aggregates, support MVs, and policies.
 
 -- ---------------------------------------------------------------------------
 -- Extensions (safe if already present)
