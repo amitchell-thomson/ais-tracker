@@ -98,7 +98,7 @@ FROM public.area_gate
 """
 
 SQL_INGEST_RATE = """
-SELECT date_trunc('minute', ts) AS minute, count(*) AS rows_inserted
+SELECT time_bucket('15 minutes', ts) AS minute, count(*) AS rows_inserted
 FROM public.ais_fix
 WHERE ts >= now() - make_interval(hours => :hours)
 GROUP BY 1

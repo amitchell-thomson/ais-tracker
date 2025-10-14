@@ -646,13 +646,7 @@ def insert_fixes(rows: List[Dict[str, Any]], batch_size: int = 2000) -> int:
     return inserted
 
 
-from sqlalchemy import create_engine, text
-engine = create_engine("postgresql+psycopg2://ais:aispass@localhost:5432/ais", future=True)
 
-def tick_refresh_all(backfill_days: int = 2) -> None:
-    with engine.begin() as conn:
-        conn.execute(text("SET LOCAL TIME ZONE 'UTC'"))
-        conn.execute(text("CALL public.tick_refresh_all(:d)"), {"d": backfill_days})
 
 # ------------------------------ Main loop -----------------------------------
 def main() -> None:
