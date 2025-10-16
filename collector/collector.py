@@ -11,7 +11,6 @@ Unified AIS Collector (tiles → normalized tanker fixes → Timescale/PostGIS)
         MMSI/IMO/MTID > else hashed surrogate from (name, flag, len, width, type).
     - Optional **spatial prefilter** against buffered AREA/GATE bounding boxes.
 
-
 """
 
 from __future__ import annotations
